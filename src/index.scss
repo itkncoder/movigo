@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    outline: none;
+}
+*:focus {
+    border: 1px solid gray;
+}
+body {
+    background-color: #151A20;
+}
+*::selection {
+    background: #FFC30D;
+    color: white;
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+}
+*::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 20px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #FFC30D;
+    border-radius: 20px;
+}
+
+.btn1 {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(270deg, #8743FF 0%, #4136F1 100%);
+    box-shadow: 0px 15px 30px rgba(20, 102, 204, 0.16);
+    backdrop-filter: blur(15px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 13px;
+}
+
+.wrapper-category {
+    max-width: 1170px;
+    margin: 200px auto;
+}
+.wrapper-footer {
+    max-width: 1200px;
+    padding: 55px 0;
+    margin: auto;
+}
+footer {
+    background-color: #1E242C;
+}
+.footer-contact {
+    font-family: "Poppins";
+}
+.poppins {
+    font-family: "Poppins";
+}
+.bebas {
+    font-family: "Bebas Neue";
+    letter-spacing: 3px;
+}
