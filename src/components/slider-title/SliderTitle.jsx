@@ -21,7 +21,7 @@ const SliderTitle = ({props}) => {
             </div>
 
             <div className="mt-2 hover:-translate-y-0.5 w-fit cursor-pointer transition-all duration-300">
-                <Btn1><a href="./">By premium</a></Btn1>
+                <Btn1><a href="./">Watch</a></Btn1>
             </div>
         </div>
     );
