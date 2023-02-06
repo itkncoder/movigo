@@ -60,7 +60,7 @@ const HomeTop = () => {
                                 <div className="lg:mt-20 mt-16 sm:mt-6 sm:ml-5 ml-2 flex w-full justify-between items-end">
                                     {/* <i onClick={() => swiperRef.current?.slidePrev()} className="ml-60 hidden md:flex cursor-pointer p-3 text-5xl absolute left-3 text-gray-200 hover:text-gray-300 fa-solid fa-angle-left"></i> */}
                                     <SliderTitle props={i} />
-                                    <i onClick={() => swiperRef.current?.slideNext()} className="hidden md:flex cursor-pointer p-3 text-5xl absolute right-3 text-gray-200 hover:text-gray-300 fa-solid fa-angle-right"></i>
+                                    {/* <i onClick={() => swiperRef.current?.slideNext()} className="hidden md:flex cursor-pointer p-3 text-5xl absolute right-3 text-gray-200 hover:text-gray-300 fa-solid fa-angle-right"></i> */}
                                  </div>
                             </section>
                         </SwiperSlide>
