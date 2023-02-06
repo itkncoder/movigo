@@ -40,7 +40,7 @@ const HomeCatalogs = () => {
     ]
 
     return (  
-        <section className="px-2">
+        <section className="wrapper-category px-2">
             <div>
                 <h1 className="category-title w-fit hover:underline"><a href="./">FILMS</a></h1>
                 <div className="relative flex items-center">
@@ -54,7 +54,7 @@ const HomeCatalogs = () => {
                               slidesPerView: 2.75,
                             },
                             1080: {
-                                slidesPerView: 4.25,
+                                slidesPerView: 4.5,
                             },
                         }}
                         spaceBetween={20}
@@ -91,7 +91,7 @@ const HomeCatalogs = () => {
                               slidesPerView: 2.75,
                             },
                             1080: {
-                                slidesPerView: 4.25,
+                                slidesPerView: 4.5,
                             },
                         }}
                         spaceBetween={20}
@@ -128,7 +128,7 @@ const HomeCatalogs = () => {
                               slidesPerView: 2.75,
                             },
                             1080: {
-                                slidesPerView: 4.25,
+                                slidesPerView: 4.5,
                             },
                         }}
                         spaceBetween={20}
@@ -165,7 +165,7 @@ const HomeCatalogs = () => {
                               slidesPerView: 2.75,
                             },
                             1080: {
-                                slidesPerView: 4.25,
+                                slidesPerView: 4.5,
                             },
                         }}
                         spaceBetween={20}
@@ -202,7 +202,7 @@ const HomeCatalogs = () => {
                               slidesPerView: 2.75,
                             },
                             1080: {
-                                slidesPerView: 4.25,
+                                slidesPerView: 4.5,
                             },
                         }}
                         spaceBetween={20}
