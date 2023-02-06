@@ -4,16 +4,16 @@ import Btn1 from "../UI/btn1/Btn1"
 const SliderTitle = ({props}) => {
     return (  
         <div className="slidertitle flex flex-col items-start gap-2">
-            <div className="flex flex-col">
-                <h1 className="home-top-type"><i className="fa-solid fa-fire-flame-curved"></i> {props.type}</h1>
-                <h2 className="home-top-name">{props.name}</h2>
-                <p className="home-top-version">
+            <div className="flex flex-col gap-1.5 lg:gap-0">
+                <h1 className="home-top-type text-4xl"><i className="fa-solid fa-fire-flame-curved"></i> {props.type}</h1>
+                <h2 className="home-top-name text-5xl md:text-6xl lg:text-7xl">{props.name}</h2>
+                <p className="home-top-version text-3xl">
                     <i className="fa-solid fa-film"></i> {props.version}
                 </p>
-                <p className="home-top-desc">{props.desc}</p>
+                <p className="home-top-desc hidden md:flex">{props.desc}</p>
             </div>
 
-            <div className="flex justify-start items-center home-top-other">
+            <div className="flex justify-start items-center home-top-other hidden md:flex">
                 <p className="home-top-other-item"><p>KP: </p>{props.kp}</p>
                 <p className="home-top-other-item"><p>IMDB: </p>{props.imbd}</p>
                 <p className="home-top-other-item"><p>PG: </p>{props.pg}</p>

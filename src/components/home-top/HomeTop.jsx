@@ -39,7 +39,7 @@ const HomeTop = () => {
     ];
 
     return (  
-        <div className="home-top">
+        <div className="home-top px-2">
             <Swiper
                 spaceBetween={0}
                 slidesPerView={1}
@@ -57,7 +57,7 @@ const HomeTop = () => {
                         <SwiperSlide>
                             <section className="wrapper-carousel relative flex justify-between items-center">
                                 <div className={`slider-img${i.img}`}></div>
-                                <div className="mt-20 flex w-full justify-between items-end">
+                                <div className="lg:mt-20 mt-3 flex w-full justify-between items-end">
                                     {/* <i onClick={() => swiperRef.current?.slidePrev()} className="z-40 ml-40 cursor-pointer p-3 text-5xl absolute text-gray-200 hover:text-gray-300 fa-solid fa-angle-left"></i> */}
                                     <SliderTitle props={i} />
                                     <i onClick={() => swiperRef.current?.slideNext()} className="cursor-pointer p-3 text-5xl absolute right-3 text-gray-200 hover:text-gray-300 fa-solid fa-angle-right"></i>

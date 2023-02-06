@@ -2,7 +2,7 @@ import "./Navbar.scss"
 
 const Navbar = () => {
     return (  
-        <nav>
+        <nav className="hidden">
             <ul className="flex justify-center items-center">
                 <li className="navbar-item"><a href="./">home</a></li>
                 <li className="navbar-item"><a href="./">films</a></li>

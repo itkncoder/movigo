@@ -40,14 +40,28 @@ const HomeCatalogs = () => {
     ]
 
     return (  
-        <section className="wrapper-category">
+        <section className="wrapper-category px-2">
 
             <div>
                 <h1 className="category-title w-fit hover:underline"><a href="./">FILMS</a></h1>
                 <div className="relative flex items-center">
                     <Swiper
+                        breakpoints={{
+                            640: {
+                              width: 640,
+                              slidesPerView: 2.5,
+                            },
+                            768: {
+                              width: 768,
+                              slidesPerView: 2.75,
+                            },
+                            1080: {
+                                width: 1080,
+                                slidesPerView: 4.25,
+                            },
+                        }}
                         spaceBetween={20}
-                        slidesPerView={4.15}
+                        slidesPerView={1.25}
                         autoplay={{
                             delay: 2500,
                             disableOnInteraction: false,
@@ -62,7 +76,7 @@ const HomeCatalogs = () => {
                             )}
                         </div>
                     </Swiper>
-                    <div className="absolute mb-60 next right-0 z-50 flex m-1 justify-center items-center">
+                    <div className="hidden lg:flex absolute mb-60 next right-0 z-50 flex m-1 justify-center items-center">
                         <i className="p-3 text-2xl text-gray-200 hover:text-gray-300 fa-solid fa-angle-right"></i>
                     </div>
                 </div>
