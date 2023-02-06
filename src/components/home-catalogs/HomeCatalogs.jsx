@@ -106,7 +106,7 @@ const HomeCatalogs = () => {
                         spaceBetween={20}
                         slidesPerView={1.25}
                         autoplay={{
-                            delay: 2500,
+                            delay: 2750,
                             disableOnInteraction: false,
                         }}
                         modules={[Autoplay]}
@@ -186,7 +186,7 @@ const HomeCatalogs = () => {
                         spaceBetween={20}
                         slidesPerView={1.25}
                         autoplay={{
-                            delay: 2500,
+                            delay: 2750,
                             disableOnInteraction: false,
                         }}
                         modules={[Autoplay]}
