@@ -11,7 +11,7 @@ const Navbar = () => {
                 <ul className="flex flex-col md:justify-center md:flex-row md:items-center">
                     <li className="navbar-item text-center"><a href="./">home</a></li>
                     <li className="navbar-item text-center"><a href="./">films</a></li>
-                    <li className="navbar-item text-center"><a href="./">multifilms</a></li>
+                    <li className="navbar-item text-center"><a href="./">cartoos</a></li>
                     <li className="navbar-item text-center"><a href="./">anime</a></li>
                     <li className="navbar-item text-center"><a href="./">news</a></li>
                 </ul>
