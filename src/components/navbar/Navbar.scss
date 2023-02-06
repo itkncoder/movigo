@@ -27,3 +27,20 @@ ul {
     visibility: visible;
     left: 0;
 }
+.burger {
+    display: none;
+}
+.navbar {
+    display: flex;
+}
+@media screen and (max-width: 560px) {
+    .burger {
+        display: flex;
+    }
+    .navbar {
+        display: none;
+    }
+}
+.isOpen {
+    display: flex;
+}

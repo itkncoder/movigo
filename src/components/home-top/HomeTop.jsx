@@ -44,7 +44,7 @@ const HomeTop = () => {
                 spaceBetween={0}
                 slidesPerView={1}
                 autoplay={{
-                    delay: 4000,
+                    delay: 5000,
                     disableOnInteraction: false,
                 }}
                 modules={[Autoplay]}
@@ -57,10 +57,10 @@ const HomeTop = () => {
                         <SwiperSlide>
                             <section className="wrapper-carousel relative flex justify-between items-center">
                                 <div className={`slider-img${i.img}`}></div>
-                                <div className="lg:mt-20 mt-3 flex w-full justify-between items-end">
+                                <div className="lg:mt-20 mt-16 sm:mt-6 sm:ml-5 ml-2 flex w-full justify-between items-end">
                                     {/* <i onClick={() => swiperRef.current?.slidePrev()} className="z-40 ml-40 cursor-pointer p-3 text-5xl absolute text-gray-200 hover:text-gray-300 fa-solid fa-angle-left"></i> */}
                                     <SliderTitle props={i} />
-                                    <i onClick={() => swiperRef.current?.slideNext()} className="cursor-pointer p-3 text-5xl absolute right-3 text-gray-200 hover:text-gray-300 fa-solid fa-angle-right"></i>
+                                    <i onClick={() => swiperRef.current?.slideNext()} className="hidden md:flex cursor-pointer p-3 text-5xl absolute right-3 text-gray-200 hover:text-gray-300 fa-solid fa-angle-right"></i>
                                  </div>
                             </section>
                         </SwiperSlide>

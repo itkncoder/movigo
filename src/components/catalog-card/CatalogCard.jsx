@@ -1,6 +1,6 @@
 const CatalogCard = (props) => {
     return (  
-        <div className="mb-7 shadow-gray-900 rounded-md">
+        <div className="shadow-gray-900 rounded-md">
             <a href={props.link}>
                 <img src={props.img} alt="movie" className="rounded-md h-96 hover:object-fit duration-300 transition-all object-cover" />
                 <div className="pb-4 flex flex-col items-start pt-1">
