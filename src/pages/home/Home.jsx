@@ -7,7 +7,7 @@ const Home = () => {
 
     return (  
         <div>
-            <div>
+            <div className="flex flex-col justify-between">
                 <HomeTop/>
                 <main>
                     <HomeCatalogs/>
