@@ -207,7 +207,7 @@ const HomeCatalogs = () => {
                     </div>
                 </div>
             </div>
-            <div className="pb-96">
+            <div className="pb-96 md:p-1">
                 <h1 className="category-title w-fit hover:underline"><a href="./">NEWS</a></h1>
                 <div className="h-120">
                     <div className="grid grid-rows lg:grid-cols-2 gap-3">
