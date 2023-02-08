@@ -18,31 +18,41 @@ const HomeCatalogs = () => {
     const data = [
         {
             img: img,
+            name: "Happy birthday without me, without KNCoder",
             link: '/category'
         },
         {
             img: img,
+            name: "Dune / Dune part one, new films",
             link: '/category'
         },{
             img: img,
-            link: './'
+            name: "Happy birthday without me",
+            link: '/category'
         },{
             img: img,
-            link: './'
-        },
-        {
-            img: img,
-            link: './'
-        },
-        {
-            img: img,
-            link: './'
+            name: "Happy birthday without me",
+            link: '/category'
         },{
             img: img,
-            link: './'
+            name: "Happy birthday without me",
+            link: '/category'
         },{
             img: img,
-            link: './'
+            name: "Happy birthday without me",
+            link: '/category'
+        },{
+            img: img,
+            name: "Happy birthday without me",
+            link: '/category'
+        },{
+            img: img,
+            name: "Happy birthday without me",
+            link: '/category'
+        },{
+            img: img,
+            name: "Happy birthday without me",
+            link: '/category'
         },
     ]
 
@@ -78,7 +88,7 @@ const HomeCatalogs = () => {
                         <div className="flex relative items-center justify-center">
                             {data.map((i) => 
                                 <SwiperSlide>
-                                    <CatalogCard img={img} link="/category"/>
+                                    <CatalogCard props={i}/>
                                 </SwiperSlide>
                             )}
                         </div>
@@ -118,7 +128,7 @@ const HomeCatalogs = () => {
                         <div className="flex relative items-center justify-center">
                             {data.map((i) => 
                                 <SwiperSlide>
-                                    <CatalogCard img={img} link="./"/>
+                                    <CatalogCard props={i}/>
                                 </SwiperSlide>
                             )}
                         </div>
@@ -158,7 +168,7 @@ const HomeCatalogs = () => {
                         <div className="flex relative items-center justify-center">
                             {data.map((i) => 
                                 <SwiperSlide>
-                                    <CatalogCard img={img} link="./"/>
+                                    <CatalogCard props={i}/>
                                 </SwiperSlide>
                             )}
                         </div>
@@ -198,7 +208,7 @@ const HomeCatalogs = () => {
                         <div className="flex relative items-center justify-center">
                             {data.map((i) => 
                                 <SwiperSlide>
-                                    <CatalogCard img={img} link="./"/>
+                                    <CatalogCard props={i}/>
                                 </SwiperSlide>
                             )}
                         </div>

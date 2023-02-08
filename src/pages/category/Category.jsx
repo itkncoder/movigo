@@ -8,44 +8,63 @@ import HomeTop from "../../components/home-top"
 import AdsHome from "../../components/AdsHome"
 import {useMemo} from "react"
 
+import first from "../../assets/images/home-top.jpg"
+import second from "../../assets/images/home-top2.jpg"
+import third from "../../assets/images/home-top3.png"
+import four from "../../assets/images/home-top4.jpg"
+
 const Category = () => {
 
     window.scroll(0, 0);
 
-    const films = useRef(null);
-
-    const data = useMemo(() =>
+    const data = useMemo(() => (
         [
             {
-                img: img,
-                link: './'
+                type: 'Serial',
+                name: 'DUNE / dune ( 2021)',
+                version: 'Dune: Part One',
+                desc: 'lorem ipsum dolor sit amet, lorem ipsum dolor sit amet',
+                kp: '7.7',
+                imbd: '8.2',
+                pg: '16+',
+                time: '02:25',
+                img: second
             },
             {
-                img: img,
-                link: './'
-            },{
-                img: img,
-                link: './'
-            },{
-                img: img,
-                link: './'
+                type: 'Movie',
+                name: 'Who am I',
+                version: 'Who am I:First',
+                desc: 'lorem ipsum dolor sit amet, lorem ipsum dolor sit amet',
+                kp: '1.6',
+                imbd: '9.3',
+                pg: '14+',
+                time: '03:21',
+                img: first
             },
             {
-                img: img,
-                link: './'
+                type: 'Movie',
+                name: 'Broken boy',
+                version: 'Broken boy: Part One',
+                desc: 'The real movie, about KNCoder :(',
+                kp: '7.5',
+                imbd: '2.8',
+                pg: '7+',
+                time: '9:02',
+                img: third
             },
             {
-                img: img,
-                link: './'
-            },{
-                img: img,
-                link: './'
-            },{
-                img: img,
-                link: './'
-            },
+                type: 'Serial',
+                name: 'Happy birthday without me',
+                version: 'Broken boy: Part two',
+                desc: 'The real movie, about KNCoder 2',
+                kp: '7.5',
+                imbd: '2.8',
+                pg: '7+',
+                time: '9:02',
+                img: four
+            }
         ]
-    )
+    ))
 
     return (
         <div className="px-2 xl:px-0">
@@ -54,9 +73,7 @@ const Category = () => {
             </div>
             <div className="wrapper-carousel mx-auto mt-14">
                 <div className="flex items-center justify-between gap-4">
-                    <h1 className="category-title w-fit">
-                        <h1 href="./">FILMS</h1>
-                    </h1>
+                    <h1 className="category-title w-fit">FILMS</h1>
                     <div>
                         <select className="py-2.5 hover:py-2 transition-all duration-300 mb-8 px-8 bg-[#151A20] ring-2 ring-gray-500 outline-0 rounded-lg text-gray-200" name="" id="">
                             <option className="py-3 px-4 text-gray-200 block" value="">Hello</option>
@@ -65,15 +82,11 @@ const Category = () => {
                     </div>
                 </div>
                 <div className="relative flex items-center flex-wrap gap-4 justify-around lg:justify-between">
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
-                    <CatalogCard img={data[0].img} link="./"/>
+                    {
+                        data.map((item, index) => 
+                            <CatalogCard key={index} props={item}/>
+                        )
+                    }
                 </div>
             </div>
         </div>
