@@ -1,9 +1,7 @@
 .logo {
-    width: 42px;
-}  
-.logo-title {
-    margin-left: 8px;
-    font-family: "Poppins";
-    font-weight: 600;
-    font-size: 20px;
+    width: 150px;
+    transition: .3s all;
+}
+.logo:hover {
+    transform: rotateZ(-2.5deg);
 }

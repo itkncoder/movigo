@@ -1,5 +1,7 @@
 import "./Navbar.scss"
 import { useRef } from "react"
+import {Link} from "react-router-dom"
+import {memo} from "react"
 
 const Navbar = () => {
 
@@ -7,18 +9,21 @@ const Navbar = () => {
 
     return (  
         <>
-            <nav ref={isOpened} className="navbar absolute md:static bg-gray-900 md:bg-transparent rounded-2xl p-12 right-0 top-14">
-                <ul className="flex flex-col md:justify-center md:flex-row md:items-center">
-                    <li className="navbar-item text-center"><a href="./">home</a></li>
-                    <li className="navbar-item text-center"><a href="./">films</a></li>
-                    <li className="navbar-item text-center"><a href="./">cartoos</a></li>
-                    <li className="navbar-item text-center"><a href="./">anime</a></li>
-                    <li className="navbar-item text-center"><a href="./">news</a></li>
+            <nav ref={isOpened} className="navbar fixed md:static bg-gray-900 z-40 md:bg-transparent rounded-2xl md:h-fit h-screen p-12 right-0 top-0 w-full md:w-fit">
+                <ul className="flex flex-col items-center w-full md:justify-center md:flex-row md:items-center">
+                    <li className="navbar-item text-center"><Link to="/">home</Link></li>
+                    <li className="navbar-item text-center"><Link to="/category">films</Link></li>
+                    <li className="navbar-item text-center"><Link to="./">cartoos</Link></li>
+                    <li className="navbar-item text-center"><Link to="./">anime</Link></li>
+                    <li className="navbar-item text-center"><Link to="./">news</Link></li>
                 </ul>
             </nav>
-            <p onClick={() => isOpened.current.classList.toggle("isOpen")} className="absolute right-4 burger cursor-pointer"><i className="text-3xl fa-solid fa-bars"></i></p>
+            <p onClick={(e) => {
+                isOpened.current.classList.toggle("isOpen")
+                e.target.classList.toggle("fa-xmark")
+            }} className="fixed right-4 burger cursor-pointer z-50"><i className="text-3xl fa-solid fa-bars"></i></p>
         </>
     );
 }
  
-export default Navbar;
+export default memo(Navbar);

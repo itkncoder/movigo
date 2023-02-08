@@ -1,5 +1,4 @@
-.slider-img1 {
-    background: radial-gradient(44.22% 57.61% at 56.6% 39.68%, rgba(21, 26, 32, 0) 0%, #151A20 100%), url("../../assets/images/home-top.jpg");
+.slider-img {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -10,21 +9,12 @@
     top: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1;
+    z-index: -2;
+    object-fit: cover;
 }
-.slider-img2 {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-position: right;
-    background: radial-gradient(44.22% 57.61% at 56.6% 39.68%, rgba(21, 26, 32, 0) 0%, #151A20 100%), url("../../assets/images/home-top2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    width: 100%;
+.slider-img-div {
     height: 100vh;
-    z-index: -1;
+    background: radial-gradient(44.22% 57.61% at 56.6% 39.68%, rgba(21, 26, 32, 0) 0%, #151A20 100%);
 }
 .wrapper-carousel {
     max-width: 1170px;

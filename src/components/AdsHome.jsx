@@ -1,7 +1,7 @@
 const AdsHome = () => {
     return (
         <div>
-            f
+            rek
         </div>
     )
 }
