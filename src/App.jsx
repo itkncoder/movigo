@@ -1,11 +1,15 @@
 import { useState } from 'react'
-import Home from "./pages/home"
-import "./App.scss"
+import Home from "./pages/home/Home"
+import Category from "./pages/category/Category"
+import {Routes, Route} from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/category" element={<Category/>} />
+      </Routes>
     </div>
   )
 }

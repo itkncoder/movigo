@@ -5,6 +5,7 @@ import img from "../../assets/images/card-img.png"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from "swiper";
+import {Link} from "react-router-dom"
 
 const HomeCatalogs = () => {
 
@@ -48,7 +49,7 @@ const HomeCatalogs = () => {
     return (  
         <section className="wrapper-category px-2">
             <div>
-                <h1 className="category-title w-fit hover:underline"><a href="./">FILMS</a></h1>
+                <h1 className="category-title w-fit hover:underline"><Link to="/category">FILMS</Link></h1>
                 <div className="relative flex items-center">
                     <Swiper
                         className="h-fit mb-6"
