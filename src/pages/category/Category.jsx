@@ -1,19 +1,9 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { Autoplay } from "swiper";
-import { useRef, useMemo } from 'react'
+import { useMemo } from 'react'
 import CatalogCard from "../../components/catalog-card"
 import img from "../../assets/images/card-img.png"
-import HomeTop from "../../components/home-top"
 import AdsHome from "../../components/AdsHome"
 
-import first from "../../assets/images/home-top.jpg"
-import second from "../../assets/images/home-top2.jpg"
-import third from "../../assets/images/home-top3.png"
-import four from "../../assets/images/home-top4.jpg"
-
 const Category = () => {
-
     window.scroll(0, 0);
 
     const data = useMemo(() => (
@@ -21,40 +11,40 @@ const Category = () => {
             {
                 img: img,
                 name: "Happy birthday without me, without KNCoder",
-                link: '/category'
+                link: '/watch'
             },
             {
                 img: img,
                 name: "Dune / Dune part one, new films",
-                link: '/category'
+                link: '/watch'
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/category'
+                link: '/watch'
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/category'
+                link: '/watch'
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/category'
+                link: '/watch'
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/category'
+                link: '/watch'
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/category'
+                link: '/watch'
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/category'
+                link: '/watch'
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/category'
+                link: '/watch'
             },
         ]
     ))
@@ -68,7 +58,7 @@ const Category = () => {
                 <div className="flex items-center justify-between gap-4">
                     <h1 className="category-title w-fit">FILMS</h1>
                     <div>
-                        <select className="py-2.5 hover:py-2 transition-all duration-300 mb-8 px-8 bg-[#151A20] ring-2 ring-gray-500 outline-0 rounded-lg text-gray-200" name="" id="">
+                        <select className="py-2.5 hover:py-2 hover:bg-[#10141a] transition-all duration-300 mb-8 px-8 bg-[#151A20] ring-2 ring-gray-500 outline-0 rounded-lg text-gray-200" name="" id="">
                             <option className="py-3 px-4 text-gray-200 block" value="">Hello</option>
                             <option className="py-3 px-4 text-gray-200" value="">World</option>
                         </select>
@@ -78,6 +68,18 @@ const Category = () => {
                     {data.map((item, index) => 
                         <CatalogCard props={item}/>
                     )}
+                </div>
+                <div className="flex justify-center items-center gap-1.5">
+                    <p className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</p>
+                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">1</p>
+                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">2</p>
+                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">3</p>
+                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">4</p>
+                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">5</p>
+                    <p className="ml-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</p>
+                </div>
+                <div className="mt-20 block">
+                    <AdsHome/>
                 </div>
             </div>
         </div>

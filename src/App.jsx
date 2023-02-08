@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import {Routes, Route} from "react-router-dom"
+
 import Home from "./pages/home/Home"
 import Category from "./pages/category/Category"
-import {Routes, Route} from "react-router-dom"
+import Watch from "./pages/watch/Watch"
+
 import Footer from "./components/footer"
 import Header from "./components/header"
 
@@ -15,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/category" element={<Category/>} />
+        <Route path="/watch" element={<Watch/>} />
       </Routes>
 
       <div>
