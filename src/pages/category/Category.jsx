@@ -1,12 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from "swiper";
-import { useRef } from 'react'
+import { useRef, useMemo } from 'react'
 import CatalogCard from "../../components/catalog-card"
 import img from "../../assets/images/card-img.png"
 import HomeTop from "../../components/home-top"
 import AdsHome from "../../components/AdsHome"
-import {useMemo} from "react"
 
 import first from "../../assets/images/home-top.jpg"
 import second from "../../assets/images/home-top2.jpg"
@@ -20,49 +19,43 @@ const Category = () => {
     const data = useMemo(() => (
         [
             {
-                type: 'Serial',
-                name: 'DUNE / dune ( 2021)',
-                version: 'Dune: Part One',
-                desc: 'lorem ipsum dolor sit amet, lorem ipsum dolor sit amet',
-                kp: '7.7',
-                imbd: '8.2',
-                pg: '16+',
-                time: '02:25',
-                img: second
+                img: img,
+                name: "Happy birthday without me, without KNCoder",
+                link: '/category'
             },
             {
-                type: 'Movie',
-                name: 'Who am I',
-                version: 'Who am I:First',
-                desc: 'lorem ipsum dolor sit amet, lorem ipsum dolor sit amet',
-                kp: '1.6',
-                imbd: '9.3',
-                pg: '14+',
-                time: '03:21',
-                img: first
+                img: img,
+                name: "Dune / Dune part one, new films",
+                link: '/category'
+            },{
+                img: img,
+                name: "Happy birthday without me",
+                link: '/category'
+            },{
+                img: img,
+                name: "Happy birthday without me",
+                link: '/category'
+            },{
+                img: img,
+                name: "Happy birthday without me",
+                link: '/category'
+            },{
+                img: img,
+                name: "Happy birthday without me",
+                link: '/category'
+            },{
+                img: img,
+                name: "Happy birthday without me",
+                link: '/category'
+            },{
+                img: img,
+                name: "Happy birthday without me",
+                link: '/category'
+            },{
+                img: img,
+                name: "Happy birthday without me",
+                link: '/category'
             },
-            {
-                type: 'Movie',
-                name: 'Broken boy',
-                version: 'Broken boy: Part One',
-                desc: 'The real movie, about KNCoder :(',
-                kp: '7.5',
-                imbd: '2.8',
-                pg: '7+',
-                time: '9:02',
-                img: third
-            },
-            {
-                type: 'Serial',
-                name: 'Happy birthday without me',
-                version: 'Broken boy: Part two',
-                desc: 'The real movie, about KNCoder 2',
-                kp: '7.5',
-                imbd: '2.8',
-                pg: '7+',
-                time: '9:02',
-                img: four
-            }
         ]
     ))
 
@@ -82,11 +75,9 @@ const Category = () => {
                     </div>
                 </div>
                 <div className="relative flex items-center flex-wrap gap-4 justify-around lg:justify-between">
-                    {
-                        data.map((item, index) => 
-                            <CatalogCard key={index} props={item}/>
-                        )
-                    }
+                    {data.map((item, index) => 
+                        <CatalogCard props={item}/>
+                    )}
                 </div>
             </div>
         </div>

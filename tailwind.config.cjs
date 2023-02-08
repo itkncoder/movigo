@@ -9,6 +9,9 @@ module.exports = {
       spacing: {
         120: "505px",
         62: "252px"
+      },
+      scale: {
+        '102': '1.02',
       }
     },
   },
