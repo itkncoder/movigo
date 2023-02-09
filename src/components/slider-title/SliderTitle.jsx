@@ -18,9 +18,6 @@ const SliderTitle = ({props}) => {
                     </div>
 
                     <div className="flex justify-start items-center home-top-other hidden sm:flex">
-                        <p className="home-top-other-item"><p>KP: </p>{props.kp}</p>
-                        <p className="home-top-other-item"><p>IMDB: </p>{props.imbd}</p>
-                        <p className="home-top-other-item"><p>PG: </p>{props.pg}</p>  
                         <p className="home-top-other-item"><p>TIME: </p>{props.time}</p>
                     </div>
 

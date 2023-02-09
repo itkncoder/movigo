@@ -21,9 +21,6 @@ const HomeTop = () => {
                 name: 'DUNE / dune ( 2021)',
                 version: 'Dune: Part One',
                 desc: 'lorem ipsum dolor sit amet, lorem ipsum dolor sit amet',
-                kp: '7.7',
-                imbd: '8.2',
-                pg: '16+',
                 time: '02:25',
                 img: second
             },
@@ -32,9 +29,6 @@ const HomeTop = () => {
                 name: 'Who am I',
                 version: 'Who am I:First',
                 desc: 'lorem ipsum dolor sit amet, lorem ipsum dolor sit amet',
-                kp: '1.6',
-                imbd: '9.3',
-                pg: '14+',
                 time: '03:21',
                 img: first
             },
@@ -43,9 +37,6 @@ const HomeTop = () => {
                 name: 'Broken boy',
                 version: 'Broken boy: Part One',
                 desc: 'The real movie, about KNCoder :(',
-                kp: '7.5',
-                imbd: '2.8',
-                pg: '7+',
                 time: '9:02',
                 img: third
             },
@@ -54,9 +45,6 @@ const HomeTop = () => {
                 name: 'Happy birthday without me',
                 version: 'Broken boy: Part two',
                 desc: 'The real movie, about KNCoder 2',
-                kp: '7.5',
-                imbd: '2.8',
-                pg: '7+',
                 time: '9:02',
                 img: four
             }
