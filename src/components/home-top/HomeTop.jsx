@@ -64,7 +64,7 @@ const HomeTop = () => {
             >
                 <div className="flex relative items-center justify-center max-h-200">
                     {slides.map((item, index) => 
-                        <SwiperSlide key={index}>
+                        <SwiperSlide key={index} className="max-h-200">
                             <SliderTitle props={item} />
                         </SwiperSlide>
                     )}
