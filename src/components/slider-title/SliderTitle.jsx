@@ -4,8 +4,8 @@ import {memo} from "react"
 
 const SliderTitle = ({props}) => {
     return (  
-        <section className="wrapper-carousel slider-img-div relative flex justify-between items-start">
-            <img className="slider-img border border-[#151A20]" src={props.img} alt="movie" />
+        <section className="wrapper-carousel slider-img-div relative flex justify-between items-start max-h-200">
+            <img className="slider-img border border-[#151A20] max-h-200" src={props.img} alt="movie" />
             <div className="mt-12 lg:mt-20 sm:ml-5 ml-2 flex w-full justify-between items-end">
                 <div className="slidertitle flex flex-col items-start gap-2">
                     <div className="flex flex-col gap-1.5 lg:gap-0">

@@ -64,7 +64,7 @@ const HomeTop = () => {
     ))
 
     return (  
-        <div className="home-top px-2">
+        <div className="home-top px-2 max-h-200">
             <Swiper
                 spaceBetween={0}
                 slidesPerView={1}
@@ -74,7 +74,7 @@ const HomeTop = () => {
                 }}
                 modules={[Autoplay]}
             >
-                <div className="flex relative items-center justify-center">
+                <div className="flex relative items-center justify-center max-h-200">
                     {slides.map((item, index) => 
                         <SwiperSlide key={index}>
                             <SliderTitle props={item} />
