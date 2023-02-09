@@ -3,6 +3,8 @@ import HomeCatalogs from "../../components/home-catalogs"
 import AdsHome from "../../components/AdsHome"
 
 const Home = () => {
+    
+    window.scroll(0, 0);
 
     return (  
         <div>

@@ -11,14 +11,6 @@ const Watch = () => {
     return (
         <>
             <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
-                <div>
-                    <ReactPlayer
-                        url={video}
-                        width="100%"
-                        height="auto"
-                        controls
-                    />
-                </div>
                 <div className="mb-2 md:mb-4 mt-6">
                     <h1 className="poppins my-3 text-3xl font-semibold">Happy birthday without me</h1>
                 </div>
@@ -29,7 +21,7 @@ const Watch = () => {
                     <table className="flex justify-start flex-col mt-8 gap-2">
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Год:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">2019</td>    
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">2019</td>
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Страна:</td>
@@ -45,9 +37,17 @@ const Watch = () => {
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Возраст:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">16+</td>
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">10+</td>
                         </tr>
                     </table>
+                </div>
+                <div>
+                    <ReactPlayer
+                        url={video}
+                        width="100%"
+                        height="auto"
+                        controls
+                    />
                 </div>
                 <div className="mt-10">
                     <AdsHome/>
