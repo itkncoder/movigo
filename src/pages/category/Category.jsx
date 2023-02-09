@@ -1,10 +1,12 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import img from "../../assets/images/card-img.png"
 import AdsHome from "../../components/AdsHome"
 
 const Category = () => {
-    window.scroll(0, 0);
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     const data = useMemo(() => (
         [

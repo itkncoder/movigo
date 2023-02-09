@@ -1,12 +1,18 @@
 import AdsHome from "../../components/AdsHome"
 import video from "../../assets/videos/video.mp4"
+import video2 from "../../assets/videos/video2.mp4"
 import ReactPlayer from 'react-player';
 import img from "../../assets/images/card-img.png"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 const Watch = () => {
 
-    window.scroll(0, 0)
+    const [tab, setTab] = useState(true)
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     return (
         <>
@@ -35,28 +41,41 @@ const Watch = () => {
                                         <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">Драма</Link></td>
                                     </tr>
                                     <tr>
-                                        <td className="w-28 text-gray-400 font-semibold text-lg">Стоимость:</td>
-                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">Подписка</td>
+                                        <td className="w-28 text-gray-400 font-semibold text-lg">Время:</td>
+                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">2:08</td>
                                     </tr>
                                     <tr>
-                                        <td className="w-28 text-gray-400 font-semibold text-lg">Возраст:</td>
-                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">10+</td>
+                                        <td className="w-28 text-gray-400 font-semibold text-lg">Язык:</td>
+                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">Французкий</td>
                                     </tr>
                                 </table>
                                 <div>
-                                    <p className="text-gray-300 text-sm max-w-md">lorem ipsum dolor sit amet, lorem ipsum dolor sit amet, lorem ipsum dolor sit amet</p>
+                                    <p className="text-gray-300 text-sm max-w-xl">lorem ipsum dolor sit amet, lorem ipsum dolor sit amet, lorem ipsum dolor sit amet</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="mt-6">
-                    <ReactPlayer
+                    <div className="flex items-center justify-start gap-3">
+                        <div onClick={() => setTab(true)} className={tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-md hover:ring-2 ring-gray-600 cursor-pointer"}>
+                            <p className="text-lg font-semibold ">Смотреть Фильм</p>
+                        </div>
+                        <div onClick={() => setTab(false)} className={!tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-md hover:ring-2 ring-gray-600 cursor-pointer"}>
+                            <p className="text-lg font-semibold">Смотреть трейлер</p>
+                        </div>
+                    </div>
+                    {tab ? <ReactPlayer
                         url={video}
                         width="100%"
                         height="auto"
                         controls
-                    />
+                    /> : <ReactPlayer
+                        url={video2}
+                        width="100%"
+                        height="auto"
+                        controls
+                    />}
                     <div className="py-3 flex items-center justify-start gap-6 my-2 bg-gray-800 rounded-lg px-5">
                         <div className="flex items-center justify-start gap-2">
                             <i className="fa-solid fa-eye cursor-pointer bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl cursor-pointer transition-all hover:text-gray-200 text-gray-100"></i>
