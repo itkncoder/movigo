@@ -1,5 +1,4 @@
 import AdsHome from "../AdsHome"
-import {Link} from "react-router-dom"
 import MovieSwiper from "../movie-swiper/MovieSwiper"
 import Grid from "./grid/Grid"
 

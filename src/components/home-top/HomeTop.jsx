@@ -1,5 +1,4 @@
-import {useState, useEffect} from "react"
-import SliderTitle from "../slider-item/SliderItem"
+import SliderItem from "../slider-item/SliderItem"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper";
@@ -64,7 +63,7 @@ const HomeTop = () => {
                 <div className="flex relative items-center justify-center max-h-200">
                     {slides.map((item, index) => 
                         <SwiperSlide key={index} className="max-h-200">
-                            <SliderTitle props={item} />
+                            <SliderItem props={item} />
                         </SwiperSlide>
                     )}
                 </div>

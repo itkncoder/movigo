@@ -1,6 +1,5 @@
 import { useMemo, useEffect } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
-import img from "../../assets/images/card-img.png"
 import AdsHome from "../../components/AdsHome"
 
 const Category = () => {

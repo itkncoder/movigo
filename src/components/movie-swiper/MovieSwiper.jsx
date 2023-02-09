@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from "swiper";
 import {Link} from "react-router-dom"
-import img from "../../assets/images/card-img.png"
 
 const MovieSwiper = ({name}) => {
 
