@@ -22,14 +22,14 @@ const Watch = () => {
                 <div className="mb-2 md:mb-4 mt-6">
                     <h1 className="poppins my-3 text-3xl font-semibold">Happy birthday without me</h1>
                 </div>
-                <div className="flex items-start justify-start gap-8 mt-8">
+                <div className="flex items-start justify-start gap-8 mt-8 flex-col md:flex-row">
                     <CatalogCard props={{
                         img: img    
                     }} />
                     <table className="flex justify-start flex-col mt-8 gap-2">
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Год:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">2019</td>
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">2019</td>    
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Страна:</td>
