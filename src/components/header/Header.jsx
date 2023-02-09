@@ -1,4 +1,4 @@
-import Logo from "../logo"
+import Logo from "../logo/Logo"
 import Navbar from "./navbar/Navbar"
 import {memo} from "react"
 
