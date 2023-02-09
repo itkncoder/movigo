@@ -21,7 +21,7 @@ const HomeCatalogs = () => {
     ]
 
     return (  
-        <div className="wrapper-category">
+        <div className="max-w-[1170px] mx-auto mt-24">
             
             {data.map((item, index) => 
                 <MovieSwiper key={index} name={item.name} />
