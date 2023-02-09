@@ -59,12 +59,12 @@ const Watch = () => {
                     />
                     <div className="py-3 flex items-center justify-start gap-6 my-2 bg-gray-800 rounded-lg px-5">
                         <div className="flex items-center justify-start gap-2">
-                            <i className="fa-solid fa-eye cursor-pointer bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl  cursor-pointer hover:scale-105 transition-all hover:text-gray-200 text-gray-100"></i>
+                            <i className="fa-solid fa-eye cursor-pointer bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl cursor-pointer transition-all hover:text-gray-200 text-gray-100"></i>
                             <p className="text-gray-200">1204</p>
                         </div>
                         <div className="flex items-center justify-start gap-2">
                             <i className="bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl fa-solid fa-thumbs-up cursor-pointer hover:text-gray-200 text-gray-100 active:text-yellow-500 tooltip relative hover:ring-2 ring-gray-700">
-                                <p className="text-gray-200 absolute text-sm opacity-0 transition-all duration-300 mb-0">282</p>
+                                <p className="text-gray-200 absolute text-sm opacity-0 transition-all duration-300 mb-0 border-gray-700 border">282</p>
                             </i>
                         </div>
                     </div>
