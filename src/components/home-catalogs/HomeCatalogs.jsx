@@ -20,40 +20,49 @@ const HomeCatalogs = () => {
         {
             img: img,
             name: "Happy birthday without me, without KNCoder",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },
         {
             img: img,
             name: "Dune / Dune part one, new films",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },{
             img: img,
             name: "Happy birthday without me",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },{
             img: img,
             name: "Happy birthday without me",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },{
             img: img,
             name: "Happy birthday without me",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },{
             img: img,
             name: "Happy birthday without me",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },{
             img: img,
             name: "Happy birthday without me",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },{
             img: img,
             name: "Happy birthday without me",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },{
             img: img,
             name: "Happy birthday without me",
-            link: '/watch'
+            link: '/watch',
+            premium: "premium"
         },
     ]
 

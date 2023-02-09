@@ -11,40 +11,49 @@ const Category = () => {
             {
                 img: img,
                 name: "Happy birthday without me, without KNCoder",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },
             {
                 img: img,
                 name: "Dune / Dune part one, new films",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },{
                 img: img,
                 name: "Happy birthday without me",
-                link: '/watch'
+                link: '/watch',
+                premium: "premium"
             },
         ]
     ))
@@ -54,7 +63,7 @@ const Category = () => {
             <div className="mt-32 max-w-screen-lg mx-auto">
                 <AdsHome />
             </div>
-            <div className="wrapper-carousel mx-auto mt-14">
+            <div className="wrapper-carousel mt-14 max-w-screen-lg mx-auto">
                 <div className="flex items-center justify-between gap-4">
                     <h1 className="category-title w-fit">FILMS</h1>
                     <div>
@@ -64,7 +73,7 @@ const Category = () => {
                         </select>
                     </div>
                 </div>
-                <div className="relative flex items-center flex-wrap gap-4 justify-around lg:justify-between">
+                <div className="relative flex items-center flex-wrap gap-4 justify-center lg:justify-between">
                     {data.map((item, index) => 
                         <CatalogCard props={item}/>
                     )}
