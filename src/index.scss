@@ -7,6 +7,7 @@
     margin: 0;
     box-sizing: border-box;
     color: #fff;
+    font-family: "Poppins", "Bebas Neue", Calibri;
     outline: none;
 }
 body {
@@ -35,7 +36,9 @@ body {
     backdrop-filter: blur(15px);
     border-radius: 13px;
 }
-
+.max-widther {
+    max-width: 1170px;
+}
 .wrapper-category {
     max-width: 1170px;
     margin: 200px auto;
@@ -52,7 +55,7 @@ footer {
     font-family: "Poppins";
 }
 .poppins {
-    font-family: "Poppins";
+    font-family: "Poppins", "Bebas Neue", Calibri;
 }
 .bebas {
     font-family: "Bebas Neue";

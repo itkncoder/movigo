@@ -6,12 +6,11 @@ import img from "../../assets/images/card-img.png"
 
 const Watch = () => {
 
+    window.scroll(0, 0)
+
     return (
         <>
-            <div className="px-2 py-2 wrapper-category xl:px-0">
-                <div className="mb-2 md:mb-4">
-                    <h1 className="poppins my-3 text-2xl">Happy birthday without me</h1>
-                </div>
+            <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
                 <div>
                     <ReactPlayer
                         url={video}
@@ -20,7 +19,10 @@ const Watch = () => {
                         controls
                     />
                 </div>
-                <div className="flex items-start justify-start gap-8 mt-14">
+                <div className="mb-2 md:mb-4 mt-6">
+                    <h1 className="poppins my-3 text-3xl font-semibold">Happy birthday without me</h1>
+                </div>
+                <div className="flex items-start justify-start gap-8 mt-8">
                     <CatalogCard props={{
                         img: img    
                     }} />
@@ -46,6 +48,9 @@ const Watch = () => {
                             <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">16+</td>
                         </tr>
                     </table>
+                </div>
+                <div className="mt-10">
+                    <AdsHome/>
                 </div>
             </div>
         </>
