@@ -18,21 +18,21 @@ const Watch = () => {
                         </div>
                         <div className="flex items-start justify-start gap-8 mt-8 flex-col md:flex-row">
                             <div className="shadow-gray-900 rounded-md py-2">
-                                <img src={img} alt="movie" className="rounded-md w-72 h-96 hover:scale-102 transition-all object-cover" />
+                                <img src={img} alt="movie" className="rounded-md w-72 h-96 object-cover" />
                             </div>
                             <div className="flex flex-col gap-5">
                                 <table className="flex justify-start flex-col mt-8 gap-2">
                                     <tr>
                                         <td className="w-28 text-gray-400 font-semibold text-lg">Год:</td>
-                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-200"><Link to="./">2019</Link></td>
+                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">2019</Link></td>
                                     </tr>
                                     <tr>
                                         <td className="w-28 text-gray-400 font-semibold text-lg">Страна:</td>
-                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-200"><Link to="./">Франция</Link></td>
+                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">Франция</Link></td>
                                     </tr>
                                     <tr>
                                         <td className="w-28 text-gray-400 font-semibold text-lg">Жанр:</td>
-                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-200"><Link to="./">Драма</Link></td>
+                                        <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">Драма</Link></td>
                                     </tr>
                                     <tr>
                                         <td className="w-28 text-gray-400 font-semibold text-lg">Стоимость:</td>

@@ -1,5 +1,5 @@
-import HomeTop from "../../components/home-top"
-import HomeCatalogs from "../../components/home-catalogs"
+import HomeTop from "../../components/home-top/HomeTop"
+import HomeCatalogs from "../../components/home-catalogs/HomeCatalogs"
 import AdsHome from "../../components/AdsHome"
 
 const Home = () => {

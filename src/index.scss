@@ -10,14 +10,6 @@
     font-family: "Poppins", "Bebas Neue", Calibri;
     outline: none;
 }
-body {
-    background-color: #151A20;
-}
-*::selection {
-    background: #FFC30D;
-    color: white;
-}
-
 *::-webkit-scrollbar {
     width: 5px;
 }
@@ -29,33 +21,12 @@ body {
     background-color: #FFC30D;
     border-radius: 20px;
 }
-
-.btn1 {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(270deg, #8743FF 0%, #4136F1 100%);
-    box-shadow: 0px 15px 30px rgba(20, 102, 204, 0.16);
-    backdrop-filter: blur(15px);
-    border-radius: 13px;
-}
 .max-widther {
     max-width: 1170px;
 }
 .wrapper-category {
     max-width: 1170px;
     margin: 200px auto;
-}
-.wrapper-footer {
-    max-width: 1200px;
-    padding: 55px 0;
-    margin: auto;
-}
-footer {
-    background-color: #1E242C;
-}
-.footer-contact {
-    font-family: "Poppins";
-}
-.poppins {
-    font-family: "Poppins", "Bebas Neue", Calibri;
 }
 .bebas {
     font-family: "Bebas Neue";
@@ -68,4 +39,78 @@ footer {
     background-color: #151A20;
     border-radius: 10px;
     padding: 5px 8px;
+}
+body {
+    background-color: #151A20;
+}
+.swiper-container {
+    width: 480px;
+}
+.swiper-slider {
+    height: fit-content;
+}
+.wrapper-carousel {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.slider-img {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+    object-fit: cover;
+}
+.slider-img-div {
+    height: 100vh;
+    background: radial-gradient(44.22% 57.61% at 56.6% 39.68%, rgba(21, 26, 32, 0) 0%, #151A20 100%);
+}
+
+.home-top-type {
+    font-size: 48px;
+    font-family: 'Bebas Neue';
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    i {
+        font-size: 28px;
+        color: #FFC30D;
+    }
+}
+.home-top-name {
+    font-size: 64px;
+    font-family: 'Bebas Neue';
+}
+.home-top-version {
+    font-size: 36px;
+    font-family: 'Bebas Neue';
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #FFC30D;
+    i {
+        font-size: 20px;
+        color: white;
+    }
+}
+.home-top-desc {
+    font-size: 16px;
+    font-family: 'Poppins';
+    max-width: 550px;
+}
+.home-top-other {
+    &-item {
+        display: flex;
+        gap: 8px;
+        font-size: 24px;
+        color: #FFC30D;
+        font-family: 'Bebas Neue';
+    }
+    gap: 20px;
 }

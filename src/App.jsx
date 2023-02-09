@@ -5,8 +5,8 @@ import Home from "./pages/home/Home"
 import Category from "./pages/category/Category"
 import Watch from "./pages/watch/Watch"
 
-import Footer from "./components/footer"
-import Header from "./components/header"
+import Footer from "./components/footer/Footer"
+import Header from "./components/header/Header"
 
 function App() {
   return (

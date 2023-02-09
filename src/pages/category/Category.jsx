@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import CatalogCard from "../../components/catalog-card"
+import CatalogCard from "../../components/catalog-card/CatalogCard"
 import img from "../../assets/images/card-img.png"
 import AdsHome from "../../components/AdsHome"
 
@@ -59,21 +59,21 @@ const Category = () => {
     ))
 
     return (
-        <div className="px-2 xl:px-0">
-            <div className="mt-32 max-w-screen-lg mx-auto">
+        <div className="px-2 xl:px-0 wrapper-carousel">
+            <div className="mt-32 mx-auto">
                 <AdsHome />
             </div>
-            <div className="wrapper-carousel mt-14 max-w-screen-lg mx-auto">
+            <div className="mt-14 mx-auto">
                 <div className="flex items-center justify-between gap-4">
-                    <h1 className="category-title w-fit">FILMS</h1>
+                    <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit">FILMS</h1>
                     <div>
-                        <select className="py-2.5 hover:py-2 hover:bg-[#10141a] transition-all duration-300 mb-8 px-8 bg-[#151A20] ring-2 ring-gray-500 outline-0 rounded-lg text-gray-200" name="" id="">
+                        <select className="py-2.5 hover:bg-[#10141a] mb-8 px-8 bg-[#151A20] ring-2 ring-gray-500 outline-0 rounded-lg text-gray-200" name="" id="">
                             <option className="py-3 px-4 text-gray-200 block" value="">Hello</option>
                             <option className="py-3 px-4 text-gray-200" value="">World</option>
                         </select>
                     </div>
                 </div>
-                <div className="relative flex items-center flex-wrap gap-4 justify-center lg:justify-between">
+                <div className="relative flex items-center flex-wrap gap-4 justify-center lg:justify-evenly">
                     {data.map((item, index) => 
                         <CatalogCard props={item}/>
                     )}

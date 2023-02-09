@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react"
-import "./HomeTop.scss"
-import SliderTitle from "../slider-title"
+import SliderTitle from "../slider-item/SliderItem"
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper";
@@ -70,8 +69,6 @@ const HomeTop = () => {
                     )}
                 </div>
             </Swiper>
-            <div className="flex justify-center">
-            </div>
         </div>
     );
 }
