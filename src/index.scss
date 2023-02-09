@@ -61,3 +61,7 @@ footer {
     font-family: "Bebas Neue";
     letter-spacing: 3px;
 }
+.tooltip:hover p {
+    opacity: 1;
+    margin-bottom: 60px;
+}
