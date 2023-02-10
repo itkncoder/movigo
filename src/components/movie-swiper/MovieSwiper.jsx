@@ -6,61 +6,13 @@ import 'swiper/css';
 import { Autoplay } from "swiper";
 import {Link} from "react-router-dom"
 
+import { useSelector } from "react-redux"
+
 const MovieSwiper = ({name}) => {
 
-    const swiperRef = useRef(null)
+    const movies = useSelector(store => store.movies)
 
-    const data = useMemo(() => (
-        [
-            {
-                img: "https://picsum.photos/600",
-                name: "Happy birthday without me, without KNCoder",
-                link: '/watch',
-                premium: "premium"
-            },
-            {
-                img: "https://picsum.photos/300",
-                name: "Dune / Dune part one, new films",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/400",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/500",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/700",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/800",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/1000",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/200",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/1200",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },
-        ]
-    ))
+    const swiperRef = useRef(null)
 
     return (
         <section className="px-2">
@@ -95,7 +47,7 @@ const MovieSwiper = ({name}) => {
                         }}
                         >
                         <div className="flex relative items-center justify-center">
-                            {data.map((item, index) => 
+                            {movies.map((item, index) => 
                                 <SwiperSlide key={index}>
                                     <CatalogCard props={item}/>
                                 </SwiperSlide>

@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react'
+import { useMemo, useEffect, useState } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
 
@@ -6,6 +6,8 @@ const Category = () => {
     useEffect(() => {
         window.scroll(0, 0)
     }, [])
+
+    const [dropdown, setDropdown] = useState(false)
 
     const data = useMemo(() => (
         [
@@ -59,6 +61,12 @@ const Category = () => {
         ]
     ))
 
+    window.addEventListener("click", (e) => {
+        if (!e.target.classList.contains("drowdown-item")) {
+            setDropdown(false)
+        }
+    })
+
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
             <div className="mt-32 mx-auto">
@@ -68,10 +76,12 @@ const Category = () => {
                 <div className="flex items-center justify-between gap-4">
                     <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit">FILMS</h1>
                     <div>
-                        <select className="py-2.5 hover:bg-[#10141a] mb-8 px-8 bg-[#151A20] ring-2 ring-gray-500 outline-0 rounded-lg text-gray-200" name="" id="">
-                            <option className="py-3 px-4 text-gray-200 block" value="">Hello</option>
-                            <option className="py-3 px-4 text-gray-200" value="">World</option>
-                        </select>
+                        <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item bg-gray-800 py-2 pl-8 ring-2 ring-gray-700 pr-5 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">Select<i onClick={() => setDropdown(prev => !prev)} className="fa-solid fa-angle-down"></i>
+                            {dropdown ? <div className="absolute z-20 flex flex-col gap-1 left-0 top-12 bg-gray-700 px-2 py-3 rounded-lg">
+                                <p className="drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Hello</p>
+                                <p className="drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">World</p>
+                            </div> : ''}
+                        </div>
                     </div>
                 </div>
                 <div className="relative flex items-center flex-wrap gap-4 justify-center lg:justify-evenly">

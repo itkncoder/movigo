@@ -2,27 +2,16 @@ import AdsHome from "../AdsHome"
 import MovieSwiper from "../movie-swiper/MovieSwiper"
 import Grid from "./grid/Grid"
 
+import { useSelector } from "react-redux"
+
 const HomeCatalogs = () => {
 
-    const data = [
-        {
-            name: "FILMS"
-        },
-        {
-            name: "POPULAR"
-        },
-        {
-            name: "CARTOONS"
-        },
-        {
-            name: "ANIME"
-        },
-    ]
+    const category = useSelector(store => store.category)
 
     return (  
         <div className="max-w-[1170px] mx-auto mt-24">
             
-            {data.map((item, index) => 
+            {category.map((item, index) => 
                 <MovieSwiper key={index} name={item.name} />
             )}
 
