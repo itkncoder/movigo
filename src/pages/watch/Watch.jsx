@@ -41,8 +41,8 @@ const Watch = () => {
                             <h1 className="poppins my-3 text-3xl font-semibold">{watchingMovieItem?.title}</h1>
                         </div>
                         <div className="flex items-start justify-start gap-8 mt-8 flex-col md:flex-row">
-                            <div className="shadow-gray-900 rounded-md py-2">
-                                <img src={watchingMovieItem?.poster} alt="movie" className="rounded-md w-72 h-96 object-cover" />
+                            <div className="shadow-gray-900 rounded-md py-2 w-full md:w-fit flex flex-col justify-center items-center">
+                                <img src={watchingMovieItem?.poster} alt="movie" className="flex items-center w-72 md:items-start rounded-md h-96 object-cover" />
                             </div>
                             <div className="flex flex-col gap-5">
                                 <table>
@@ -70,7 +70,7 @@ const Watch = () => {
                                     </tbody>
                                 </table>
                                 <div>
-                                    <p className="text-gray-300 text-sm max-w-3xl">{watchingMovieItem?.description}</p>
+                                    <p className="text-gray-300 text-sm max-w-xl">{watchingMovieItem?.description}</p>
                                 </div>
                             </div>
                         </div>
@@ -79,21 +79,23 @@ const Watch = () => {
                 <div className="mt-6">
                     <div className="flex items-center justify-start gap-3">
                         <div onClick={() => setTab(true)} className={tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-md hover:ring-2 ring-gray-600 cursor-pointer"}>
-                            <p className="text-lg font-semibold ">Смотреть Фильм</p>
+                            <p className="sm:text-lg font-semibold">Смотреть Фильм</p>
                         </div>
                         <div onClick={() => setTab(false)} className={!tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-md hover:ring-2 ring-gray-600 cursor-pointer"}>
-                            <p className="text-lg font-semibold">Смотреть трейлер</p>
+                            <p className="sm:text-lg font-semibold">Смотреть трейлер</p>
                         </div>
                     </div>
                     {tab ? 
                     <ReactPlayer
+                        style={{maxHeight: "850px"}}
                         url={watchingMovieItem?.video}
                         width="100%"
-                        height="90vh"
+                        height="100%"
                         controls
                     /> 
                     : 
                     <ReactPlayer
+                        style={{maxHeight: "850px"}}
                         url={watchingMovieItem?.trailer}
                         width="100%"
                         height="90vh"

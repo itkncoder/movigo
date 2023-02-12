@@ -25,7 +25,7 @@ const MovieSwiper = ({name}) => {
                         className="h-fit mb-6"
                         breakpoints={{
                             640: {
-                            slidesPerView: 2.5,
+                                slidesPerView: 2.5,
                             },
                             768: {
                             slidesPerView: 2.75,
@@ -34,7 +34,7 @@ const MovieSwiper = ({name}) => {
                                 slidesPerView: 3,
                             },
                         }}
-                        spaceBetween={20}
+                        spaceBetween={25}
                         slidesPerView={1.5}
                         autoplay={{
                             delay: 2500,
