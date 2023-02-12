@@ -31,8 +31,8 @@ const Watch = () => {
         <>
             <Helmet>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
-                <meta name="description" content={"Movigo - " + watchingMovieItem?.description}/>
-                <title>Movigo - {watchingMovieItem?.description}</title>
+                <meta name="description" content={`Movigo - ${watchingMovieItem?.description}`}/>
+                <title>Movigo - {`${watchingMovieItem?.description}`}</title>
             </Helmet>
             {moviesLoadingStatus !== "loading" ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
                 <div>
