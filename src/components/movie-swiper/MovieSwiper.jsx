@@ -4,21 +4,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from "swiper";
 import {Link} from "react-router-dom"
-import axios from "axios"
-
-import { moviesFetching, moviesFetched, moviesFetchingError } from "../../redux/actions"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import Spinner from "../Spinner"
 
 const MovieSwiper = ({name}) => {
-    const dispatch = useDispatch()
-    const {movies} = useSelector(store => store)
 
-    useEffect(() => {   
-        dispatch(moviesFetching())
-        axios.get("https://movigo.onrender.com/api/movies/").then(res => {
-            dispatch(moviesFetched(res.data.data))
-        }).catch(() => dispatch(moviesFetchingError()))
-    }, [])
+    const {movies, moviesLoadingStatus} = useSelector(store => store) || dispatch()
 
     const swiperRef = useRef(null)
 
@@ -60,6 +51,9 @@ const MovieSwiper = ({name}) => {
                                     <CatalogCard props={item}/>
                                 </SwiperSlide>
                             )}
+                            {moviesLoadingStatus === "loading" && <div className="w-96">
+                                <Spinner/>
+                            </div>}
                         </div>
                     </Swiper>
                     <div onClick={() => swiperRef.current?.slideNext()} className="cursor-pointer hidden lg:flex absolute mb-14 w-[50px] h-[50px] rounded-full bg-[#ffc30dda] right-0 z-50 flex m-1 justify-center items-center">

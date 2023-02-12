@@ -1,6 +1,7 @@
 import { useMemo, useEffect, useState } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
+import { useSelector } from "react-redux"
 
 const Category = () => {
     useEffect(() => {
@@ -9,57 +10,7 @@ const Category = () => {
 
     const [dropdown, setDropdown] = useState(false)
 
-    const data = useMemo(() => (
-        [
-            {
-                img: "https://picsum.photos/600",
-                name: "Happy birthday without me, without KNCoder",
-                link: '/watch',
-                premium: "premium"
-            },
-            {
-                img: "https://picsum.photos/300",
-                name: "Dune / Dune part one, new films",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/400",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/500",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/700",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/800",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/1000",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/200",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },{
-                img: "https://picsum.photos/1200",
-                name: "Happy birthday without me",
-                link: '/watch',
-                premium: "premium"
-            },
-        ]
-    ))
+    const {movies} = useSelector(store => store)
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -85,7 +36,7 @@ const Category = () => {
                     </div>
                 </div>
                 <div className="relative flex items-center flex-wrap gap-4 justify-center lg:justify-evenly">
-                    {data.map((item, index) => 
+                    {movies.map((item, index) => 
                         <CatalogCard props={item}/>
                     )}
                 </div>
