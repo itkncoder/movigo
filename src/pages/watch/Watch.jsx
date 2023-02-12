@@ -22,7 +22,7 @@ const Watch = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        setWatching(movies.filter((i) => name === i.title)[0])
+        setWatching(movies.filter((i) => name.toString() === i.title)[0])
     }, [ movies ])
 
     return (
