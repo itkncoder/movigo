@@ -1,16 +1,24 @@
-import { memo, useRef, useMemo } from "react"
+import { memo, useRef, useMemo, useEffect } from "react"
 import CatalogCard from "../catalog-card/CatalogCard"
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from "swiper";
 import {Link} from "react-router-dom"
+import axios from "axios"
 
-import { useSelector } from "react-redux"
+import { moviesFetching, moviesFetched, moviesFetchingError } from "../../redux/actions"
+import { useSelector, useDispatch } from "react-redux"
 
 const MovieSwiper = ({name}) => {
+    const dispatch = useDispatch()
+    const {movies} = useSelector(store => store)
 
-    const movies = useSelector(store => store.movies)
+    useEffect(() => {   
+        dispatch(moviesFetching())
+        axios.get("https://movigo.onrender.com/api/movies/").then(res => {
+            dispatch(moviesFetched(res.data.data))
+        }).catch(() => dispatch(moviesFetchingError()))
+    }, [])
 
     const swiperRef = useRef(null)
 
@@ -32,7 +40,7 @@ const MovieSwiper = ({name}) => {
                             slidesPerView: 2.75,
                             },
                             1080: {
-                                slidesPerView: 4.8,
+                                slidesPerView: 3,
                             },
                         }}
                         spaceBetween={20}
@@ -47,8 +55,8 @@ const MovieSwiper = ({name}) => {
                         }}
                         >
                         <div className="flex relative items-center justify-center">
-                            {movies.map((item, index) => 
-                                <SwiperSlide key={index}>
+                            {movies.map((item) => 
+                                <SwiperSlide key={item._id}>
                                     <CatalogCard props={item}/>
                                 </SwiperSlide>
                             )}

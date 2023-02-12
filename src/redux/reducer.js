@@ -1,4 +1,8 @@
 const initialState = {
+    movies: [
+        
+    ],
+    moviesLoadingStatus: "none",
     category: [
         {
             name: "FILMS"
@@ -12,60 +16,27 @@ const initialState = {
         {
             name: "ANIME"
         },
-    ],
-    movies: [
-        {
-            img: "https://picsum.photos/600",
-            name: "Happy birthday without me, without KNCoder",
-            link: '/watch',
-            premium: "premium"
-        },
-        {
-            img: "https://picsum.photos/300",
-            name: "Dune / Dune part one, new films",
-            link: '/watch',
-            premium: "premium"
-        },{
-            img: "https://picsum.photos/400",
-            name: "Happy birthday without me",
-            link: '/watch',
-            premium: "premium"
-        },{
-            img: "https://picsum.photos/500",
-            name: "Happy birthday without me",
-            link: '/watch',
-            premium: "premium"
-        },{
-            img: "https://picsum.photos/700",
-            name: "Happy birthday without me",
-            link: '/watch',
-            premium: "premium"
-        },{
-            img: "https://picsum.photos/800",
-            name: "Happy birthday without me",
-            link: '/watch',
-            premium: "premium"
-        },{
-            img: "https://picsum.photos/1000",
-            name: "Happy birthday without me",
-            link: '/watch',
-            premium: "premium"
-        },{
-            img: "https://picsum.photos/200",
-            name: "Happy birthday without me",
-            link: '/watch',
-            premium: "premium"
-        },{
-            img: "https://picsum.photos/1200",
-            name: "Happy birthday without me",
-            link: '/watch',
-            premium: "premium"
-        },
     ]
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case "MOVIES_FETCHING":
+            return {
+                ...state,
+                moviesLoadingStatus: "loading"
+            }
+        case "MOVIES_FETCHED":
+            return {
+                ...state,
+                movies: action.payload,
+                moviesLoadingStatus: "none"
+            }
+        case "MOVIES_FETCHING_ERROR":
+            return {
+                ...state,
+                moviesLoadingStatus: "error"
+            }
         default:
             return state
             break;
