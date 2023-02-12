@@ -9,6 +9,8 @@ import axios from "axios"
 
 import Spinner from "../../components/Spinner"
 
+import Helmet from "react-helmet"
+
 const Watch = () => {
 
     const dispatch = useDispatch()
@@ -27,6 +29,11 @@ const Watch = () => {
 
     return (
         <>
+            <Helmet>
+                <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
+                <meta name="description" content={"Movigo - " + watchingMovieItem?.description}/>
+                <title>Movigo - {watchingMovieItem?.description}</title>
+            </Helmet>
             {moviesLoadingStatus !== "loading" ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
                 <div>
                     <div>

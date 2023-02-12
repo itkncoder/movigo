@@ -5,6 +5,8 @@ import { useSelector } from "react-redux"
 
 import Spinner from "../../components/Spinner"
 
+import Helmet from "react-helmet"
+
 const Category = () => {
     useEffect(() => {
         window.scroll(0, 0)
@@ -22,6 +24,11 @@ const Category = () => {
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
+            <Helmet>
+                <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
+                <meta name="description" content={"Movigo - category"}/>
+                <title>Movigo - category</title>
+            </Helmet>
             {moviesLoadingStatus !== "loading" ? <><div className="mt-32 mx-auto">
                 <AdsHome />
             </div>
