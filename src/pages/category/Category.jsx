@@ -3,14 +3,16 @@ import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
 import { useSelector } from "react-redux"
 
+import Spinner from "../../components/Spinner"
+
 const Category = () => {
     useEffect(() => {
         window.scroll(0, 0)
     }, [])
 
-    const [dropdown, setDropdown] = useState(false)
+    const [ dropdown, setDropdown ] = useState(false)
 
-    const {movies} = useSelector(store => store)
+    const { movies, moviesLoadingStatus } = useSelector(store => store)
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -20,7 +22,7 @@ const Category = () => {
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
-            <div className="mt-32 mx-auto">
+            {moviesLoadingStatus !== "loading" ? <><div className="mt-32 mx-auto">
                 <AdsHome />
             </div>
             <div className="mt-14 mx-auto">
@@ -36,8 +38,8 @@ const Category = () => {
                     </div>
                 </div>
                 <div className="relative flex items-center flex-wrap gap-4 justify-center lg:justify-evenly">
-                    {movies.map((item, index) => 
-                        <CatalogCard props={item}/>
+                    {movies.map((item) => 
+                        <CatalogCard key={item._id} props={item}/>
                     )}
                 </div>
                 <div className="flex justify-center items-center gap-1.5">
@@ -52,7 +54,9 @@ const Category = () => {
                 <div className="mt-20 block">
                     <AdsHome/>
                 </div>
-            </div>
+            </div></> : <div className="px-2 h-96 flex justify-center items-center max-widther mx-auto mt-32 xl:px-0">
+                <Spinner/>
+            </div>}
         </div>
     )
 }

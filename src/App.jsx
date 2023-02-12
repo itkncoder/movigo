@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {   
     dispatch(moviesFetching())
     axios.get("https://movigo.onrender.com/api/movies/").then(res => {
-        dispatch(moviesFetched(res.data.data))
+      dispatch(moviesFetched(res.data.data))
     }).catch(() => dispatch(moviesFetchingError()))
   }, [])  
 
@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/category" element={<Category/>} />
-        <Route path="/watch" element={<Watch/>} />
+        <Route path="/watch/:name" element={<Watch/>} />
       </Routes>
 
       <div>

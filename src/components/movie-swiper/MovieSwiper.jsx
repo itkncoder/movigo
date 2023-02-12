@@ -35,7 +35,7 @@ const MovieSwiper = ({name}) => {
                             },
                         }}
                         spaceBetween={20}
-                        slidesPerView={1.75}
+                        slidesPerView={1.5}
                         autoplay={{
                             delay: 2500,
                             disableOnInteraction: false,
@@ -51,7 +51,7 @@ const MovieSwiper = ({name}) => {
                                     <CatalogCard props={item}/>
                                 </SwiperSlide>
                             )}
-                            {moviesLoadingStatus === "loading" ? <div className="w-96">
+                            {moviesLoadingStatus === "loading" ? <div className="w-full">
                                 <Spinner/>
                             </div> : ''}
                         </div>
