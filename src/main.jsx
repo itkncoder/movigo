@@ -4,11 +4,8 @@ import App from './App'
 import './index.scss'
 import { BrowserRouter } from 'react-router-dom';
 
-import reducer from "./redux/reducer"
-import { createStore } from "redux"
 import { Provider } from "react-redux"
-
-const store = createStore(reducer)
+import { store } from "./redux/store"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>

@@ -1,3 +1,5 @@
-export const moviesFetching = () => ({type: "MOVIES_FETCHING"})
-export const moviesFetched = (movies) => ({type: "MOVIES_FETCHED", payload: movies})
-export const moviesFetchingError = () => ({type: "MOVIES_FETCHING_ERROR"})
+import { createAction } from "@reduxjs/toolkit"
+
+export const moviesFetching = createAction("MOVIES_FETCHING")
+export const moviesFetched = createAction("MOVIES_FETCHED")
+export const moviesFetchingError = createAction("MOVIES_FETCHING_ERROR")
