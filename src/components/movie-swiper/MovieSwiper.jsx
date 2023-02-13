@@ -34,7 +34,7 @@ const MovieSwiper = ({name}) => {
                                 slidesPerView: 3,
                             },
                         }}
-                        spaceBetween={25}
+                        spaceBetween={30}
                         slidesPerView={1.5}
                         autoplay={{
                             delay: 2500,

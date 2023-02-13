@@ -74,7 +74,7 @@ const Watch = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-2">
+                        <div className="mt-4">
                             <a type="download" href={watchingMovieItem?.video} className="px-6 cursor-pointer py-2.5 bg-gray-800 rounded-lg ring-2 active:bg-gray-600 transition-all font-semibold ring-gray-700">Yuklab olish <i className="ml-2 fa-solid fa-download"></i></a>
                         </div>
                     </div>
