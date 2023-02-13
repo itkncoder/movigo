@@ -19,7 +19,7 @@ const HomeCatalogs = () => {
                 <Grid/>
             </div>
 
-            <div className="mt-20">
+            <div className="mt-20 md:mt-120 lg:mt-20">
                 <AdsHome/>
             </div>
         </div>

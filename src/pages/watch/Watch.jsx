@@ -75,7 +75,7 @@ const Watch = () => {
                             </div>
                         </div>
                         <div className="mt-2">
-                            <button className="px-8 py-2.5 bg-gray-800 rounded-lg ring-2 active:bg-gray-600 transition-all font-semibold ring-gray-700">Yuklab olish</button>
+                            <a type="download" href={watchingMovieItem?.video} className="px-6 cursor-pointer py-2.5 bg-gray-800 rounded-lg ring-2 active:bg-gray-600 transition-all font-semibold ring-gray-700">Yuklab olish <i className="ml-2 fa-solid fa-download"></i></a>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,6 @@ const Watch = () => {
                         height="90vh"
                         controls
                         light="https://res.cloudinary.com/file-upload/image/upload/v1676240802/Group_1_loswzg.png"
-                        fileConfig={{ attributes: { poster: 'https://res.cloudinary.com/file-upload/image/upload/v1676240802/Group_1_loswzg.png' } }}
                     /> 
                     : 
                     <ReactPlayer

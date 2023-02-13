@@ -1,3 +1,6 @@
+import { createReducer } from "@reduxjs/toolkit"
+import { moviesFetching, moviesFetched, moviesFetchingError } from "./actions"
+
 const initialState = {
     movies: [
         
@@ -19,28 +22,15 @@ const initialState = {
     ]
 }
 
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "MOVIES_FETCHING":
-            return {
-                ...state,
-                moviesLoadingStatus: "loading"
-            }
-        case "MOVIES_FETCHED":
-            return {
-                ...state,
-                movies: action.payload,
-                moviesLoadingStatus: "none"
-            }
-        case "MOVIES_FETCHING_ERROR":
-            return {
-                ...state,
-                moviesLoadingStatus: "error"
-            }
-        default:
-            return state
-            break;
-    }
-}
+const reducer = createReducer(initialState, builder => {
+    builder
+        .addCase(moviesFetching, (state, action) => {state.moviesLoadingStatus = "loading"})
+        .addCase(moviesFetched, (state, action) => {
+            state.movies = action.payload,
+            state.moviesLoadingStatus = "none"
+        })
+        .addCase(moviesFetchingError, (state, action) => {state.moviesLoadingStatus = "error"})
+        .addDefaultCase(() => {})
+})
 
 export default reducer

@@ -191,4 +191,12 @@ body {
       opacity: 0;
     }
   }
-  
+.navbar {
+  background: #151a2076 !important;
+  position: fixed;
+  border-radius: 25px;
+  height: 75px;
+  padding: 10px 35px;
+  margin: 5px;
+  backdrop-filter: blur(10px);
+}
