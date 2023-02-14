@@ -15,6 +15,7 @@ const Home = () => {
                 <meta name="description" content="Movigo - online kinolar, tarjima qilingan, HD sifatda"/>
                 <title>Movigo - online kinolar, tarjima qilingan, HD sifatda</title>
             </Helmet>
+            
             <div className="flex flex-col justify-between">
                 <HomeTop/>
                 <main>
