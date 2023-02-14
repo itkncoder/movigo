@@ -25,11 +25,8 @@ const Watch = () => {
     useEffect(() => {
         window.scroll(0, 0)
         setWatching(movies.filter((i) => name.toString() === i.title)[0])
-    }, [ movies ])
-
-    useEffect(() => {
         axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name.toString() === i.title)[0]?._id}`)
-    }, [])
+    }, [ movies ])
 
     return (
         <>
