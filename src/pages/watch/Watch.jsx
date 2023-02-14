@@ -46,14 +46,14 @@ const Watch = () => {
                 <meta property="og:title" content={`${watchingMovieItem?.title}`} />
                 <meta property="og:site_name" content={`${watchingMovieItem?.title}`}/>
                 <meta property="og:description" content={`${watchingMovieItem?.description}`} />
-                <meta property="og:image" content={watchingMovieItem?.poster} />
+                <meta property="og:image" content={`${watchingMovieItem?.poster}`} />
             </Helmet>
 
             {moviesLoadingStatus !== "loading" ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
                 <div>
                     <div>
                         <div className="mb-2 md:mb-4 mt-6">
-                            <h1 className="poppins my-3 text-3xl font-semibold">{watchingMovieItem?.title}</h1>
+                            <h1 className="poppins my-3 text-4xl font-semibold">{watchingMovieItem?.title}</h1>
                         </div>
                         <div className="flex items-start justify-start gap-8 mt-8 flex-col md:flex-row">
                             <div className="shadow-gray-900 rounded-md py-2 w-full md:w-fit flex flex-col justify-center items-center">
