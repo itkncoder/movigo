@@ -93,7 +93,7 @@ const Watch = () => {
                     </div>
                     {tab ? 
                     <ReactPlayer
-                        style={{maxHeight: "650px"}}
+                        style={{maxHeight: "600px"}}
                         url={watchingMovieItem?.video}
                         width="100%"
                         height="90vh"
@@ -102,7 +102,7 @@ const Watch = () => {
                     /> 
                     : 
                     <ReactPlayer
-                        style={{maxHeight: "850px"}}
+                        style={{maxHeight: "600px"}}
                         url={watchingMovieItem?.trailer}
                         width="100%"
                         height="90vh"

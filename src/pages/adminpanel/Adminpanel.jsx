@@ -1,6 +1,8 @@
 import logo from "../../assets/logo.png"
 import { useState, useEffect, useRef, memo } from "react"
 
+import { useSelector, useDispatch } from "react-redux"
+
 const Modal = memo(({children}) => {
     return (
         <div className="modal-div fixed flex justify-center items-center w-full h-full">
@@ -14,6 +16,7 @@ const Modal = memo(({children}) => {
 
 const Adminpanel = () => {
 
+    const { movies } = useSelector( state => state )
     
     const [ tab, setTabs ] = useState(true)
 
@@ -67,13 +70,17 @@ const Adminpanel = () => {
                         </tr>
                     </thead>
                     <tbody className="w-full mt-2.5 flex flex-col gap-1 max-h-full overflow-y-auto">
-                        <tr className="flex justify-between items-center w-full gap-3 bg-gray-800 px-6 rounded-lg py-2 hover:bg-gray-700">
-                            <td className="">Name</td>
-                            <td className="">Id</td>
-                            <td className="">Name</td>
-                            <td className="">Name</td>
-                            <td className="">Name</td>
-                        </tr>
+                        {
+                            movies.map((i) => 
+                                <tr className="flex justify-between items-center w-full gap-3 bg-gray-800 px-6 rounded-lg py-2 hover:bg-gray-700">
+                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
+                                    <td className="text-sm max-w-xs truncate">{i.description}</td>
+                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
+                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
+                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
+                                </tr>
+                            )
+                        }
                     </tbody>
                 </table>
             </main>
