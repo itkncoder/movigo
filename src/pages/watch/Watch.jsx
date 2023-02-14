@@ -35,10 +35,11 @@ const Watch = () => {
         <>
             <Helmet>
                 <title>Movigo - {`${watchingMovieItem?.title}`}</title>
-                <meta name="title" content={`${watchingMovieItem?.title}`}/>
-                <meta name="description" content={`Movigo - ${watchingMovieItem?.description}`}/>
+                <meta name="title" content={name.toString()}/>
+                <meta name="description" content={name.toString()}/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
                 <meta name="robots" content="index, follow"/>
+                <meta name="description" content={watchingMovieItem?.description} />
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
