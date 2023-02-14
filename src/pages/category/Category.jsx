@@ -32,6 +32,11 @@ const Category = () => {
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
+
+                <meta property="og:title" content="Movigo - online kinolar, tarjima qilingan, HD sifatda" />
+                <meta property="og:site_name" content="Movigo"/>
+                <meta property="og:description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar" />
+
                 <title>Movigo - category</title>
             </Helmet>
             {moviesLoadingStatus !== "loading" ? <><div className="mt-32 mx-auto">

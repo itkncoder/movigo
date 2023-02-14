@@ -43,10 +43,10 @@ const Watch = () => {
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
 
-                <meta property="og:title" content={`${watchingMovieItem?.title}`} />
-                <meta property="og:site_name" content={`${watchingMovieItem?.title}`}/>
-                <meta property="og:description" content={`${watchingMovieItem?.description}`} />
-                <meta property="og:image" content={`${watchingMovieItem?.poster}`} />
+                <meta property="og:title" content={name.toString()} />
+                <meta property="og:site_name" content={name.toString()}/>
+                <meta property="og:description" content={watchingMovieItem?.description} />
+                <meta property="og:image" content={watchingMovieItem?.poster} />
             </Helmet>
 
             {moviesLoadingStatus !== "loading" ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
