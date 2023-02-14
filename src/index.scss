@@ -192,12 +192,17 @@ body {
     }
   }
 .navbar {
-  background: #151a2076 !important;
+  background: #181a1c75 !important;
   position: fixed;
-  border-radius: 25px;
-  height: 75px;
+  border-radius: 20px;
+  height: 65px;
   padding: 10px 35px;
-  margin: 5px;
+  width: 100%;
+  margin: 3px 0;
   backdrop-filter: blur(10px);
-  transition: .3s all;
+  transition: .2s all;
+}
+.modal-div {
+  background: #181a1c4f;
+  backdrop-filter: blur(3px);
 }

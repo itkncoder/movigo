@@ -34,7 +34,7 @@ const Category = () => {
             </div>
             <div className="mt-14 mx-auto">
                 <div className="flex items-center justify-between gap-4">
-                    <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit">FILMS</h1>
+                    <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit">FILMLAR</h1>
                     <div>
                         <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item bg-gray-800 py-2 pl-8 ring-2 ring-gray-700 pr-5 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">Select<i onClick={() => setDropdown(prev => !prev)} className="fa-solid fa-angle-down"></i>
                             {dropdown ? <div className="absolute z-20 flex flex-col gap-1 left-0 top-12 bg-gray-700 px-2 py-3 rounded-lg">

@@ -8,13 +8,13 @@ const initialState = {
     moviesLoadingStatus: "none",
     category: [
         {
-            name: "FILMS"
+            name: "FILMLAR"
         },
         {
-            name: "POPULAR"
+            name: "YANGILIKLAR"
         },
         {
-            name: "CARTOONS"
+            name: "MULTFILMLAR"
         },
         {
             name: "ANIME"

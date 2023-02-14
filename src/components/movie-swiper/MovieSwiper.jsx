@@ -24,18 +24,60 @@ const MovieSwiper = ({name}) => {
                     <Swiper
                         className="h-fit mb-6"
                         breakpoints={{
-                            640: {
-                                slidesPerView: 2.5,
+                            340: {
+                                slidesPerView: 1.5,
+                            },
+                            360: {
+                                slidesPerView: 1.6,
+                            },
+                            400: {
+                                slidesPerView: 1.75,
+                            },
+                            440: {
+                                slidesPerView: 1.9,
+                            },
+                            480: {
+                                slidesPerView: 2.1,
+                            },
+                            500: {
+                                slidesPerView: 2.25,
+                            },
+                            540: {
+                                slidesPerView: 2.35,
+                            },
+                            580: {
+                                slidesPerView: 2.55,
+                            },
+                            620: {
+                                slidesPerView: 2.75,
+                            },
+                            660: {
+                                slidesPerView: 2.9,
+                            },
+                            700: {
+                                slidesPerView: 3.1,
                             },
                             768: {
-                            slidesPerView: 2.75,
+                                slidesPerView: 3.25,
+                            },
+                            800: {
+                                slidesPerView: 3.45,
+                            },
+                            850: {
+                                slidesPerView: 3.6,
+                            },
+                            900: {
+                                slidesPerView: 3.9,
+                            },
+                            950: {
+                                slidesPerView: 4.25,
                             },
                             1080: {
-                                slidesPerView: 4.5,
+                                slidesPerView: 4.75,
                             },
                         }}
                         spaceBetween={30}
-                        slidesPerView={1.5}
+                        slidesPerView={1.4}
                         autoplay={{
                             delay: 2500,
                             disableOnInteraction: false,

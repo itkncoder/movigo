@@ -20,7 +20,7 @@ const SliderTitle = ({props}) => {
                     </div>
 
                     <div className="mt-4 hover:-translate-y-0.5 w-fit cursor-pointer transition-all duration-300">
-                        <a className="rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 py-3 px-12" href="./">Watch</a>
+                        <a className="rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 py-3 px-12" href="./">Ko'rish</a>
                     </div>
                 </div>
             </div>

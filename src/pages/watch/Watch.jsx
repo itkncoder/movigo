@@ -48,34 +48,34 @@ const Watch = () => {
                                 <table>
                                     <tbody className="flex justify-start flex-col mt-8 gap-2">
                                         <tr>
-                                            <td className="w-28 text-gray-400 font-semibold text-lg">Год:</td>
+                                            <td className="w-28 text-gray-400 font-semibold text-lg">Yil:</td>
                                             <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">{watchingMovieItem?.year}</Link></td>
                                         </tr>
                                         <tr>
-                                            <td className="w-28 text-gray-400 font-semibold text-lg">Страна:</td>
+                                            <td className="w-28 text-gray-400 font-semibold text-lg">Davlat:</td>
                                             <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">{watchingMovieItem?.country}</Link></td>
                                         </tr>
                                         <tr>
-                                            <td className="w-28 text-gray-400 font-semibold text-lg">Жанр:</td>
+                                            <td className="w-28 text-gray-400 font-semibold text-lg">Janr:</td>
                                             <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">{watchingMovieItem?.genres}</Link></td>
                                         </tr>
                                         <tr>
-                                            <td className="w-28 text-gray-400 font-semibold text-lg">Время:</td>
+                                            <td className="w-28 text-gray-400 font-semibold text-lg">Vaqt:</td>
                                             <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">{watchingMovieItem?.duration}</td>
                                         </tr>
                                         <tr>
-                                            <td className="w-28 text-gray-400 font-semibold text-lg">Язык:</td>
+                                            <td className="w-28 text-gray-400 font-semibold text-lg">Til:</td>
                                             <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">{watchingMovieItem?.language}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div>
-                                    <p className="text-gray-300 text-sm max-w-xl">{watchingMovieItem?.description}</p>
+                                    <p className="text-gray-300 text-sm max-w-2xl">{watchingMovieItem?.description}</p>
                                 </div>
                             </div>
                         </div>
                         <div className="mt-4">
-                            <a type="download" href={watchingMovieItem?.video} className="px-6 cursor-pointer py-2.5 bg-gray-800 rounded-lg ring-2 active:bg-gray-600 transition-all font-semibold ring-gray-700">Yuklab olish <i className="ml-2 fa-solid fa-download"></i></a>
+                            <a type="download" href={watchingMovieItem?.video} className="hover:bg-gray-700 px-6 cursor-pointer py-2.5 bg-gray-800 rounded-lg ring-2 active:bg-gray-600 transition-all font-semibold ring-gray-700">Yuklab olish <i className="ml-2 fa-solid fa-download"></i></a>
                         </div>
                     </div>
                 </div>
@@ -84,16 +84,16 @@ const Watch = () => {
                         <AdsHome/>
                     </div>
                     <div className="flex items-center justify-start gap-3">
-                        <div onClick={() => setTab(true)} className={tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-md hover:ring-2 ring-gray-600 cursor-pointer"}>
-                            <p className="sm:text-lg font-semibold">Смотреть Фильм</p>
+                        <div onClick={() => setTab(true)} className={tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-lg hover:ring-2 ring-gray-600 cursor-pointer"}>
+                            <p className="sm:text-lg font-semibold">Filmni ko'rish</p>
                         </div>
-                        <div onClick={() => setTab(false)} className={!tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-md hover:ring-2 ring-gray-600 cursor-pointer"}>
-                            <p className="sm:text-lg font-semibold">Смотреть трейлер</p>
+                        <div onClick={() => setTab(false)} className={!tab ? "py-2 px-5 bg-gray-800 rounded-t-md hover:bg-gray-800 cursor-pointer" : "py-2 px-5 bg-gray-700 rounded-t-lg hover:ring-2 ring-gray-600 cursor-pointer"}>
+                            <p className="sm:text-lg font-semibold">Treylerni ko'rish</p>
                         </div>
                     </div>
                     {tab ? 
                     <ReactPlayer
-                        style={{maxHeight: "850px"}}
+                        style={{maxHeight: "650px"}}
                         url={watchingMovieItem?.video}
                         width="100%"
                         height="90vh"
