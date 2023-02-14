@@ -44,6 +44,7 @@ const Watch = () => {
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
                 <meta name="theme-color" content="#151A20" />
+                
                 <meta property="og:title" content={name} />
                 <meta property="og:site_name" content={name}/>
                 <meta property="og:description" content={watchingMovieItem?.description} />

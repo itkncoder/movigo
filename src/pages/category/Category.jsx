@@ -25,7 +25,7 @@ const Category = () => {
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
             <Helmet>
-                {/* <meta name="title" content="Movigo - category"/>
+                <meta name="title" content="Movigo - category"/>
                 <meta name="description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
                 <meta name="robots" content="index, follow"/>
@@ -37,7 +37,7 @@ const Category = () => {
                 <meta property="og:site_name" content="Movigo"/>
                 <meta property="og:description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar" />
 
-                <title>Movigo - category</title> */}
+                <title>Movigo - category</title>
             </Helmet>
             {moviesLoadingStatus !== "loading" ? <><div className="mt-32 mx-auto">
                 <AdsHome />
