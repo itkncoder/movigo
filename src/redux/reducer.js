@@ -8,16 +8,16 @@ const initialState = {
     moviesLoadingStatus: "none",
     category: [
         {
-            name: "FILMLAR"
+            name: "Filmlar"
         },
         {
-            name: "YANGILIKLAR"
+            name: "Mashxur"
         },
         {
-            name: "MULTFILMLAR"
+            name: "Multfilmlar"
         },
         {
-            name: "ANIME"
+            name: "Anime"
         },
     ]
 }

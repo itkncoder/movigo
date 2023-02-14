@@ -1,7 +1,7 @@
 import AdsHome from "../../components/AdsHome"
 import ReactPlayer from 'react-player';
 import { Link, useParams } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect, lazy } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -26,6 +26,10 @@ const Watch = () => {
         window.scroll(0, 0)
         setWatching(movies.filter((i) => name.toString() === i.title)[0])
     }, [ movies ])
+
+    useEffect(() => {
+        axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name.toString() === i.title)[0]?._id}`)
+    }, [])
 
     return (
         <>
@@ -93,7 +97,7 @@ const Watch = () => {
                     </div>
                     {tab ? 
                     <ReactPlayer
-                        style={{maxHeight: "600px"}}
+                        className="video"
                         url={watchingMovieItem?.video}
                         width="100%"
                         height="90vh"
@@ -102,7 +106,7 @@ const Watch = () => {
                     /> 
                     : 
                     <ReactPlayer
-                        style={{maxHeight: "600px"}}
+                        className="video"
                         url={watchingMovieItem?.trailer}
                         width="100%"
                         height="90vh"

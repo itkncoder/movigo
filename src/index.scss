@@ -198,11 +198,20 @@ body {
   height: 65px;
   padding: 10px 35px;
   width: 100%;
-  margin: 3px 0;
+  margin: 3px 0 !important;
   backdrop-filter: blur(10px);
   transition: .2s all;
 }
 .modal-div {
   background: #181a1c4f;
   backdrop-filter: blur(3px);
+}
+@media screen  and (max-width: 700px){
+  .navbar {
+    margin: 0 auto !important;
+    border-radius: 0;
+  }
+  .video {
+    height: 45vh !important;
+  }
 }
