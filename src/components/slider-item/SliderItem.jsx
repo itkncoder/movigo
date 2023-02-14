@@ -8,11 +8,11 @@ const SliderTitle = ({props}) => {
                 <div className="mt-24 flex flex-col items-start gap-2">
                     <div className="flex flex-col gap-1.5 lg:gap-0">
                         <h1 className="bebas home-top-type text-4xl"><i className="fa-solid fa-fire-flame-curved"></i> {props.type}</h1>
-                        <h2 className="home-top-name text-5xl md:text-6xl lg:text-7xl max-w-xs md:max-w-lg">{props.name}</h2>
+                        <h1 className="home-top-name text-5xl md:text-6xl lg:text-7xl max-w-xs md:max-w-lg">{props.name}</h1>
                         <p className="home-top-version text-3xl max-w-lg">
                             <i className="fa-solid fa-film"></i> {props.version}
                         </p>
-                        <p className="home-top-desc max-w-xs md:max-w-lg">{props.desc}</p>
+                        <h1 className="home-top-desc max-w-xs md:max-w-lg">{props.desc}</h1>
                     </div>
 
                     <div className="flex justify-start items-center home-top-other hidden sm:flex">
