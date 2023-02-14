@@ -12,7 +12,7 @@ const Home = () => {
         <div>
 
             <Helmet>
-                <title>Movigo - Movigo - online kinolar, tarjima qilingan holda va HD sifatda ko'ring</title>
+                {/* <title>Movigo - Movigo - online kinolar, tarjima qilingan holda va HD sifatda ko'ring</title>
                 <meta name="title" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda"/>
                 <meta name="description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
@@ -23,7 +23,7 @@ const Home = () => {
                 <meta name="author" content="Movigo"/>
                 <meta property="og:title" content="Movigo" />
                 <meta property="og:site_name" content="Movigo"/>
-                <meta property="og:description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar" />
+                <meta property="og:description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar" /> */}
             </Helmet>
 
             <div className="flex flex-col justify-between">
