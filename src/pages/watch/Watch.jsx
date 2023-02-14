@@ -34,7 +34,7 @@ const Watch = () => {
     return (
         <>
             <Helmet>
-                <title>{`Movigo - ${watchingMovieItem?.title}`}</title>
+                {/* <title>{`Movigo - ${watchingMovieItem?.title}`}</title>
                 <meta name="title" content={name.toString()}/>
                 <meta name="description" content={name.toString()}/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
@@ -43,8 +43,8 @@ const Watch = () => {
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
-                <meta name="theme-color" content="#151A20" />
-                
+                <meta name="theme-color" content="#151A20" /> */}
+
                 <meta property="og:title" content={name} />
                 <meta property="og:site_name" content={name}/>
                 <meta property="og:description" content={watchingMovieItem?.description} />
