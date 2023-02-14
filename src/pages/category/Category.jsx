@@ -26,7 +26,7 @@ const Category = () => {
         <div className="px-2 xl:px-0 wrapper-carousel">
             <Helmet>
                 <meta name="title" content="Movigo - category"/>
-                <meta name="description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar"/>
+                <meta name="description" content="Movigo - category"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
                 <meta name="robots" content="index, follow"/>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
