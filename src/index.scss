@@ -36,6 +36,24 @@
     border-radius: 10px;
     padding: 5px 8px;
 }
+@media screen and (max-width: 500px) {
+  .tooltip p {
+    opacity: 1;
+    margin-left: 80px;
+    font-size: 16px;
+    background-color: #151A20;
+    border-radius: 10px;
+    padding: 5px 8px;
+  }
+  .tooltip:hover p {
+    opacity: 1;
+    margin-top: 0;
+    font-size: 16px;
+    background-color: #151A20;
+    border-radius: 10px;
+    padding: 5px 8px;
+  }
+}
 body {
     background-color: #151A20;
 }
@@ -205,6 +223,9 @@ body {
 .modal-div {
   background: #181a1c4f;
   backdrop-filter: blur(3px);
+}
+.video {
+  max-height: 625px;
 }
 @media screen  and (max-width: 700px){
   .navbar {

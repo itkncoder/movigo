@@ -9,7 +9,7 @@ import axios from "axios"
 
 import Spinner from "../../components/Spinner"
 
-import {Helmet} from "react-helmet"
+import {Helmet} from "react-helmet";
 
 const Watch = () => {
 
@@ -31,8 +31,8 @@ const Watch = () => {
     return (
         <>
             <Helmet>
-                <title>Movigo - {name}</title>
-                <meta name="title" content={`Movigo - ${name}`}/>
+                <title>Movigo - Aykut pochcha</title>
+                <meta name="title" content="Movigo - Aykut pochcha"/>
                 <meta name="description" content="Aykut pochcha"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
                 <meta name="robots" content="index, follow"/>
@@ -40,7 +40,7 @@ const Watch = () => {
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
 
-                <meta property="og:title" content="Aykut pochcha" />
+                <meta property="og:title" content="Aykut pochcha" />    
                 <meta property="og:site_name" content="Movigo"/>
                 <meta property="og:description" content="Aykut pochcha desc" />
                 <meta property="og:image" content="../../assets/logo.png" />

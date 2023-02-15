@@ -36,7 +36,6 @@ const Adminpanel = () => {
             <main className="px-4 py-6 h-full w-full bg-[#151A20] max-h-screen overflow-y-auto">
                 <div className="py-4 flex items-center justify-between">
                     <p className="text-3xl font-semibold">{tab ? "Category" : "Movie"}</p>
-                    <p className="px-5 py-2 bg-gray-700 cursor-pointer hover:bg-gray-800 rounded-md">Add {tab ? "category" : "movie"}</p>
                 </div>
                 <table className="flex flex-col items-start">
                     <thead className="w-full">
@@ -47,7 +46,7 @@ const Adminpanel = () => {
                         </tr>
                     </thead>
                     <tbody className="w-full flex flex-col max-h-full overflow-y-auto">
-                        {
+                        {   tab ?
                             movies.map((i) => 
                                 <tr className="flex justify-between items-center border border-gray-600 w-full gap-3 bg-gray-800 px-6 py-2 hover:bg-gray-700">
                                     <td className="text-sm w-4/12 truncate">{i.title}</td>
@@ -60,6 +59,17 @@ const Adminpanel = () => {
                                     </div>
                                 </tr>
                             )
+                            :
+                            <tr className="flex justify-between items-center border border-gray-600 w-full gap-3 bg-gray-800 px-6 py-2 hover:bg-gray-700">
+                                <td className="text-sm w-4/12 truncate">Category</td>
+                                <td className="text-sm w-4/12 truncate">Category</td>
+                                <div className="flex items-center w-4/12 justify-end gap-4 w-4/12">
+                                    <div className="flex items-center justify-center gap-1 bg-yellow-500 px-2 py-1 rounded-md">EDIT
+                                        <i className="bg-yellow-600 w-8 flex items-center justify-center rounded-md h-8 cursor-pointer hover:scale-105 fa-solid fa-edit"></i>
+                                    </div>
+                                    <i className="bg-rose-500 w-8 flex items-center justify-center rounded-md h-8 cursor-pointer hover:scale-105 fa-solid fa-remove"></i>
+                                </div>
+                            </tr>
                         }
                     </tbody>
                 </table>
