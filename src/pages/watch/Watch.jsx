@@ -31,21 +31,19 @@ const Watch = () => {
     return (
         <>
             <Helmet>
-                <title>{`Movigo - ${watchingMovieItem?.title}`}</title>
-                <meta name="title" content={name.toString()}/>
-                <meta name="description" content={name.toString()}/>
+                <title>Movigo - {name}</title>
+                <meta name="title" content={`Movigo - ${name}`}/>
+                <meta name="description" content="Aykut pochcha"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
                 <meta name="robots" content="index, follow"/>
-                <meta name="description" content={watchingMovieItem?.description} />
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
-                <meta name="theme-color" content="#151A20" />
 
-                <meta property="og:title" content="Salam" />
-                <meta property="og:site_name" content="Salam"/>
-                <meta property="og:description" content="Salam" />
-                <meta property="og:image" content={watchingMovieItem?.poster} />
+                <meta property="og:title" content="Aykut pochcha" />
+                <meta property="og:site_name" content="Movigo"/>
+                <meta property="og:description" content="Aykut pochcha desc" />
+                <meta property="og:image" content="../../assets/logo.png" />
             </Helmet>
 
             {moviesLoadingStatus !== "loading" ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">

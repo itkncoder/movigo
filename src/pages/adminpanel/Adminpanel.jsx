@@ -1,18 +1,7 @@
 import logo from "../../assets/logo.png"
 import { useState, useEffect, useRef, memo } from "react"
-
+import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-
-const Modal = memo(({children}) => {
-    return (
-        <div className="modal-div fixed flex justify-center items-center w-full h-full">
-            <div className="modal relative ring-2 ring-gray-600 rounded-lg px-10 py-14 bg-gray-800">
-                {children}
-                <i onClick={() => setIsOpen(false)} className="fa-solid fa-xmark absolute top-3 cursor-pointer right-4"></i>
-            </div>
-        </div>
-    )
-})
 
 const Adminpanel = () => {
 
@@ -20,64 +9,55 @@ const Adminpanel = () => {
     
     const [ tab, setTabs ] = useState(true)
 
-    const [isOpen, setIsOpen] = useState(false)
 
     window.onclick = (e) => {
         if (e.target.classList.contains("modal")) {
-        } else {
             setIsOpen(false)
         }
     }
 
     return (
-        <div className="mx-auto pt-0.5 flex items-start justify-start h-screen max-h-screen">
-            {isOpen && 
-                <Modal>
-                    <form className="modal flex flex-col items-start gap-2">
-                        <h1 className="modal text-3xl text-center w-full font-semibold">{tab ? "Category" : "Movie"}</h1>
-                        <div className="mt-3 modal flex flex-col items-center gap-1.5">
-                            <input className="modal text-gray-800 px-5 rounded-md py-2" type="text" placeholder="Name..." />
-                            <input className="modal text-gray-800 px-5 rounded-md py-2" type="text" placeholder="Name..." />
-                            <input className="modal text-gray-800 px-5 rounded-md py-2" type="text" placeholder="Name..." />
-                            <input className="modal text-gray-800 px-5 rounded-md py-2" type="text" placeholder="Name..." />
-                        </div>
-                        <div className="modal mt-2 flex justify-end items-center w-full">
-                            <input className="modal px-5 py-2 bg-gray-700 hover:bg-gray-600 cursor-pointer rounded-md" type="submit" value="Jo'natish" />
-                        </div>
-                    </form>
-                </Modal>
-            }
-            <aside className="px-6 h-full w-2/12 flex flex-col items-center py-6 bg-gray-800">
-                <img src={logo} alt="logo" className="w-46 cursor-pointer hover:-rotate-2 transition-all" />    
+        <div className="mx-auto absolute top-0 right-0 z-50 w-full h-full pt-0.5 flex items-start justify-start h-screen max-h-screen">
+            <aside className="px-6 h-full w-3/12 flex flex-col items-center py-6 bg-gray-800">
+                <Link to="/">
+                    <img src={logo} alt="logo" className="w-40 cursor-pointer hover:-rotate-2 transition-all" />
+                </Link>
                 <div className="mt-6 flex flex-col items-start gap-2 w-full">
-                    <p onClick={() => setTabs(prev => !prev)} className={ `${ tab ? "bg-gray-700 ring-2" : "bg-gray-600" } font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-lg py-2`}>CATEGORYES</p>
-                    <p onClick={() => setTabs(prev => !prev)} className={ `${ !tab ? "bg-gray-700 ring-2" : "bg-gray-600" } font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-lg py-2`}>MOVIES</p>
+                    <p onClick={() => setTabs(prev => !prev)} className={ `${ tab ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i class="fa-solid fa-bars-progress"></i> CATEGORYES</p>
+                    <p onClick={() => setTabs(prev => !prev)} className={ `${ !tab ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i class="fa-solid fa-film"></i> MOVIES</p>
+                    
+                    <Link to="./add/film" className={ `bg-gray-600 mt-4 flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i class="fa-solid fa-add"></i> Add film</Link>
+                    <Link to="./add/multfilm" className={ `bg-gray-600 flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i class="fa-solid fa-add"></i> Add multfilm</Link>
+                    <Link to="./add/anime" className={ `bg-gray-600 flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i class="fa-solid fa-add"></i> Add anime</Link>
+                    <Link to="./add/serial" className={ `bg-gray-600 flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i class="fa-solid fa-add"></i> Add serial</Link>
+
                 </div>
             </aside>
             <main className="px-4 py-6 h-full w-full bg-[#151A20] max-h-screen overflow-y-auto">
                 <div className="py-4 flex items-center justify-between">
                     <p className="text-3xl font-semibold">{tab ? "Category" : "Movie"}</p>
-                    <p onClick={() => setIsOpen(prev => !prev)} className="modal px-5 text-lg py-2 rounded-md bg-gray-700 cursor-pointer hover:bg-gray-800">Add {tab ? "category" : "movie"}</p>
+                    <p className="px-5 py-2 bg-gray-700 cursor-pointer hover:bg-gray-800 rounded-md">Add {tab ? "category" : "movie"}</p>
                 </div>
                 <table className="flex flex-col items-start">
                     <thead className="w-full">
-                        <tr className="flex justify-between items-center w-full gap-3 px-6 py-3 bg-gray-700 rounded-lg">
-                            <th className="">Name</th>
-                            <th className="">Id</th>
-                            <th className="">Name</th>
-                            <th className="">Name</th>
-                            <th className="">Name</th>
+                        <tr className="flex justify-between items-center w-full gap-3 bg-gray-700 px-6 py-2">
+                            <th className="w-4/12 text-start">Name</th>
+                            <th className="w-4/12 text-start">Genres</th>
+                            <th className="w-4/12 text-end">Tools</th>
                         </tr>
                     </thead>
-                    <tbody className="w-full mt-2.5 flex flex-col gap-1 max-h-full overflow-y-auto">
+                    <tbody className="w-full flex flex-col max-h-full overflow-y-auto">
                         {
                             movies.map((i) => 
-                                <tr className="flex justify-between items-center w-full gap-3 bg-gray-800 px-6 rounded-lg py-2 hover:bg-gray-700">
-                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
-                                    <td className="text-sm max-w-xs truncate">{i.description}</td>
-                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
-                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
-                                    <td className="text-sm max-w-xs truncate">{i.title}</td>
+                                <tr className="flex justify-between items-center border border-gray-600 w-full gap-3 bg-gray-800 px-6 py-2 hover:bg-gray-700">
+                                    <td className="text-sm w-4/12 truncate">{i.title}</td>
+                                    <td className="text-sm w-4/12 truncate">{i.genres}</td>
+                                    <div className="flex items-center w-4/12 justify-end gap-4 w-4/12">
+                                        <div className="flex items-center justify-center gap-1 bg-yellow-500 px-2 py-1 rounded-md">EDIT
+                                            <i className="bg-yellow-600 w-8 flex items-center justify-center rounded-md h-8 cursor-pointer hover:scale-105 fa-solid fa-edit"></i>
+                                        </div>
+                                        <i className="bg-rose-500 w-8 flex items-center justify-center rounded-md h-8 cursor-pointer hover:scale-105 fa-solid fa-remove"></i>
+                                    </div>
                                 </tr>
                             )
                         }

@@ -4,6 +4,7 @@ import {Routes, Route, Link} from "react-router-dom"
 import Home from "./pages/home/Home"
 import Category from "./pages/category/Category"
 import Watch from "./pages/watch/Watch"
+import Add from "./pages/adminpanel/Add"
 
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
@@ -26,9 +27,6 @@ function App() {
     }).catch(() => dispatch(moviesFetchingError()))
   }, [])  
 
-  if (window.location.pathname == "/admin/adminpanelmovigo") {
-    return <Adminpanel />
-  } else {
     return (
       <div className="App">
         <div className="wrapper-carousel mx-auto">
@@ -38,6 +36,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/category" element={<Category/>} />
+          <Route path="/admin/adminpanelmovigo/add/:name" element={<Add/>} />
+          <Route path="/admin/adminpanelmovigo/" element={<Adminpanel/>} />
           <Route path="/watch/:name" element={<Watch/>} />
           <Route path="*" element={
             <div className="h-96 flex flex-col items-center justify-center mt-32">
@@ -53,6 +53,5 @@ function App() {
       </div>
     )
   }
-}
 
 export default App

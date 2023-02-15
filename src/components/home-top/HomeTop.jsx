@@ -34,7 +34,7 @@ const HomeTop = () => {
                 type: 'Movie',
                 name: 'Broken boy',
                 version: 'Broken boy: Part One',
-                desc: 'The real movie, about KNCoder :(',
+                desc: 'The real movie, about programmer',
                 time: '9:02',
                 img: third
             },
@@ -42,7 +42,7 @@ const HomeTop = () => {
                 type: 'Serial',
                 name: 'Happy birthday without me',
                 version: 'Broken boy: Part two',
-                desc: 'The real movie, about KNCoder 2',
+                desc: 'The real movie, about programmer 2',
                 time: '9:02',
                 img: four
             }
