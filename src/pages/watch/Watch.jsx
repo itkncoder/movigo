@@ -9,7 +9,7 @@ import axios from "axios"
 
 import Spinner from "../../components/Spinner"
 
-import Helmet from "react-helmet"
+import {Helmet} from "react-helmet"
 
 const Watch = () => {
 

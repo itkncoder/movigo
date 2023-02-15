@@ -2,7 +2,7 @@ import HomeTop from "../../components/home-top/HomeTop"
 import HomeCatalogs from "../../components/home-catalogs/HomeCatalogs"
 import AdsHome from "../../components/AdsHome"
 
-import Helmet from "react-helmet"
+import {Helmet} from "react-helmet"
 
 const Home = () => {
     
