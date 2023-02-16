@@ -14,7 +14,7 @@ const HomeCatalogs = () => {
                 <MovieSwiper key={index} name={item.name} />
             )}
 
-            <div className="mt-20 md:mt-120 lg:mt-20">
+            <div className="my-8">
                 <AdsHome/>
             </div>
         </div>

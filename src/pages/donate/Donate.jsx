@@ -1,4 +1,11 @@
+import { useEffect } from "react"
+
 const Donate = () => {
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
     return (
         <div className="mt-32 h-96 flex justify-center items-start">
             <div className="flex flex-col items-center mt-20">

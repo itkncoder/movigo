@@ -30,7 +30,7 @@ const Home = () => {
             <div className="flex flex-col justify-between">
                 <HomeTop/>
                 <main>
-                    <div className="max-w-screen-lg mx-auto">
+                    <div className="max-w-[1170px] mx-auto">
                         <AdsHome/>
                     </div>
                     <HomeCatalogs/>
