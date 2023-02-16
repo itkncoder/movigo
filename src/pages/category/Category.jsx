@@ -1,18 +1,18 @@
-import { useMemo, useEffect, useState } from 'react'
+import { useMemo, useEffect, useState, useRef } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
 import { useSelector } from "react-redux"
 
 import Spinner from "../../components/Spinner"
 
-import Helmet from "react-helmet"
+import {Helmet} from "react-helmet"
 
 const Category = () => {
     useEffect(() => {
         window.scroll(0, 0)
     }, [])
 
-    const [ dropdown, setDropdown ] = useState(false)
+    const dropBlock = useRef(null)
 
     const { movies, moviesLoadingStatus } = useSelector(store => store)
 
@@ -25,7 +25,7 @@ const Category = () => {
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
             <Helmet>
-                <title>Movigo - Category</title>
+                <title>{`Movigo - ${movies[0]?.title}`}</title>
                 <meta name="title" content="Movigo - Category"/>
                 <meta name="description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
@@ -45,12 +45,15 @@ const Category = () => {
             <div className="mt-14 mx-auto">
                 <div className="flex items-center justify-between gap-4">
                     <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit">FILMLAR</h1>
-                    <div>
-                        <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item bg-gray-800 py-2 pl-8 ring-2 ring-gray-700 pr-5 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">Select<i onClick={() => setDropdown(prev => !prev)} className="fa-solid fa-angle-down"></i>
-                            {dropdown ? <div className="absolute z-20 flex flex-col gap-1 left-0 top-12 bg-gray-700 px-2 py-3 rounded-lg">
-                                <p className="drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Hello</p>
-                                <p className="drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">World</p>
-                            </div> : ''}
+                    <div onClick={() => {
+                        dropBlock.current.classList.toggle("top-12")    
+                        dropBlock.current.classList.toggle("opacity-0")
+                    }}>
+                        <div className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-6 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">Select <>&</>
+                            <div ref={dropBlock} className="transition-all duration-300 absolute z-20 flex flex-col opacity-0 gap-1 left-0 bg-gray-700 px-2 py-3 rounded-lg">
+                                <p className="transition-all drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Hello</p>
+                                <p className="transition-all drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">World</p>
+                            </div>
                         </div>
                     </div>
                 </div>

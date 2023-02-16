@@ -25,7 +25,6 @@ const Watch = () => {
     useEffect(() => {
         window.scroll(0, 0)
         setWatching(movies.filter((i) => name.toString() === i.title)[0])
-        axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name.toString() === i.title)[0]?._id}`)
     }, [ movies ])
 
     return (
@@ -105,6 +104,7 @@ const Watch = () => {
                     </div>
                     {tab ? 
                     <ReactPlayer
+                        onClick={() => axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name.toString() === i.title)[0]?._id}`)}
                         className="video"
                         url={watchingMovieItem?.video}
                         width="100%"
