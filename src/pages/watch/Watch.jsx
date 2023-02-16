@@ -31,18 +31,18 @@ const Watch = () => {
     return (
         <>
             <Helmet>
-                <title>Movigo - Aykut pochcha</title>
-                <meta name="title" content="Movigo - Aykut pochcha"/>
-                <meta name="description" content="Aykut pochcha"/>
+                <title>Movigo - Watch</title>
+                <meta name="title" content="Movigo - Watch"/>
+                <meta name="description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
                 <meta name="robots" content="index, follow"/>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
 
-                <meta property="og:title" content="Aykut pochcha" />    
+                <meta property="og:title" content="Movigo" />
                 <meta property="og:site_name" content="Movigo"/>
-                <meta property="og:description" content="Aykut pochcha desc" />
+                <meta property="og:description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar" />
                 <meta property="og:image" content="../../assets/logo.png" />
             </Helmet>
 

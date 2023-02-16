@@ -16,7 +16,7 @@ const SliderTitle = ({props}) => {
                     </div>
 
                     <div className="flex justify-start items-center home-top-other hidden sm:flex">
-                        <p className="home-top-other-item"><span>TIME: </span>{props.time}</p>
+                        <p className="home-top-other-item"><span>Time: </span>{props.time}</p>
                     </div>
 
                     <div className="mt-4 hover:-translate-y-0.5 w-fit cursor-pointer transition-all duration-300">
