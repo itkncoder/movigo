@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (  
         <>
-            <nav ref={nav} className="ml-32 flex hidden fixed md:static md:flex bg-gray-900 z-40 md:bg-transparent md:rounded-2xl md:h-fit h-screen p-12 right-0 top-0 w-full md:w-fit">
+            <nav ref={nav} className="flex hidden fixed md:static md:flex bg-gray-900 z-40 md:bg-transparent md:rounded-2xl md:h-fit h-screen p-12 right-0 top-0 w-full md:w-fit">
                 <ul onClick={() => {
                     nav.current.classList.toggle("hidden")
                     icon.current.classList.toggle("fa-xmark")

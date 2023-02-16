@@ -5,6 +5,8 @@ import Home from "./pages/home/Home"
 import Category from "./pages/category/Category"
 import Watch from "./pages/watch/Watch"
 import Add from "./pages/adminpanel/Add"
+import Error from "./pages/404/error404"
+import Donate from "./pages/donate/Donate"
 
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
@@ -39,12 +41,8 @@ function App() {
           <Route path="/admin/adminpanelmovigo/add/:name" element={<Add/>} />
           <Route path="/admin/adminpanelmovigo/" element={<Adminpanel/>} />
           <Route path="/watch/:name" element={<Watch/>} />
-          <Route path="*" element={
-            <div className="h-96 flex flex-col items-center justify-center mt-32">
-              <h1 className="text-2xl font-semibold">Bunday sahifa / film mavjud emas :(</h1>
-              <Link className="mt-4 font-semibold px-5 py-2 rounded-lg bg-gray-800 ring-2 ring-gray-700 active:bg-gray-600 transition-all" to="/">Bosh sahifaga qaytish</Link>
-            </div>
-          } />
+          <Route path="/donate" element={<Donate/>} />
+          <Route path="*" element={<Error/>} />
         </Routes>
   
         <div>
