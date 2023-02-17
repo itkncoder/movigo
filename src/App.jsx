@@ -20,11 +20,11 @@ import Adminpanel from "./pages/adminpanel/Adminpanel"
 
 function App() {
 
-  const moviesAPI = process.env.MOVIES_API
+  const {moviesAPI} = process.env
 
   const dispatch = useDispatch()
 
-  useEffect(() => {   
+  useEffect(() => {  
     dispatch(moviesFetching())
     axios.get(moviesAPI).then(res => {
       dispatch(moviesFetched(res.data.data))
