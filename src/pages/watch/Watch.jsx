@@ -27,6 +27,10 @@ const Watch = () => {
         setWatching(movies.filter((i) => name.toString() === i.title)[0])
     }, [ movies ])
 
+    function addViews() {
+        axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name.toString() === i.title)[0]?._id}`)
+    }
+
     return (
         <>
             <Helmet>
@@ -104,7 +108,7 @@ const Watch = () => {
                     </div>
                     {tab ? 
                     <ReactPlayer
-                        onClick={() => axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name.toString() === i.title)[0]?._id}`)}
+                        onClick={addViews}
                         className="video"
                         url={watchingMovieItem?.video}
                         width="100%"
