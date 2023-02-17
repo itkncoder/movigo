@@ -1,5 +1,6 @@
 import logo from "../../assets/logo.png"
 import {Link} from "react-router-dom"
+import { memo } from "react"
 
 const Logo = () => {
     return (  
@@ -11,4 +12,4 @@ const Logo = () => {
     );
 }
  
-export default Logo;
+export default memo(Logo);

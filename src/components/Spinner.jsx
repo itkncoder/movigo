@@ -1,3 +1,5 @@
+import { memo } from "react"
+
 const Spinner = () => {
     return (
         <>
@@ -6,4 +8,4 @@ const Spinner = () => {
     )
 }
 
-export default Spinner
+export default memo(Spinner)
