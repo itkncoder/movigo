@@ -3,7 +3,7 @@ import SliderItem from "../slider-item/SliderItem"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper";
 import 'swiper/css';
-import {useMemo} from "react"
+import {useMemo, memo} from "react"
 
 import first from "../../assets/images/home-top.jpg"
 import second from "../../assets/images/home-top2.jpg"
@@ -72,4 +72,4 @@ const HomeTop = () => {
     );
 }
  
-export default HomeTop;
+export default memo(HomeTop);
