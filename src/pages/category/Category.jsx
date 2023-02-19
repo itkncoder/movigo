@@ -19,7 +19,7 @@ const Category = () => {
 
     const { category, categoryLoadingStatus } = useSelector(store => store)
 
-    const [selectedUI, setSelectedUI]= useState('Xammasi')
+    const [selectedUI, setSelectedUI]= useState('Hammasi')
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -62,6 +62,10 @@ const Category = () => {
                     <div>
                         <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-6 pr-5 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">{selectedUI} <i className="fa-solid fa-angle-down"></i>
                             {dropdown && <div ref={dropBlock} className="absolute z-20 top-12 flex flex-col gap-1 right-0 bg-gray-700 px-2 py-3 rounded-lg">
+                                <p onClick={() => {
+                                    filterMovies("all")
+                                    setSelectedUI("Hammasi")
+                                }} key={0} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Hammasi</p>
                                 {category.map((i) => 
                                     <p onClick={() => {
                                         filterMovies(i)

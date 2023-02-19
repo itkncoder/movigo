@@ -40,7 +40,7 @@ const MovieSwiper = ({name}) => {
                                 slidesPerView: 2,
                             },
                             500: {
-                                slidesPerView: 2.25,
+                                slidesPerView: 2.2,
                             },
                             540: {
                                 slidesPerView: 2.35,

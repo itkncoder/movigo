@@ -31,7 +31,7 @@ const Navbar = () => {
             <p onClick={(e) => {
                 nav.current.classList.toggle("hidden")
                 icon.current.classList.toggle("fa-xmark")
-            }} className="fixed right-4 md:hidden flex cursor-pointer z-50"><i ref={icon} className="text-3xl fa-solid fa-bars"></i></p>
+            }} className="absolute right-4 md:hidden flex cursor-pointer z-50"><i ref={icon} className="text-3xl fa-solid fa-bars"></i></p>
         </>
     );
 }
