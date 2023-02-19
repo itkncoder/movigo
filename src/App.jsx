@@ -13,7 +13,7 @@ import Header from "./components/header/Header"
 
 import axios from "axios"
 
-import { moviesFetching, moviesFetched, moviesFetchingError } from "./redux/actions"
+import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError } from "./redux/actions"
 import { useSelector, useDispatch } from "react-redux"
 
 import Adminpanel from "./pages/adminpanel/Adminpanel"
@@ -24,9 +24,16 @@ function App() {
 
   useEffect(() => {   
     dispatch(moviesFetching())
+
     axios.get("https://movigo.onrender.com/api/movies/").then(res => {
       dispatch(moviesFetched(res.data.data))
     }).catch(() => dispatch(moviesFetchingError()))
+
+    dispatch(categoryFetching())
+
+    axios.get("https://movigo.onrender.com/api/category/").then(res => {
+      dispatch(categoryFetched(res.data.data))
+    }).catch(() => dispatch(categoryFetchingError()))
   }, [])  
 
     return (
@@ -37,7 +44,7 @@ function App() {
   
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/category" element={<Category/>} />
+          <Route path="/category/:name" element={<Category/>} />
           <Route path="/admin/adminpanelmovigo/add/:name" element={<Add/>} />
           <Route path="/admin/adminpanelmovigo/" element={<Adminpanel/>} />
           <Route path="/watch/:name" element={<Watch/>} />

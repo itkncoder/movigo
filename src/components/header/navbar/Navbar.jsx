@@ -2,7 +2,11 @@ import { useRef, useEffect } from "react"
 import {Link} from "react-router-dom"
 import {memo} from "react"
 
+import { useSelector } from "react-redux"
+
 const Navbar = () => {
+
+    const { category, categoryLoadingStatus } = useSelector(state => state)
 
     const nav = useRef(null)
     const icon = useRef(null)
@@ -14,11 +18,14 @@ const Navbar = () => {
                     nav.current.classList.toggle("hidden")
                     icon.current.classList.toggle("fa-xmark")
                 }} className="gap-10 flex flex-col items-center w-full md:justify-center md:flex-row md:items-center">
-                    <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="/">Asosiy</Link></li>
+                    {category.map((i) => 
+                        <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to={`/category/${i.name}`}>{i.name}</Link></li>
+                    )}
+                    {/* <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="/">Asosiy</Link></li>
                     <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="/category">Filmlar</Link></li>
                     <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="./">Multfilms</Link></li>
                     <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="./">Anime</Link></li>
-                    <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="./">Yangiliklar</Link></li>
+                    <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="./">Yangiliklar</Link></li> */}
                 </ul>
             </nav>
             <p onClick={(e) => {
