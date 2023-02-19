@@ -13,7 +13,7 @@ const Category = () => {
 
     const dropBlock = useRef(null)
 
-    const name = useParams()
+    const {name} = useParams()
 
     const { movies, moviesLoadingStatus } = useSelector(store => store)
 
@@ -29,11 +29,17 @@ const Category = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        console.log(movies.filter(i => i.category == name))
+        // console.log(movies.filter(i => i.category == name))
     }, [])
 
+    useEffect(() => {
+        if (name) {
+            setSelectedUI(name)
+        }
+    }, [name])
+
     const filterMovies = (i) => {
-        console.log(movies.filter(i => i.category == i.name))
+        // console.log(movies.filter(i => i.category == i.name))
     }
 
     return (

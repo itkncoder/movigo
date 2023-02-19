@@ -16,7 +16,7 @@ const MovieSwiper = ({name}) => {
     return (
         <section className="px-2">
             <div>
-                <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit hover:underline uppercase"><Link to="/category">{name}</Link></h1>
+                <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit hover:underline uppercase"><Link to={`/category/${name}`}>{name}</Link></h1>
                 <div className="relative flex items-center">
                     <div onClick={() => swiperRef.current?.slidePrev()} className="cursor-pointer hidden lg:flex absolute mb-14 w-[50px] h-[50px] rounded-full bg-[#ffc30dda] left-0 z-40 flex m-1 justify-center items-center">
                         <i className="p-3 text-2xl text-gray-200 hover:text-gray-300 fa-solid fa-angle-left"></i>
