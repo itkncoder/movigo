@@ -33,7 +33,6 @@ const Watch = () => {
 
     const addViews = () => {
         axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name === i.title)[0]?._id}`)
-        video.current.onClick = null
     }
 
     return (
@@ -81,7 +80,7 @@ const Watch = () => {
                     {tab ? 
                     <ReactPlayer
                         ref={video}
-                        onClick={addViews}
+                        onStart={addViews}
                         className="video"
                         url={watchingMovieItem?.video}
                         width="100%"
