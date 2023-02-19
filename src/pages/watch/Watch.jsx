@@ -1,7 +1,7 @@
 import AdsHome from "../../components/AdsHome"
 import ReactPlayer from 'react-player';
 import { Link, useParams } from "react-router-dom"
-import { useState, useEffect, lazy } from "react"
+import { useState, useEffect, useRef } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 
@@ -18,6 +18,8 @@ const Watch = () => {
 
     const [ tab, setTab ] = useState(true)
 
+    const video = useRef(null)
+
     const { name } = useParams()
 
     const { movies, moviesLoadingStatus } = useSelector(store => store)
@@ -28,8 +30,10 @@ const Watch = () => {
         setWatching(movies.filter((i) => name.toString() === i.title)[0])
     }, [ movies ])
 
-    function addViews() {
-        axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name.toString() === i.title)[0]?._id}`)
+
+    const addViews = () => {
+        axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name === i.title)[0]?._id}`)
+        video.current.onClick = null
     }
 
     return (
@@ -76,6 +80,7 @@ const Watch = () => {
                     </div>
                     {tab ? 
                     <ReactPlayer
+                        ref={video}
                         onClick={addViews}
                         className="video"
                         url={watchingMovieItem?.video}

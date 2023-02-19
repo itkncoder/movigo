@@ -20,7 +20,7 @@ const Navbar = () => {
                 }} className="gap-10 flex flex-col items-center w-full md:justify-center md:flex-row md:items-center">
                     <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to="/">Asosiy</Link></li>
                     {category.map((i) => 
-                        <li className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to={`/category/${i.name}`}>{i.name}</Link></li>
+                        <li key={i._id} className="hover:before:visible hover:before:left-0 before:invisible before:w-6 before:h-1 hover:before:bg-[#FFC30D] before:transition-all before:rounded-sm before:bg-gray-400 before:content-[''] before:absolute before:left-2.5 before:top-5 relative font-semibold text-sm hover:text-gray-300 text-center"><Link to={`/category/${i.name}`}>{i.name}</Link></li>
                     )}
                 </ul>
             </nav>
