@@ -12,6 +12,8 @@ const Category = () => {
         window.scroll(0, 0)
     }, [])
 
+    const [dropdown, setDropdown] = useState(false)
+
     const dropBlock = useRef(null)
 
     const { movies, moviesLoadingStatus } = useSelector(store => store)
@@ -45,15 +47,12 @@ const Category = () => {
             <div className="mt-14 mx-auto">
                 <div className="flex items-center justify-between gap-4">
                     <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit">FILMLAR</h1>
-                    <div onClick={() => {
-                        // dropBlock.current.classList.toggle("top-12")    
-                        dropBlock.current.classList.toggle("invisible")
-                    }}>
-                        <div className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-8 pr-5 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">Select <i className="fa-solid fa-angle-down"></i>
-                            <div ref={dropBlock} className="absolute z-20 top-12 flex flex-col invisible gap-1 left-0 bg-gray-700 px-2 py-3 rounded-lg">
+                    <div>
+                        <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-8 pr-5 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">Select <i className="fa-solid fa-angle-down"></i>
+                            {dropdown && <div ref={dropBlock} className="absolute z-20 top-12 flex flex-col gap-1 left-0 bg-gray-700 px-2 py-3 rounded-lg">
                                 <p className="drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Hello</p>
                                 <p className="drowdown-item min-w-20 py-1.5 px-8 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">World</p>
-                            </div>
+                            </div>}
                         </div>
                     </div>
                 </div>

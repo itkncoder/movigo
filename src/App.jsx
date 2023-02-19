@@ -20,13 +20,11 @@ import Adminpanel from "./pages/adminpanel/Adminpanel"
 
 function App() {
 
-  const {moviesAPI} = process.env
-
   const dispatch = useDispatch()
 
-  useEffect(() => {  
+  useEffect(() => {   
     dispatch(moviesFetching())
-    axios.get(moviesAPI).then(res => {
+    axios.get("https://movigo.onrender.com/api/movies/").then(res => {
       dispatch(moviesFetched(res.data.data))
     }).catch(() => dispatch(moviesFetchingError()))
   }, [])  
