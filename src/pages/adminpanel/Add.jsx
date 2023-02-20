@@ -11,8 +11,7 @@ const Add = () => {
 
     const { name } = useParams()
 
-    const [ tab, setTabs ] = useState(name)
-    const [ movieOrCategory, setMovieOrCategory ] = useState(false)
+    const [ movieOrCategory, setMovieOrCategory ] = useState(name === "films" ? false : true)
 
     const { category } = useSelector(state => state)
 
@@ -23,6 +22,23 @@ const Add = () => {
         }
 
         await axios.post("https://movigo.onrender.com/api/category/", obj).then(() => navigate(0))
+    };
+    
+    const onSubmitMovie = async (data) => {
+        const obj = {
+            poster: data.poster,
+            title: data.title,
+            genres: data.genres,
+            description: data.description,
+            duration: data.duration,
+            trailer: data.trailer,
+            year: data.year,
+            video: data.video
+        }
+
+        console.log(obj);
+
+        await axios.post("https://movigo.onrender.com/api/films/", obj).then(() => navigate(0))
     };
 
     return (
@@ -36,42 +52,34 @@ const Add = () => {
 
                     <p onClick={() => setMovieOrCategory(true)} className={ `${ movieOrCategory ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-bars-progress"></i> CATEGORY</p>
                     <p onClick={() => setMovieOrCategory(false)} className={ `${ !movieOrCategory ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-film"></i> MOVIES</p>
-                    
-                    <div className="flex flex-col w-full items-start">
-                    {category.map((i) => 
-                        <button key={i._id} onClick={e => {
-                            if (movieOrCategory) {
-                                setMovieOrCategory(false)
-                                setTabs(e.target.innerText)
-                            }
-                            setTabs(e.target.innerText)
-                        }} className={ `bg-gray-600 mt-2 flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-add"></i> {i.name}</button>
-                    )}
-                    </div>
                 </div>
             </aside>
 
             <div className="w-10/12">
                 <div className="max-w-screen-xl mx-auto mt-8 px-10">
-                    <h1 className="text-4xl font-semibold uppercase">YANGI {movieOrCategory ? "" : tab} {movieOrCategory ? "CATEGORY" : "FILMS"}{!movieOrCategory ? "GA" : ""}</h1>
+                    <h1 className="text-4xl font-semibold uppercase">{movieOrCategory ? "Category" : "Movie"}</h1>
                 </div>
                 <div className="flex flex-col items-center py-5 max-w-screen-xl mx-auto gap-2">
-                    {!movieOrCategory ? <form className="flex justify-center mt-10 items-start bg-gray-800 px-8 py-6 rounded-xl w-fit items-start gap-8">
+                    {!movieOrCategory ? <form onSubmit={handleSubmit(onSubmitMovie)} className="flex justify-center mt-10 items-start bg-gray-800 px-8 py-6 rounded-xl w-fit items-start gap-8">
 
                         <div className="grid grid-row-4 w-3/12 gap-6 py-14 rounded-2xl px-5">
                             <div className="w-full">
                                 <h1 className="text-xl">Image</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Image URL..." name="" id="" />
+                                <input {...register("poster")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Image URL..." name="poster" id="" />
                             </div>
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Title</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="" id="" />
+                                <input {...register("title")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="title" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Genres</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Genres..." name="" id="" />
+                                <select {...register("genres")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="genres" id="">
+                                    {category.map((i) => 
+                                        <option value={i.name}>{i.name}</option>
+                                    )}
+                                </select>
                             </div>
                         </div>
 
@@ -80,17 +88,17 @@ const Add = () => {
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Description</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Description..." name="" id="" />
+                                <input {...register("description")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Description..." name="description" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Duration</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Duration..." name="" id="" />
+                                <input {...register("duration")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Duration..." name="duration" id="" />
                             </div>
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Trailer</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Trailer URL..." name="" id="" />
+                                <input {...register("trailer")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Trailer URL..." name="trailer" id="" />
                             </div>
                         </div>
 
@@ -99,12 +107,12 @@ const Add = () => {
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Year</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Year..." name="" id="" />
+                                <input {...register("year")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Year..." name="year" id="" />
                             </div>
                             
                             <div>
                                 <h1 className="text-xl">Video</h1>
-                                <input required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" placeholder="Video URL" type="text" name="" id="" />
+                                <input {...register("video")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" placeholder="Video URL" type="text" name="video" id="" />
                             </div>
 
                                             
