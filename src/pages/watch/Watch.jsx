@@ -18,6 +18,8 @@ const Watch = () => {
 
     const [ tab, setTab ] = useState(true)
 
+    const likesBtn = useRef(null)
+
     const video = useRef(null)
 
     const { name } = useParams()
@@ -28,11 +30,16 @@ const Watch = () => {
     useEffect(() => {
         window.scroll(0, 0)
         setWatching(movies.filter((i) => name.toString() === i.title)[0])
+        likesBtn.current.addEventListener("click", like)
     }, [ movies ])
 
+    const like = () => {
+        axios.post(`https://movigo.onrender.com/api/films/${movies.filter((i) => name === i.title)[0]?._id}/like`, true)
+        likesBtn.current.removeEventListener('click', like)
+    }
 
     const addViews = () => {
-        axios.get(`https://movigo.onrender.com/api/movies/${movies.filter((i) => name === i.title)[0]?._id}`)
+        axios.get(`https://movigo.onrender.com/api/films/${movies.filter((i) => name === i.title)[0]?._id}`)
     }
 
     return (
@@ -103,7 +110,7 @@ const Watch = () => {
                             <p className="text-gray-200">{watchingMovieItem?.viewCount}</p>
                         </div>
                         <div className="flex items-center justify-start gap-2">
-                            <i className="bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl fa-solid fa-thumbs-up cursor-pointer hover:text-gray-200 text-gray-100 active:text-yellow-500 tooltip relative hover:ring-2 ring-gray-700">
+                            <i ref={likesBtn} className="bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl fa-solid fa-thumbs-up cursor-pointer hover:text-gray-200 text-gray-100 active:text-yellow-500 tooltip relative hover:ring-2 ring-gray-700">
                                 <p className="text-gray-200 absolute text-sm opacity-0 transition-all duration-300 mb-0 border-gray-700 border">{watchingMovieItem?.likes}</p>
                             </i>
                         </div>

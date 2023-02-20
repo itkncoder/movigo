@@ -7,14 +7,13 @@ import { useForm } from "react-hook-form";
 const Add = () => {
     const { register, handleSubmit } = useForm();
 
-    const navigate = useNavigate();
-
     const { name } = useParams()
+
+    const navigate = useNavigate();
 
     const [ movieOrCategory, setMovieOrCategory ] = useState(name === "films" ? false : true)
 
     const { category } = useSelector(state => state)
-
 
     const onSubmitCategory = async (data) => {
         const obj = {
@@ -33,10 +32,12 @@ const Add = () => {
             duration: data.duration,
             trailer: data.trailer,
             year: data.year,
-            video: data.video
+            video: data.video,
+            category: data.category,
+            country: data.country,
+            language: data.language.toUpperCase(),
+            age: data.age
         }
-
-        console.log(obj);
 
         await axios.post("https://movigo.onrender.com/api/films/", obj).then(() => navigate(0))
     };
@@ -50,19 +51,19 @@ const Add = () => {
 
                     <Link className="my-6 rounded-lg bg-yellow-500 px-8 hover:bg-yellow-600 py-2" to="/admin/adminpanelmovigo">Ortga</Link>
 
-                    <p onClick={() => setMovieOrCategory(true)} className={ `${ movieOrCategory ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-bars-progress"></i> CATEGORY</p>
-                    <p onClick={() => setMovieOrCategory(false)} className={ `${ !movieOrCategory ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-film"></i> MOVIES</p>
+                    <Link to="/admin/adminpanelmovigo/add/category" onClick={() => setMovieOrCategory(true)} className={ `${ movieOrCategory ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-bars-progress"></i> CATEGORY</Link>
+                    <Link to="/admin/adminpanelmovigo/add/films" onClick={() => setMovieOrCategory(false)} className={ `${ !movieOrCategory ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-film"></i> MOVIES</Link>
                 </div>
             </aside>
 
             <div className="w-10/12">
-                <div className="max-w-screen-xl mx-auto mt-8 px-10">
+                <div className="max-w-screen-xl mx-auto mt-6 px-10">
                     <h1 className="text-4xl font-semibold uppercase">{movieOrCategory ? "Category" : "Movie"}</h1>
                 </div>
-                <div className="flex flex-col items-center py-5 max-w-screen-xl mx-auto gap-2">
-                    {!movieOrCategory ? <form onSubmit={handleSubmit(onSubmitMovie)} className="flex justify-center mt-10 items-start bg-gray-800 px-8 py-6 rounded-xl w-fit items-start gap-8">
+                <div className="flex flex-col items-center max-w-screen-xl mx-auto gap-2">
+                    {!movieOrCategory ? <form onSubmit={handleSubmit(onSubmitMovie)} className="flex justify-center mt-4 items-start bg-gray-800 px-4 pb-5 pt-12 rounded-xl w-fit items-start gap-6">
 
-                        <div className="grid grid-row-4 w-3/12 gap-6 py-14 rounded-2xl px-5">
+                        <div className="grid grid-row-4 w-3/12 gap-6 py-5 rounded-2xl px-5">
                             <div className="w-full">
                                 <h1 className="text-xl">Image</h1>
                                 <input {...register("poster")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Image URL..." name="poster" id="" />
@@ -74,17 +75,23 @@ const Add = () => {
                             </div>
 
                             <div className="w-full">
-                                <h1 className="text-xl">Genres</h1>
-                                <select {...register("genres")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="genres" id="">
+                                <h1 className="text-xl">Category</h1>
+                                <select {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="">
                                     {category.map((i) => 
-                                        <option value={i.name}>{i.name}</option>
+                                        <option key={i._id} value={i._id}>{i.name}</option>
                                     )}
                                 </select>
                             </div>
+
+                            <div className="w-full">
+                                <h1 className="text-xl">Genres</h1>
+                                <input {...register("genres")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="genres" id="" />
+                            </div>
+
                         </div>
 
 
-                        <div className="grid grid-row-4 w-3/12 gap-6 py-14 rounded-2xl px-5">
+                        <div className="grid grid-row-4 w-3/12 gap-6 py-5 rounded-2xl px-5">
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Description</h1>
@@ -100,10 +107,16 @@ const Add = () => {
                                 <h1 className="text-xl">Trailer</h1>
                                 <input {...register("trailer")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Trailer URL..." name="trailer" id="" />
                             </div>
+
+                            <div className="w-full">
+                                <h1 className="text-xl">Country</h1>
+                                <input {...register("country")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="country" id="" />
+                            </div>
+
                         </div>
 
 
-                        <div className="grid grid-row-4 w-3/12 gap-6 py-14 rounded-2xl px-5">
+                        <div className="grid grid-row-4 w-3/12 gap-6 py-5 rounded-2xl px-5">
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Year</h1>
@@ -115,10 +128,20 @@ const Add = () => {
                                 <input {...register("video")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" placeholder="Video URL" type="text" name="video" id="" />
                             </div>
 
-                                            
+                            <div className="w-full">
+                                <h1 className="text-xl">Language</h1>
+                                <input {...register("language")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="language" id="" />
+                            </div>
+
+                            <div className="w-full">
+                                <h1 className="text-xl">Age</h1>
+                                <input {...register("age")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="age" id="" />
+                            </div>
+
                             <div className="flex justify-end items-center mt-5">
                                 <input className="bg-yellow-500 hover:bg-yellow-600 mr-2 px-10 cursor-pointer py-2.5 rounded-lg" type="submit" value="Submit" />
                             </div>
+
                         </div>
 
                     </form>
