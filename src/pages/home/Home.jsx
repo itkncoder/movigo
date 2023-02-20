@@ -36,7 +36,6 @@ const Home = () => {
                     <HomeCatalogs/>
                 </main>
             </div>
-            <div className="mt-200 md:mt-10"></div>
         </div>
     );
 }

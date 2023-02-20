@@ -7,3 +7,5 @@ export const moviesFetchingError = createAction("MOVIES_FETCHING_ERROR")
 export const categoryFetching = createAction("CATEGORY_FETCHING")
 export const categoryFetched = createAction("CATEGORY_FETCHED")
 export const categoryFetchingError = createAction("CATEGORY_FETCHING_ERROR")
+
+export const filtered = createAction("FILTERED")

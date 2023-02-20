@@ -1,15 +1,22 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError } from "./actions"
+import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError, filtered } from "./actions"
 
 const initialState = {
     movies: [
         
     ],
     moviesLoadingStatus: "none",
+
+
     category: [
         
     ],
-    categoryLoadingStatus: "none"
+    categoryLoadingStatus: "none",
+
+
+    filteredMovies: [
+
+    ]
 }
 
 const reducer = createReducer(initialState, builder => {
@@ -27,6 +34,9 @@ const reducer = createReducer(initialState, builder => {
             state.categoryLoadingStatus = "none"
         })
         .addCase(categoryFetchingError, (state, action) => {state.categoryLoadingStatus = "error"})
+        .addCase(filtered, (state, action) => {
+            state.filteredMovies = action.payload
+        })
 
         .addDefaultCase(() => {})
 })

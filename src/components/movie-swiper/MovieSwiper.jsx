@@ -1,4 +1,4 @@
-import { memo, useRef, useMemo, useEffect } from "react"
+import { memo, useRef, useMemo, useEffect, useState } from "react"
 import CatalogCard from "../catalog-card/CatalogCard"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';

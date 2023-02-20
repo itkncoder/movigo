@@ -1,13 +1,15 @@
 import { useMemo, useEffect, useState, useRef } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import Spinner from "../../components/Spinner"
-
+import { filtered } from "../../redux/actions"
 import {Helmet} from "react-helmet"
 
 const Category = () => {
+
+    const dispatch = useDispatch()
 
     const [dropdown, setDropdown] = useState(false)
 
@@ -29,7 +31,7 @@ const Category = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        // console.log(movies.filter(i => i.category == name))
+        // movies.filter(i => console.log(i.category?.name, name))
     }, [])
 
     useEffect(() => {
@@ -39,13 +41,19 @@ const Category = () => {
     }, [name])
 
     const filterMovies = (i) => {
-        // console.log(movies.filter(i => i.category == i.name))
+        movies.filter(i => {
+            if (i.category?.name === i.name) {
+                console.log(true);
+            } else {
+                console.log(false);
+            }
+        })
     }
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
             <Helmet>
-                <title>{`Movigo - ${movies[0]?.title}`}</title>
+                <title>{`Movigo - Category`}</title>
                 <meta name="title" content="Movigo - Category"/>
                 <meta name="description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar"/>
                 <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
@@ -82,7 +90,7 @@ const Category = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative w-full flex items-center flex-wrap gap-4 justify-center lg:justify-evenly">
+                <div className="relative w-full flex items-center flex-wrap gap-4 justify-center sm:justify-evenly lg:justify-evenly">
                     {movies.map((item) => 
                         <CatalogCard key={item._id} props={item}/>
                     )}

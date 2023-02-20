@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import {Routes, Route, Link} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 
 import Home from "./pages/home/Home"
 import Category from "./pages/category/Category"
@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {   
     dispatch(moviesFetching())
 
-    axios.get("https://movigo.onrender.com/api/movies/").then(res => {
+    axios.get("https://movigo.onrender.com/api/films/").then(res => {
       dispatch(moviesFetched(res.data.data))
     }).catch(() => dispatch(moviesFetchingError()))
 
