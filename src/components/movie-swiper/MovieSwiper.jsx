@@ -1,4 +1,4 @@
-import { memo, useRef } from "react"
+import { memo, useRef, useEffect } from "react"
 import CatalogCard from "../catalog-card/CatalogCard"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -7,9 +7,15 @@ import {Link} from "react-router-dom"
 import { useSelector } from "react-redux"
 import Spinner from "../Spinner"
 
-const MovieSwiper = ({name}) => {
+const MovieSwiper = ({name, movies}) => {
 
-    const {movies, moviesLoadingStatus} = useSelector(store => store) || dispatch()
+    useEffect(() => {
+        if (movies.length > 8) {
+            movies.length = 8
+        }
+    }, [])
+
+    const { moviesLoadingStatus} = useSelector(store => store) || dispatch()
 
     const swiperRef = useRef(null)
 

@@ -52,7 +52,7 @@ const Add = () => {
             trailer: inputs.trailer,
             year: inputs.year,
             video: inputs.video,
-            category: inputs.category,
+            category: data.category,
             country: inputs.country,
             language: inputs.language.toUpperCase(),
             age: inputs.age
