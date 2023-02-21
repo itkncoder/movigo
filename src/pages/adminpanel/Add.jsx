@@ -44,24 +44,24 @@ const Add = () => {
     
     const onSubmitMovie = async (data) => {
         const obj = {
-            poster: data.poster,
-            title: data.title,
-            genres: data.genres,
-            description: data.description,
-            duration: data.duration,
-            trailer: data.trailer,
-            year: data.year,
-            video: data.video,
-            category: data.category,
-            country: data.country,
-            language: data.language.toUpperCase(),
-            age: data.age
+            poster: inputs.poster,
+            title: inputs.title,
+            genres: inputs.genres,
+            description: inputs.description,
+            duration: inputs.duration,
+            trailer: inputs.trailer,
+            year: inputs.year,
+            video: inputs.video,
+            category: inputs.category,
+            country: inputs.country,
+            language: inputs.language.toUpperCase(),
+            age: inputs.age
         }
 
         if (postOrPut) {
             await axios.post("https://movigo.onrender.com/api/films/", obj).then(() => navigate(0))
         } else {
-            await axios.put(`https://movigo.onrender.com/api/films/${params.get('id')}/edit`, obj).then(() => navigate(0))
+            await axios.put(`https://movigo.onrender.com/api/films/${params.get('id')}/edit`, obj).then(() => window.location.href =("/admin/adminpanelmovigo/"))
         }
         
     };
