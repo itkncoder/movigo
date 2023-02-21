@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import {Routes, Route} from "react-router-dom"
 
 import Home from "./pages/home/Home"
@@ -14,7 +14,7 @@ import Header from "./components/header/Header"
 import axios from "axios"
 
 import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError } from "./redux/actions"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 
 import Adminpanel from "./pages/adminpanel/Adminpanel"
 

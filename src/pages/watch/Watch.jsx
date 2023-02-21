@@ -1,9 +1,9 @@
 import AdsHome from "../../components/AdsHome"
 import ReactPlayer from 'react-player';
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 import axios from "axios"
 
@@ -13,8 +13,6 @@ import {Helmet} from "react-helmet";
 import WatchInfo from "./WatchInfo";
 
 const Watch = () => {
-
-    const dispatch = useDispatch()
 
     const [ tab, setTab ] = useState(true)
 

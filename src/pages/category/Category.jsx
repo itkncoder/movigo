@@ -1,16 +1,13 @@
-import { useMemo, useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import Spinner from "../../components/Spinner"
-import { filtered } from "../../redux/actions"
 import {Helmet} from "react-helmet"
 
 const Category = () => {
-
-    const dispatch = useDispatch()
-    const { movies, moviesLoadingStatus, category, categoryLoadingStatus } = useSelector(store => store)
+    const { movies, moviesLoadingStatus, category } = useSelector(store => store)
 
     const [dropdown, setDropdown] = useState(false)
     const dropBlock = useRef(null)

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"
+import { useRef } from "react"
 import {Link} from "react-router-dom"
 import {memo} from "react"
 
@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 
 const Navbar = () => {
 
-    const { category, categoryLoadingStatus } = useSelector(state => state)
+    const { category } = useSelector(state => state)
 
     const nav = useRef(null)
     const icon = useRef(null)
