@@ -22,7 +22,10 @@ const MovieSwiper = ({name, movies}) => {
     return (
         <section className="px-2">
             <div>
-                <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit hover:underline uppercase"><Link to={`/category/${name}`}>{name}</Link></h1>
+                <div className="flex items-center justify-between">
+                    <h1 className="text-3xl font-semibold mt-5 mb-10 w-fit hover:underline uppercase"><Link to={`/category/${name}`}>{name}</Link></h1>
+                    <Link className="bg-gray-800 px-6 py-2 flex items-center justify-center gap-2 ring-2 ring-gray-700 text-sm rounded-lg hover:bg-gray-700 uppercase" to={`/category/${name}`}>Barchasi <i className="text-gray-200 hover:text-gray-300 fa-solid fa-angle-right"></i></Link>
+                </div>
                 <div className="relative flex items-center">
                     <div onClick={() => swiperRef.current?.slidePrev()} className="cursor-pointer hidden lg:flex absolute mb-14 w-[50px] h-[50px] rounded-full bg-[#ffc30dda] left-0 z-40 flex m-1 justify-center items-center">
                         <i className="p-3 text-2xl text-gray-200 hover:text-gray-300 fa-solid fa-angle-left"></i>
@@ -92,6 +95,7 @@ const MovieSwiper = ({name, movies}) => {
                         onBeforeInit={(swiper) => {
                             swiperRef.current = swiper;
                         }}
+                        slidesPerGroup={8}
                         >
                         <div className="flex relative items-center justify-center">
                             {movies.map((item) => 

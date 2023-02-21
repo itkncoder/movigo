@@ -7,6 +7,7 @@ import Watch from "./pages/watch/Watch"
 import Add from "./pages/adminpanel/Add"
 import Error from "./pages/404/error404"
 import Donate from "./pages/donate/Donate"
+import Filter from "./pages/filter/Filter"
 
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
@@ -49,6 +50,7 @@ function App() {
           <Route path="/admin/adminpanelmovigo/" element={<Adminpanel/>} />
           <Route path="/watch/:name" element={<Watch/>} />
           <Route path="/donate" element={<Donate/>} />
+          <Route path="/filter/:type" element={<Filter/>} />
           <Route path="*" element={<Error/>} />
         </Routes>
   

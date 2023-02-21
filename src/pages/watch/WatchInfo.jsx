@@ -12,15 +12,15 @@ const WatchInfo = ({watchingMovieItem}) => {
                     <tbody className="flex justify-start flex-col mt-8 gap-2">
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Yil:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">{watchingMovieItem?.year}</Link></td>
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><p>{watchingMovieItem?.year}</p></td>
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Davlat:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">{watchingMovieItem?.country}</Link></td>
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to={`/filter/country?id=${watchingMovieItem?.country}`}>{watchingMovieItem?.country}</Link></td>
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Janr:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to="./">{watchingMovieItem?.genres}</Link></td>
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><Link to={`/filter/genre?id=${watchingMovieItem?.genres}`}>{watchingMovieItem?.genres}</Link></td>
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Vaqt:</td>

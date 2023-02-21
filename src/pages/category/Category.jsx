@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import Spinner from "../../components/Spinner"
 import {Helmet} from "react-helmet"
+import axios from "axios"
 
 const Category = () => {
     const { movies, moviesLoadingStatus, category } = useSelector(store => store)
@@ -54,7 +55,7 @@ const Category = () => {
             </div>
             <div className="mt-14">
                 <div className="flex items-center justify-between gap-4 my-6">
-                    <h1 className="text-3xl font-semibold w-fit">FILMLAR</h1>
+                    <h1 className="text-3xl font-semibold w-fit uppercase">{selectedUI}</h1>
                     <div>
                         <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-6 pr-5 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">{selectedUI} <i className="fa-solid fa-angle-down"></i>
                             {dropdown && <div ref={dropBlock} className="absolute z-20 top-12 flex flex-col gap-1 right-0 bg-gray-700 px-2 py-3 rounded-lg">
