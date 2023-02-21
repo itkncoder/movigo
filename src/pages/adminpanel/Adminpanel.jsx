@@ -52,6 +52,7 @@ const Adminpanel = () => {
                         <tr className="flex justify-between items-center w-full gap-3 bg-gray-700 px-6 py-2">
                             <th className="w-4/12 text-start">Name</th>
                             {!tab ? <th className="w-4/12 text-start">Genres</th> : ""}
+                            {!tab ? <th className="w-4/12 text-start">Category</th> : ""}
                             <th className="w-4/12 text-end">Tools</th>
                         </tr>
                     </thead>
@@ -61,10 +62,11 @@ const Adminpanel = () => {
                                 <tr key={i._id} className="flex justify-between items-center border border-gray-600 w-full gap-3 bg-gray-800 px-6 py-2 hover:bg-gray-700">
                                     <td className="text-sm w-4/12 truncate">{i.title}</td>
                                     <td className="text-sm w-4/12 truncate">{i.genres}</td>
+                                    <td className="text-sm w-4/12 truncate">{i.category?.name}</td>
                                     <div className="flex items-center w-4/12 justify-end gap-4 w-4/12">
-                                        <div className="cursor-pointer flex items-center justify-center gap-1 bg-yellow-500 px-2 py-0.5 text-sm rounded-md">EDIT
+                                        <Link to={`./add/films?id=${i._id}`} className="cursor-pointer flex items-center justify-center gap-1 bg-yellow-500 px-2 py-0.5 text-sm rounded-md">EDIT
                                             <i className="bg-yellow-600 w-8 flex items-center justify-center rounded-md h-8 cursor-pointer hover:scale-105 fa-solid fa-edit"></i>
-                                        </div>
+                                        </Link>
                                         <i onClick={() => deleteing("films", i._id)} className="bg-rose-500 w-8 flex items-center justify-center rounded-md h-8 cursor-pointer hover:scale-105 fa-solid fa-remove"></i>
                                     </div>
                                 </tr>

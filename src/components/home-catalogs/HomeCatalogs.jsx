@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 
 const HomeCatalogs = () => {
 
-    const {category} = useSelector(store => store)
+    const {category, movies, moviesLoadingStatus} = useSelector(store => store)
 
     return (  
         <div className="max-w-[1170px] mx-auto mt-24">

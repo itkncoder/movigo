@@ -10,18 +10,13 @@ import {Helmet} from "react-helmet"
 const Category = () => {
 
     const dispatch = useDispatch()
+    const { movies, moviesLoadingStatus, category, categoryLoadingStatus } = useSelector(store => store)
 
     const [dropdown, setDropdown] = useState(false)
-
     const dropBlock = useRef(null)
 
     const {name} = useParams()
-
-    const { movies, moviesLoadingStatus } = useSelector(store => store)
-
-    const { category, categoryLoadingStatus } = useSelector(store => store)
-
-    const [selectedUI, setSelectedUI]= useState('Hammasi')
+    const [selectedUI, setSelectedUI] = useState('Hammasi')
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -31,23 +26,13 @@ const Category = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        // movies.filter(i => console.log(i.category?.name, name))
-    }, [])
-
-    useEffect(() => {
         if (name) {
             setSelectedUI(name)
         }
     }, [name])
 
     const filterMovies = (i) => {
-        movies.filter(i => {
-            if (i.category?.name === i.name) {
-                console.log(true);
-            } else {
-                console.log(false);
-            }
-        })
+        setSelectedUI(i.name)
     }
 
     return (
@@ -70,7 +55,7 @@ const Category = () => {
             {moviesLoadingStatus !== "loading" ? <><div className="mt-32 mx-auto">
                 <AdsHome />
             </div>
-            <div className="mt-14 mx-auto">
+            <div className="mt-14">
                 <div className="flex items-center justify-between gap-4 my-6">
                     <h1 className="text-3xl font-semibold w-fit">FILMLAR</h1>
                     <div>
@@ -90,10 +75,14 @@ const Category = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative w-full flex items-center flex-wrap gap-4 justify-center sm:justify-evenly lg:justify-evenly">
-                    {movies.map((item) => 
-                        <CatalogCard key={item._id} props={item}/>
-                    )}
+                <div className="flex flex-col items-center w-full">
+                    <div className="relative w-full flex items-center flex-wrap justify-center">
+                        {movies.map((item) => 
+                            <div className="flex justify-center" key={item._id}>
+                                {selectedUI === "Hammasi" ? <CatalogCard category={true} props={item}/> : item.category?.name === selectedUI && <CatalogCard category={true} props={item}/>}
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div className="flex justify-center items-center gap-1.5">
                     <p className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</p>

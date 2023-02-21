@@ -1,11 +1,13 @@
 import axios from "axios"
 import { useParams, Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useForm } from "react-hook-form";
 
 const Add = () => {
     const { register, handleSubmit } = useForm();
+
+    const params = new URLSearchParams(document.location.search)
 
     const { name } = useParams()
 
@@ -13,7 +15,9 @@ const Add = () => {
 
     const [ movieOrCategory, setMovieOrCategory ] = useState(name === "films" ? false : true)
 
-    const { category } = useSelector(state => state)
+    const { category, movies } = useSelector(state => state)
+
+    const [postOrPut, setPostOrPut] = useState(true)
 
     const onSubmitCategory = async (data) => {
         const obj = {
@@ -39,8 +43,19 @@ const Add = () => {
             age: data.age
         }
 
-        await axios.post("https://movigo.onrender.com/api/films/", obj).then(() => navigate(0))
+        if (postOrPut) {
+            await axios.post("https://movigo.onrender.com/api/films/", obj).then(() => navigate(0))
+        } else {
+            await axios.put(`https://movigo.onrender.com/api/films/${params.get('id')}/edit`, obj).then(() => navigate(0))
+        }
+        
     };
+
+    useEffect(() => {
+        if (params.get("id")) {
+            setPostOrPut(false)
+        }
+    }, [])
 
     return (
         
@@ -57,8 +72,9 @@ const Add = () => {
             </aside>
 
             <div className="w-10/12">
-                <div className="max-w-screen-xl mx-auto mt-6 px-10">
+                <div className="max-w-screen-xl mx-auto mt-6 px-10 flex items-center justify-start">
                     <h1 className="text-4xl font-semibold uppercase">{movieOrCategory ? "Category" : "Movie"}</h1>
+                    <p className="ml-4 text-lg font-semibold">-{postOrPut ? "POST" : "PUT"}-</p>
                 </div>
                 <div className="flex flex-col items-center max-w-screen-xl mx-auto gap-2">
                     {!movieOrCategory ? <form onSubmit={handleSubmit(onSubmitMovie)} className="flex justify-center mt-4 items-start bg-gray-800 px-4 pb-5 pt-12 rounded-xl w-fit items-start gap-6">
