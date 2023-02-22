@@ -45,12 +45,14 @@ const Category = () => {
             setSelectedUI(name)
             const filtered = movies.filter(i => i.category?.name == name)
             setFilteredMovies(filtered)
+
+            if (name === "Hammasi") {
+                setSelectedUI("Hammasi")
+                const all = movies.map(i => i)
+                setFilteredMovies(all)
+            }
         }
-        if (name === "Hammasi") {
-            setSelectedUI("Hammasi")
-            setFilteredMovies(movies)
-        }
-    }, [name])
+    }, [name, movies])
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
