@@ -95,7 +95,6 @@ const MovieSwiper = ({name, movies}) => {
                         onBeforeInit={(swiper) => {
                             swiperRef.current = swiper;
                         }}
-                        slidesPerGroup={8}
                         >
                         <div className="flex relative items-center justify-center">
                             {movies.map((item) => 

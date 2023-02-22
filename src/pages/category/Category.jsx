@@ -24,15 +24,6 @@ const Category = () => {
         }
     })
 
-    useEffect(() => {
-        window.scroll(0, 0)
-        if (name) {
-            setSelectedUI(name)
-            const filtered = movies.filter(i => i.category?.name == name)
-            setFilteredMovies(filtered)
-        }
-    }, [name])
-
     function filterMovies(type) {
         if (type === "likes") {
             const filtered = filteredMovies.sort((a,b) => b.likes - a.likes)
@@ -47,6 +38,19 @@ const Category = () => {
             setFilteredMovies(reversed)
         }
     }
+
+    useEffect(() => {
+        window.scroll(0, 0)
+        if (name) {
+            setSelectedUI(name)
+            const filtered = movies.filter(i => i.category?.name == name)
+            setFilteredMovies(filtered)
+        }
+        if (name === "Hammasi") {
+            setSelectedUI("Hammasi")
+            setFilteredMovies(movies)
+        }
+    }, [name])
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">

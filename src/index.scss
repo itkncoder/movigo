@@ -25,7 +25,7 @@
   max-width: 1170px;
 }
 .bebas {
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", Calibri, "Poppins";
   letter-spacing: 3px;
 }
 .tooltip:hover p {
@@ -92,7 +92,7 @@ body {
 
 .home-top-type {
   font-size: 48px;
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", Calibri, "Poppins";
   display: flex;
   align-items: center;
   gap: 8px;
@@ -103,11 +103,11 @@ body {
 }
 .home-top-name {
   font-size: 64px;
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", Calibri, "Poppins";
 }
 .home-top-version {
   font-size: 36px;
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", Calibri, "Poppins";
   display: flex;
   align-items: center;
   gap: 5px;
@@ -119,7 +119,6 @@ body {
 }
 .home-top-desc {
   font-size: 16px;
-  font-family: "Poppins";
   max-width: 550px;
 }
 .home-top-other {
