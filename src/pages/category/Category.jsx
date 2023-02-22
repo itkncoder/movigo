@@ -16,6 +16,7 @@ const Category = () => {
     const {name} = useParams()
     const [selectedUI, setSelectedUI] = useState('Hammasi')
     const [selectedUIFilter, setSelectedUIFilter] = useState('Sana')
+    const [filteredMovies, setFilteredMovies] = useState([])
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -27,8 +28,25 @@ const Category = () => {
         window.scroll(0, 0)
         if (name) {
             setSelectedUI(name)
+            const filtered = movies.filter(i => i.category?.name == name)
+            setFilteredMovies(filtered)
         }
     }, [name])
+
+    function filterMovies(type) {
+        if (type === "likes") {
+            const filtered = filteredMovies.sort((a,b) => b.likes - a.likes)
+            setFilteredMovies(filtered)
+        } 
+        else if(type === "viewCount") {
+            const filtered = filteredMovies.sort((a,b) => b.viewCount - a.viewCount)
+            setFilteredMovies(filtered)
+        } 
+        else if(type === "sana") {
+            const reversed = filteredMovies.reverse()
+            setFilteredMovies(reversed)
+        }
+    }
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
@@ -74,9 +92,9 @@ const Category = () => {
                 </div>
                 <div className="flex flex-col items-center w-full">
                     <div className="relative w-full flex items-center flex-wrap justify-center">
-                        {movies.map((item) => 
+                        {filteredMovies.map((item) => 
                             <div className="flex justify-center" key={item._id}>
-                                {selectedUI === "Hammasi" ? <CatalogCard category={true} props={item}/> : item.category?.name === selectedUI && <CatalogCard category={true} props={item}/>}
+                                <CatalogCard category={true} props={item}/>
                             </div>
                         )}
                     </div>
