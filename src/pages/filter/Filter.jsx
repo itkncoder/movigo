@@ -37,11 +37,11 @@ const Filter = () => {
 
     function filterMovies(type) {
         if (type === "likes") {
-            const filtered = filteredMovies.filter(i => i)
+            const filtered = filteredMovies.sort((a,b) => b.likes - a.likes)
             setFilteredMovies(filtered)
         } 
         else if(type === "viewCount") {
-            const filtered = filteredMovies.filter(i => i)
+            const filtered = filteredMovies.sort((a,b) => b.viewCount - a.viewCount)
             setFilteredMovies(filtered)
         } 
         else if(type === "sana") {
