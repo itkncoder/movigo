@@ -77,15 +77,15 @@ const Category = () => {
                                 <p onClick={() => {
                                     filterMovies("viewCount")
                                     setSelectedUIFilter("Ko'rishlar")
-                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Ko'rishlar</p>
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i className="fa-solid fa-eye"></i> Ko'rishlar</p>
                                 <p onClick={() => {
                                     filterMovies("likes")
                                     setSelectedUIFilter("Reyting")
-                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Reyting</p>
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i class="fa-solid fa-thumbs-up"></i> Reyting</p>
                                 <p onClick={() => {
                                     filterMovies("sana")
                                     setSelectedUIFilter("Sana")
-                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Sana</p>
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i class="fa-solid fa-clock"></i>  Sana</p>
                             </div>}
                         </div>
                     </div>

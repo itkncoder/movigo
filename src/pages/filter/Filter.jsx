@@ -13,6 +13,8 @@ const Filter = () => {
     const [filteredMovies, setFilteredMovies] = useState([])
     const params = new URLSearchParams(document.location.search)
 
+    const [loader, setLoader] = useState(true)
+
     const {type} = useParams()
 
     window.addEventListener("click", (e) => {
@@ -31,6 +33,7 @@ const Filter = () => {
         if (params.get("id")) {
             axios.get(`https://movigo.onrender.com/api/films/${type}/${params.get('id')}`).then(res => {
                 setFilteredMovies(res.data.data)
+                setLoader(false)
             })
         }
     }, [])
@@ -52,7 +55,7 @@ const Filter = () => {
         
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
-            {moviesLoadingStatus !== "loading" ? <><div className="mt-32 mx-auto">
+            {!loader ? <><div className="mt-32 mx-auto">
                 <AdsHome />
             </div>
             <div className="mt-14">
