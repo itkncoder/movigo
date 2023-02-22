@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useForm } from "react-hook-form";
+import {API_BASE} from "../../utils/config"
 
 const Add = () => {
     const { register, handleSubmit } = useForm();
@@ -39,7 +40,7 @@ const Add = () => {
             name: data.name
         }
 
-        await axios.post("https://movigo.onrender.com/api/category/", obj).then(() => navigate(0))
+        await axios.post(`${API_BASE}}/api/category/`, obj).then(() => navigate(0))
     };
     
     const onSubmitMovie = async (data) => {
@@ -59,9 +60,9 @@ const Add = () => {
         }
 
         if (postOrPut) {
-            await axios.post("https://movigo.onrender.com/api/films/", obj).then(() => navigate(0))
+            await axios.post(`${API_BASE}/api/films/`, obj).then(() => navigate(0))
         } else {
-            await axios.put(`https://movigo.onrender.com/api/films/${params.get('id')}/edit`, obj).then(() => window.location.href =("/admin/adminpanelmovigo/"))
+            await axios.put(`${API_BASE}/api/films/${params.get('id')}/edit`, obj).then(() => window.location.href =("/admin/adminpanelmovigo/"))
         }
         
     };

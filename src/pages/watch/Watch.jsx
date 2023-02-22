@@ -12,6 +12,8 @@ import Spinner from "../../components/Spinner"
 import {Helmet} from "react-helmet";
 import WatchInfo from "./WatchInfo";
 
+import {API_BASE} from "../../utils/config"
+
 const Watch = () => {
 
     const [ tab, setTab ] = useState(true)
@@ -32,12 +34,12 @@ const Watch = () => {
     }, [ movies ])
 
     const like = () => {
-        axios.post(`https://movigo.onrender.com/api/films/${movies.filter((i) => name === i.title)[0]?._id}/like`, true)
+        axios.post(`${API_BASE}/api/films/${movies.filter((i) => name === i.title)[0]?._id}/like`, true)
         likesBtn.current.removeEventListener('click', like)
     }
 
     const addViews = () => {
-        axios.get(`https://movigo.onrender.com/api/films/${movies.filter((i) => name === i.title)[0]?._id}`)
+        axios.get(`${API_BASE}/api/films/${movies.filter((i) => name === i.title)[0]?._id}`)
     }
 
     return (

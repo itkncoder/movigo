@@ -19,22 +19,24 @@ import { useDispatch } from "react-redux"
 
 import Adminpanel from "./pages/adminpanel/Adminpanel"
 
+import {API_BASE} from "./utils/config"
+
 function App() {
 
   const dispatch = useDispatch()
 
   useEffect(() => {   
-    dispatch(moviesFetching())
-
-    axios.get("https://movigo.onrender.com/api/films/").then(res => {
-      dispatch(moviesFetched(res.data.data))
-    }).catch(() => dispatch(moviesFetchingError()))
-
     dispatch(categoryFetching())
-
-    axios.get("https://movigo.onrender.com/api/category/").then(res => {
+    axios.get(`${API_BASE}/api/category/`).then(res => {
       dispatch(categoryFetched(res.data.data))
     }).catch(() => dispatch(categoryFetchingError()))
+    .then(() => {
+      dispatch(moviesFetching())
+
+      axios.get(`${API_BASE}/api/films/`).then(res => {
+        dispatch(moviesFetched(res.data.data))
+      }).catch(() => dispatch(moviesFetchingError()))
+    })
   }, [])  
 
     return (

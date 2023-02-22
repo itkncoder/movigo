@@ -6,6 +6,8 @@ import axios from "axios"
 
 import { categoryFetching, categoryFetched, categoryFetchingError } from "../../redux/actions"
 
+import {API_BASE} from "../../utils/config"
+
 const Adminpanel = () => {
     const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ const Adminpanel = () => {
     }
 
     const deleteing = (what, id) => {
-        axios.delete(`https://movigo.onrender.com/api/${what}/${id}`).then(() => {
+        axios.delete(`${API_BASE}/api/${what}/${id}`).then(() => {
             navigate(0);
         })
     }

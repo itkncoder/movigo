@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 import Spinner from "../../components/Spinner"
 import {Helmet} from "react-helmet"
 import axios from "axios"
+import {API_BASE} from "../../utils/config"
 
 const Filter = () => {
 
@@ -31,7 +32,7 @@ const Filter = () => {
     useEffect(() => {
         window.scroll(0, 0)
         if (params.get("id")) {
-            axios.get(`https://movigo.onrender.com/api/films/${type}/${params.get('id')}`).then(res => {
+            axios.get(`${API_BASE}/api/films/${type}/${params.get('id')}`).then(res => {
                 setFilteredMovies(res.data.data)
                 setLoader(false)
             })
