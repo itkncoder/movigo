@@ -45,8 +45,8 @@ const Filter = () => {
             setFilteredMovies(filtered)
         } 
         else if(type === "sana") {
-            console.log(true);
-            setFilteredMovies([...filteredMovies.reverse()])
+            const reversed = filteredMovies.reverse()
+            setFilteredMovies(reversed)
         }
     }
         
