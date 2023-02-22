@@ -15,6 +15,7 @@ const Category = () => {
 
     const {name} = useParams()
     const [selectedUI, setSelectedUI] = useState('Hammasi')
+    const [selectedUIFilter, setSelectedUIFilter] = useState('Sana')
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -28,10 +29,6 @@ const Category = () => {
             setSelectedUI(name)
         }
     }, [name])
-
-    const filterMovies = (i) => {
-        setSelectedUI(i.name)
-    }
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
@@ -56,8 +53,25 @@ const Category = () => {
             <div className="mt-14">
                 <div className="flex items-center justify-between gap-4 my-6">
                     <h1 className="text-3xl font-semibold w-fit uppercase">{selectedUI}</h1>
-                    <div>
-                        <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-6 pr-5 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">{selectedUI} <i className="fa-solid fa-angle-down"></i>
+                    <div className="flex items-center justify-end gap-4">
+                        <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-6 pr-5 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">{selectedUIFilter} <i className="fa-solid fa-angle-down"></i>
+                            {dropdown && <div ref={dropBlock} className="absolute z-20 top-12 flex flex-col gap-1 right-0 bg-gray-700 px-2 py-3 rounded-lg">
+                                <p onClick={() => {
+                                    filterMovies("viewCount")
+                                    setSelectedUIFilter("Ko'rishlar")
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Ko'rishlar</p>
+                                <p onClick={() => {
+                                    filterMovies("likes")
+                                    setSelectedUIFilter("Reyting")
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Reyting</p>
+                                <p onClick={() => {
+                                    filterMovies("sana")
+                                    setSelectedUIFilter("Sana")
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">Sana</p>
+                            </div>}
+                        </div>
+
+                        {/* <div onClick={() => setDropdown(prev => !prev)} className="relative cursor-pointer drowdown-item dropdown-top bg-gray-800 py-2 px-6 pr-5 ring-2 ring-gray-700 rounded-lg active:bg-gray-600 transition-all hover:bg-gray-700 flex items-center justify-center gap-3">{selectedUI} <i className="fa-solid fa-angle-down"></i>
                             {dropdown && <div ref={dropBlock} className="absolute z-20 top-12 flex flex-col gap-1 right-0 bg-gray-700 px-2 py-3 rounded-lg">
                                 <p onClick={() => {
                                     filterMovies("all")
@@ -70,7 +84,7 @@ const Category = () => {
                                     }} key={i._id} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4">{i.name}</p>
                                 )}
                             </div>}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="flex flex-col items-center w-full">
