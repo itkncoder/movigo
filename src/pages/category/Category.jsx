@@ -26,10 +26,13 @@ const Category = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        if (name) {
+        if (name !== "Hammasi") {
             setSelectedUI(name)
             const filtered = movies.filter(i => i.category?.name == name)
             setFilteredMovies(filtered)
+        } else {
+            setSelectedUI("Hammasi")
+            setFilteredMovies(movies)
         }
     }, [name])
 

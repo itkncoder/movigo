@@ -7,7 +7,7 @@ const Header = () => {
     const head = useRef(null)
 
     window.onscroll = (() => {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 50) {
             head.current.classList.add("navbar")
         } else {
             head.current.classList.remove("navbar")
