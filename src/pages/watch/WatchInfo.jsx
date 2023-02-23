@@ -24,7 +24,7 @@ const WatchInfo = ({watchingMovieItem}) => {
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Vaqt:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">{watchingMovieItem?.duration}</td>
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold">{watchingMovieItem?.duration} daqiqa</td>
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Til:</td>
