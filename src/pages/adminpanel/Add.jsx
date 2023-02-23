@@ -53,7 +53,7 @@ const Add = () => {
             trailer: inputs.trailer,
             year: inputs.year,
             video: inputs.video,
-            category: data.category,
+            category: inputs.category,
             country: inputs.country,
             language: inputs.language.toUpperCase(),
             age: inputs.age
@@ -73,7 +73,7 @@ const Add = () => {
             const item = movies.filter(i => i._id === params.get('id'))
             setInputs(...item)
         }
-    }, [])
+    }, [name])
 
     return (
         
@@ -110,7 +110,7 @@ const Add = () => {
 
                             <div className="w-full">
                                 <h1 className="text-xl">Category</h1>
-                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs.category?._id} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="">
+                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs.category?._id} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="category">
                                     {category.map((i) => 
                                         <option key={i._id} value={i._id}>{i.name}</option>
                                     )}
