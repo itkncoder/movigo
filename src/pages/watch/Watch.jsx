@@ -34,12 +34,12 @@ const Watch = () => {
     }, [ movies ])
 
     const like = () => {
-        axios.post(`${API_BASE}/api/films/${movies.filter((i) => name === i.title)[0]?._id}/like`, true)
+        axios.post(`${API_BASE}/api/films/${movies.filter((i) => name.trim() === i.title.trim())[0]?._id}/like`, true)
         likesBtn.current.removeEventListener('click', like)
     }
 
     const addViews = () => {
-        axios.get(`${API_BASE}/api/films/${movies.filter((i) => name === i.title)[0]?._id}`)
+        axios.get(`${API_BASE}/api/films/${movies.filter((i) => name.trim() === i.title.trim())[0]?._id}`)
     }
 
     return (
