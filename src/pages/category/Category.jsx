@@ -104,6 +104,14 @@ const Category = () => {
                                 <h1 className="text-2xl text-gray-200 font-semibold">{name === "Hammasi" ? "Xech qanday film" : name} mavjud emas :(</h1>
                             </div>
                         }
+                        {
+                            !filteredMovies.length
+                            &&
+                            <div className="flex flex-col items-center gap-3 py-8">
+                                <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>
+                                <h1 className="text-2xl text-gray-200 font-semibold">{name === "Hammasi" ? "Xech qanday film" : name} mavjud emas :(</h1>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="flex justify-center items-center gap-1.5">
