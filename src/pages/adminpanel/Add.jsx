@@ -110,7 +110,7 @@ const Add = () => {
 
                             <div className="w-full">
                                 <h1 className="text-xl">Category</h1>
-                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs.category} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="">
+                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs.category?._id} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="">
                                     {category.map((i) => 
                                         <option key={i._id} value={i._id}>{i.name}</option>
                                     )}
