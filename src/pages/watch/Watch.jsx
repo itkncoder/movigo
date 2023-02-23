@@ -29,7 +29,7 @@ const Watch = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        setWatching(movies.filter((i) => name.toString() === i.title)[0])
+        setWatching(movies.filter((i) => name.toString().trim() === i.title.trim())[0])
         likesBtn.current.addEventListener("click", like)
     }, [ movies ])
 
