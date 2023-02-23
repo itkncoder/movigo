@@ -40,7 +40,7 @@ const Add = () => {
             name: data.name
         }
 
-        await axios.post(`${API_BASE}}/api/category/`, obj).then(() => navigate(0))
+        await axios.post(`${API_BASE}/api/category/`, obj).then(() => window.location.href = ("/admin/adminpanelmovigo/"))
     };
     
     const onSubmitMovie = async (data) => {
@@ -60,9 +60,9 @@ const Add = () => {
         }
 
         if (postOrPut) {
-            await axios.post(`${API_BASE}/api/films/`, obj).then(() => navigate(0))
+            await axios.post(`${API_BASE}/api/films/`, obj).then(() => window.location.href = ("/admin/adminpanelmovigo/"))
         } else {
-            await axios.put(`${API_BASE}/api/films/${params.get('id')}/edit`, obj).then(() => window.location.href =("/admin/adminpanelmovigo/"))
+            await axios.put(`${API_BASE}/api/films/${params.get('id')}/edit`, obj).then(() => window.location.href = ("/admin/adminpanelmovigo/"))
         }
         
     };

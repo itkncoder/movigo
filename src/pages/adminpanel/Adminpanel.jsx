@@ -25,11 +25,19 @@ const Adminpanel = () => {
 
     const deleteing = (what, id) => {
         axios.delete(`${API_BASE}/api/${what}/${id}`).then(() => {
+            dispatch(categoryFetching())
+            
+            axios.get(`${API_BASE}/api/category/`).then(res => {
+            dispatch(categoryFetched(res.data.data))
+            }).catch(() => dispatch(categoryFetchingError()))
+            .then(() => {
+            
             dispatch(moviesFetching())
 
             axios.get(`${API_BASE}/api/films/`).then(res => {
                 dispatch(moviesFetched(res.data.data))
             }).catch(() => dispatch(moviesFetchingError()))
+            })
         })
     }
 
