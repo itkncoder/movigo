@@ -15,7 +15,7 @@ const Category = () => {
 
     const {name} = useParams()
     const [selectedUI, setSelectedUI] = useState('Hammasi')
-    const [selectedUIFilter, setSelectedUIFilter] = useState('Sana')
+    const [selectedUIFilter, setSelectedUIFilter] = useState('Yangilari')
     const [filteredMovies, setFilteredMovies] = useState([])
 
     window.addEventListener("click", (e) => {
@@ -26,17 +26,13 @@ const Category = () => {
 
     function filterMovies(type) {
         if (type === "likes") {
-            const filtered = filteredMovies.sort((a,b) => b.likes - a.likes)
+            const filtered = filteredMovies.sort((a, b) => b.likes - a.likes)
             setFilteredMovies(filtered)
         } 
         else if(type === "viewCount") {
-            const filtered = filteredMovies.sort((a,b) => b.viewCount - a.viewCount)
+            const filtered = filteredMovies.sort((a, b) => b.viewCount - a.viewCount)
             setFilteredMovies(filtered)
         } 
-        else if(type === "sana") {
-            const reversed = filteredMovies.reverse()
-            setFilteredMovies(reversed)
-        }
     }
 
     useEffect(() => {
@@ -87,11 +83,7 @@ const Category = () => {
                                 <p onClick={() => {
                                     filterMovies("likes")
                                     setSelectedUIFilter("Reyting")
-                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i class="fa-solid fa-thumbs-up"></i> Reyting</p>
-                                <p onClick={() => {
-                                    filterMovies("sana")
-                                    setSelectedUIFilter("Sana")
-                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i class="fa-solid fa-clock"></i>  Sana</p>
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i className="fa-solid fa-thumbs-up"></i> Reyting</p>
                             </div>}
                         </div>
                     </div>
@@ -99,7 +91,7 @@ const Category = () => {
                 <div className="flex flex-col items-center w-full">
                     <div className="relative w-full flex items-center flex-wrap justify-center">
                         {
-                            filteredMovies.length
+                            moviesLoadingStatus !== "loading"
                             ?
                             filteredMovies.map((item) => 
                                 <div className="flex justify-center" key={item._id}>
@@ -108,7 +100,7 @@ const Category = () => {
                             )
                             :
                             <div className="flex flex-col items-center gap-3 py-8">
-                                <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>      
+                                <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>
                                 <h1 className="text-2xl text-gray-200 font-semibold">{name === "Hammasi" ? "Xech qanday film" : name} mavjud emas :(</h1>
                             </div>
                         }

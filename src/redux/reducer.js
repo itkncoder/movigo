@@ -7,7 +7,6 @@ const initialState = {
     ],
     moviesLoadingStatus: "none",
 
-
     category: [
         
     ],

@@ -27,7 +27,7 @@ const Filter = () => {
     const [dropdown, setDropdown] = useState(false)
     const dropBlock = useRef(null)
 
-    const [selectedUIFilter, setSelectedUIFilter] = useState('Sana')
+    const [selectedUIFilter, setSelectedUIFilter] = useState('Yangilari')
     
     useEffect(() => {
         window.scroll(0, 0)
@@ -48,10 +48,6 @@ const Filter = () => {
             const filtered = filteredMovies.sort((a,b) => b.viewCount - a.viewCount)
             setFilteredMovies(filtered)
         } 
-        else if(type === "sana") {
-            const reversed = filteredMovies.reverse()
-            setFilteredMovies(reversed)
-        }
     }
         
     return (
@@ -72,11 +68,7 @@ const Filter = () => {
                                 <p onClick={() => {
                                     filterMovies("likes")
                                     setSelectedUIFilter("Reyting")
-                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i class="fa-solid fa-thumbs-up"></i> Reyting</p>
-                                <p onClick={() => {
-                                    filterMovies("sana")
-                                    setSelectedUIFilter("Sana")
-                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i class="fa-solid fa-clock"></i>  Sana</p>
+                                }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i className="fa-solid fa-thumbs-up"></i> Reyting</p>
                             </div>}
                         </div>
                     </div>
