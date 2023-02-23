@@ -99,7 +99,7 @@ const Category = () => {
                 <div className="flex flex-col items-center w-full">
                     <div className="relative w-full flex items-center flex-wrap justify-center">
                         {
-                            filteredMovies.lenght 
+                            filteredMovies.length
                             ?
                             filteredMovies.map((item) => 
                                 <div className="flex justify-center" key={item._id}>
