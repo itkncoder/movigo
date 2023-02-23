@@ -31,6 +31,7 @@ function App() {
       dispatch(categoryFetched(res.data.data))
     }).catch(() => dispatch(categoryFetchingError()))
     .then(() => {
+      
       dispatch(moviesFetching())
 
       axios.get(`${API_BASE}/api/films/`).then(res => {
