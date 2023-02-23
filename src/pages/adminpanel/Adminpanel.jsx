@@ -4,7 +4,7 @@ import { Link, useNavigate  } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import axios from "axios"
 
-import { categoryFetching, categoryFetched, categoryFetchingError } from "../../redux/actions"
+import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError} from "../../redux/actions"
 
 import {API_BASE} from "../../utils/config"
 
@@ -25,7 +25,11 @@ const Adminpanel = () => {
 
     const deleteing = (what, id) => {
         axios.delete(`${API_BASE}/api/${what}/${id}`).then(() => {
-            navigate(0);
+            dispatch(moviesFetching())
+
+            axios.get(`${API_BASE}/api/films/`).then(res => {
+                dispatch(moviesFetched(res.data.data))
+            }).catch(() => dispatch(moviesFetchingError()))
         })
     }
 
@@ -36,8 +40,8 @@ const Adminpanel = () => {
                     <img src={logo} alt="logo" className="w-40 cursor-pointer hover:-rotate-2 transition-all" />
                 </Link>
                 <div className="mt-6 flex flex-col items-start gap-2 w-full">
-                    <p onClick={() => setTabs(prev => !prev)} className={ `${ tab ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-bars-progress"></i> CATEGORYES</p>
-                    <p onClick={() => setTabs(prev => !prev)} className={ `${ !tab ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-film"></i> MOVIES</p>
+                    <p onClick={() => setTabs(true)} className={ `${ tab ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-bars-progress"></i> CATEGORYES</p>
+                    <p onClick={() => setTabs(false)} className={ `${ !tab ? "bg-gray-700 ring-2" : "bg-gray-600" } flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-film"></i> MOVIES</p>
                     
                     <div className="mt-2"></div>
                     <Link to={`./add/category`} className={ `bg-gray-600 flex items-center justify-start gap-4 font-semibold pl-5 hover:ring-2 ring-gray-600 hover:bg-gray-800 cursor-pointer w-full rounded-sm py-2`}><i className="fa-solid fa-add"></i>Add category</Link>
