@@ -251,6 +251,12 @@ body {
   .video {
     height: 45vh !important;
   }
+  .navbar-ul li {
+    margin: 15px 0;
+  }
+  .navbar-ul {
+    gap: 0px !important;
+  }
 }
 .navbar-ul {
   gap: 40px;
