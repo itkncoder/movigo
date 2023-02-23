@@ -97,11 +97,19 @@ const MovieSwiper = ({name, movies}) => {
                         }}
                         >
                         <div className="flex relative items-center justify-center">
-                            {movies.map((item) => 
+                            {
+                            movies.length ?
+                            movies.map((item) => 
                                 <SwiperSlide key={item._id}>
                                     <CatalogCard props={item}/>
                                 </SwiperSlide>
-                            )}
+                            )
+                            :       
+                            <div className="flex flex-col items-center gap-3 py-8">
+                                <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>      
+                                <h1 className="text-2xl text-gray-200 font-semibold">Filmlar mavjud emas :(</h1>
+                            </div>
+                            }
                             {moviesLoadingStatus === "loading" ? <div className="w-full">
                                 <Spinner/>
                             </div> : ''}
