@@ -98,11 +98,20 @@ const Category = () => {
                 </div>
                 <div className="flex flex-col items-center w-full">
                     <div className="relative w-full flex items-center flex-wrap justify-center">
-                        {filteredMovies.map((item) => 
-                            <div className="flex justify-center" key={item._id}>
-                                <CatalogCard category={true} props={item}/>
+                        {
+                            filteredMovies.lenght 
+                            ?
+                            filteredMovies.map((item) => 
+                                <div className="flex justify-center" key={item._id}>
+                                    <CatalogCard category={true} props={item}/>
+                                </div>
+                            )
+                            :
+                            <div className="flex flex-col items-center gap-3 py-8">
+                                <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>      
+                                <h1 className="text-2xl text-gray-200 font-semibold">{name} mavjud emas :(</h1>
                             </div>
-                        )}
+                        }
                     </div>
                 </div>
                 <div className="flex justify-center items-center gap-1.5">
