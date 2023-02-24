@@ -64,20 +64,24 @@ const Adminpanel = () => {
                 <table className="flex flex-col items-start">
                     <thead className="w-full">
                         <tr className="flex justify-between items-center w-full gap-3 bg-gray-700 px-6 py-2">
-                            <th className="w-4/12 text-start">Name</th>
-                            {!tab ? <th className="w-4/12 text-start">Genres</th> : ""}
-                            {!tab ? <th className="w-4/12 text-start">Category</th> : ""}
-                            <th className="w-4/12 text-end">Tools</th>
+                            <th className="w-3/12 text-start">Name</th>
+                            {!tab ? <th className="w-2/12 text-start">Genres</th> : ""}
+                            {!tab ? <th className="w-2/12 text-start">Category</th> : ""}
+                            {!tab ? <th className="w-1/12 text-start">Views</th> : ""}
+                            {!tab ? <th className="w-1/12 text-start">Likes</th> : ""}
+                            <th className="w-2/12 text-end">Tools</th>
                         </tr>
                     </thead>
                     <tbody className="w-full flex flex-col max-h-full overflow-y-auto">
                         {   !tab ?
                             movies.map((i) => 
                                 <tr key={i._id} className="flex justify-between items-center border border-gray-600 w-full gap-3 bg-gray-800 px-6 py-2 hover:bg-gray-700">
-                                    <td className="text-sm w-4/12 truncate">{i.title}</td>
-                                    <td className="text-sm w-4/12 truncate">{i.genres}</td>
-                                    <td className="text-sm w-4/12 truncate">{i.category?.name}</td>
-                                    <div className="flex items-center w-4/12 justify-end gap-4 w-4/12">
+                                    <td className="text-sm w-3/12 truncate">{i.title}</td>
+                                    <td className="text-sm w-2/12 truncate">{i.genres}</td>
+                                    <td className="text-sm w-2/12 truncate">{i.category?.name}</td>
+                                    <td className="text-sm w-1/12 truncate">{i.viewCount}</td>
+                                    <td className="text-sm w-1/12 truncate">{i.likes}</td>
+                                    <div className="flex items-center w-2/12 justify-end gap-4 w-4/12">
                                         <Link to={`./add/films?id=${i._id}`} className="cursor-pointer flex items-center justify-center gap-1 bg-yellow-500 px-2 py-0.5 text-sm rounded-md">EDIT
                                             <i className="bg-yellow-600 w-8 flex items-center justify-center rounded-md h-8 cursor-pointer hover:scale-105 fa-solid fa-edit"></i>
                                         </Link>
