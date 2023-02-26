@@ -57,13 +57,19 @@ const Category = () => {
     }, [name, movies, params.get("page")])
 
     const paginator = (page) => {
-        setPaginationCount(page)
-        setLoader(true)
-        window.scroll(0, 0)
-        axios.get(`${API_BASE}/api/films/?page=${page}`).then(res => {
-            setFilteredMovies(res.data.data)
-            setLoader(false)
-        })
+        if (page !== 1) {
+            setPaginationCount(page)
+            setLoader(true)
+            window.scroll(0, 0)
+            axios.get(`${API_BASE}/api/films/?page=${page}`).then(res => {
+                setFilteredMovies(res.data.data)
+                setLoader(false)
+            })
+        } else {
+            setSelectedUI("Barchasi")
+            const filtered = movies.filter(i => i)
+            setFilteredMovies(filtered)
+        }
     }
 
     return (
