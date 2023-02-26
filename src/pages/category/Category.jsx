@@ -7,6 +7,7 @@ import Spinner from "../../components/Spinner"
 import {Helmet} from "react-helmet"
 import axios from "axios"
 import {API_BASE} from "../../utils/config"
+import { moviesFetched} from "../../redux/actions"
 
 const Category = () => {
     const { movies, moviesLoadingStatus } = useSelector(store => store)
@@ -46,24 +47,14 @@ const Category = () => {
     useEffect(() => {
         window.scroll(0, 0)
         if (name) {
-
+            setSelectedUI(name)
             if (params.get("page")) {
                 paginator(Number(params.get("page")))
             } else {
-                setPaginationCount(1)
-            }
-
-            setSelectedUI(name)
-            const filtered = movies.filter(i => i.category?.name == name)
-            setFilteredMovies(filtered)
-
-            if (name === "Barchasi") {
-                setSelectedUI("Barchasi")
-                const all = movies.map(i => i)
-                setFilteredMovies(all)
+                paginator(1)
             }
         }
-    }, [name, movies])
+    }, [name, movies, params.get("page")])
 
     const paginator = (page) => {
         setPaginationCount(page)
