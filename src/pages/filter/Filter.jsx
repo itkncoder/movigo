@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
 import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import Spinner from "../../components/Spinner"
 import {Helmet} from "react-helmet"
 import axios from "axios"
@@ -23,6 +23,8 @@ const Filter = () => {
             setDropdown(false)
         }
     })
+
+    const [paginationCount, setPaginationCount] = useState(1)
 
     const [dropdown, setDropdown] = useState(false)
     const dropBlock = useRef(null)
@@ -50,6 +52,16 @@ const Filter = () => {
         } 
     }
         
+    const paginator = (page) => {
+        setPaginationCount(page)
+        setLoader(true)
+        window.scroll(0, 0)
+        axios.get(`/filter/${type}/${params.get('id')}?page=${page}`).then(res => {
+            setFilteredMovies(res.data.data)
+            setLoader(false)
+        })
+    }
+
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
             {!loader ? <><div className="mt-32 mx-auto">
@@ -81,6 +93,36 @@ const Filter = () => {
                             </div>
                         )}
                     </div>
+                </div>
+                <div className="flex justify-center items-center gap-2.5">
+                    {paginationCount >= 2 && <Link onClick={() => paginator(paginationCount - 1)} to={`/filter/${type}/${params.get('id')}?page=${paginationCount - 1}`} 
+                        className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</Link>}
+                    <div className="flex justify-center items-center gap-1.5">
+                        <Link 
+                            onClick={() => paginator(paginationCount)}
+                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount}`}    
+                            className={"hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200"}>{paginationCount}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 1)}
+                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 1}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 1}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 2)}
+                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 2}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 2}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 3)}
+                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 3}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 3}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 4)}
+                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 4}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 4}</Link>
+                    </div>
+                    <Link                             
+                        onClick={() => paginator(paginationCount + 1)}
+                        to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 1}`}
+                    className="ml-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</Link >
                 </div>
                 <div className="mt-20 block">
                     <AdsHome/>

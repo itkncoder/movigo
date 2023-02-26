@@ -39,7 +39,7 @@ function App() {
     }).catch(() => dispatch(sliderFetchingError()))
 
     dispatch(moviesFetching())
-    axios.get(`${API_BASE}/api/films?page=1`).then(res => {
+    axios.get(`${API_BASE}/api/films`).then(res => {
       dispatch(moviesFetched(res.data.data))
     }).catch(() => dispatch(moviesFetchingError()))
 
