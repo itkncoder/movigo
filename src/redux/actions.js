@@ -8,4 +8,6 @@ export const categoryFetching = createAction("CATEGORY_FETCHING")
 export const categoryFetched = createAction("CATEGORY_FETCHED")
 export const categoryFetchingError = createAction("CATEGORY_FETCHING_ERROR")
 
-export const filtered = createAction("FILTERED")
+export const sliderFetching = createAction("SLIDER_FETCHING")
+export const sliderFetched = createAction("SLIDER_FETCHED")
+export const sliderFetchingError = createAction("SLIDER_FETCHING_ERROR")

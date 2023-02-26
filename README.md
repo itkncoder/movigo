@@ -1,1 +1,1 @@
-# muvi local repository
+# movigo local repository

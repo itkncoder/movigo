@@ -2,21 +2,28 @@ import { useEffect, useState, useRef } from 'react'
 import CatalogCard from "../../components/catalog-card/CatalogCard"
 import AdsHome from "../../components/AdsHome"
 import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import Spinner from "../../components/Spinner"
 import {Helmet} from "react-helmet"
 import axios from "axios"
+import {API_BASE} from "../../utils/config"
 
 const Category = () => {
-    const { movies, moviesLoadingStatus, category } = useSelector(store => store)
+    const { movies, moviesLoadingStatus } = useSelector(store => store)
 
     const [dropdown, setDropdown] = useState(false)
     const dropBlock = useRef(null)
 
     const {name} = useParams()
-    const [selectedUI, setSelectedUI] = useState('Hammasi')
+    const [selectedUI, setSelectedUI] = useState('Barchasi')
     const [selectedUIFilter, setSelectedUIFilter] = useState('Yangilari')
     const [filteredMovies, setFilteredMovies] = useState([])
+
+    const [paginationCount, setPaginationCount] = useState(1)
+
+    const [loader, setLoader] = useState(false) 
+
+    const params = new URLSearchParams(document.location.search)
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -38,17 +45,30 @@ const Category = () => {
     useEffect(() => {
         window.scroll(0, 0)
         if (name) {
+
+            setPaginationCount(params.get("page") ? Number(params.get('page')) : 1)
+
             setSelectedUI(name)
             const filtered = movies.filter(i => i.category?.name == name)
             setFilteredMovies(filtered)
 
-            if (name === "Hammasi") {
-                setSelectedUI("Hammasi")
+            if (name === "Barchasi") {
+                setSelectedUI("Barchasi")
                 const all = movies.map(i => i)
                 setFilteredMovies(all)
             }
         }
     }, [name, movies])
+
+    const paginator = (page) => {
+        setPaginationCount(page)
+        setLoader(true)
+        axios.get(`${API_BASE}/api/films/?page=${page}`).then(res => {
+            setFilteredMovies(res.data.data)
+            window.scroll(0, 0)
+            setLoader(false)
+        })
+    }
 
     return (
         <div className="px-2 xl:px-0 wrapper-carousel">
@@ -89,7 +109,7 @@ const Category = () => {
                     </div>
                 </div>
                 <div className="flex flex-col items-center w-full">
-                    <div className="relative w-full flex items-center flex-wrap justify-center">
+                    {!loader ? <div className="relative w-full flex items-center flex-wrap justify-center">
                         {
                             moviesLoadingStatus !== "loading"
                             ?
@@ -101,7 +121,7 @@ const Category = () => {
                             :
                             <div className="flex flex-col items-center gap-3 py-8">
                                 <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>
-                                <h1 className="text-2xl text-gray-200 font-semibold">{name === "Hammasi" ? "Xech qanday film" : name} mavjud emas :(</h1>
+                                <h1 className="text-2xl text-gray-200 font-semibold">{name === "Barchasi" ? "Xech qanday film" : name} mavjud emas :(</h1>
                             </div>
                         }
                         {
@@ -109,19 +129,42 @@ const Category = () => {
                             &&
                             <div className="flex flex-col items-center gap-3 py-8">
                                 <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>
-                                <h1 className="text-2xl text-gray-200 font-semibold">{name === "Hammasi" ? "Xech qanday film" : name} mavjud emas :(</h1>
+                                <h1 className="text-xl m:text-2xl text-gray-200 font-semibold text-center">{name === "Barchasi" ? "Xech qanday film" : name} mavjud emas :(</h1>
                             </div>
                         }
-                    </div>
+                    </div> : <div className="px-2 h-96 flex justify-center items-center max-widther mx-auto mt-32 xl:px-0">
+                                <Spinner/>
+                            </div>}
                 </div>
-                <div className="flex justify-center items-center gap-1.5">
-                    <p className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</p>
-                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">1</p>
-                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">2</p>
-                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">3</p>
-                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">4</p>
-                    <p className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">5</p>
-                    <p className="ml-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</p>
+                <div className="flex justify-center items-center gap-2.5">
+                    {paginationCount >= 2 && <Link onClick={() => paginator(paginationCount - 1)} to={`/category/${selectedUI}?page=${paginationCount - 1}`} 
+                        className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</Link>}
+                    <div className="flex justify-center items-center gap-1.5">
+                        <Link 
+                            onClick={() => paginator(paginationCount)} 
+                            to={`/category/${selectedUI}?page=${paginationCount}`}    
+                            className={"hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200"}>{paginationCount}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 1)}
+                            to={`/category/${selectedUI}?page=${paginationCount + 1}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 1}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 2)}
+                            to={`/category/${selectedUI}?page=${paginationCount + 2}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 2}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 3)}
+                            to={`/category/${selectedUI}?page=${paginationCount + 3}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 3}</Link>
+                        <Link 
+                            onClick={() => paginator(paginationCount + 4)}
+                            to={`/category/${selectedUI}?page=${paginationCount + 4}`} 
+                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 4}</Link>
+                    </div>
+                    <Link                             
+                        onClick={() => paginator(paginationCount + 1)}
+                        to={`/category/${selectedUI}?page=${paginationCount + 1}`}
+                    className="ml-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</Link >
                 </div>
                 <div className="mt-20 block">
                     <AdsHome/>

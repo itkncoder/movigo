@@ -8,13 +8,14 @@ import Add from "./pages/adminpanel/Add"
 import Error from "./pages/404/error404"
 import Donate from "./pages/donate/Donate"
 import Filter from "./pages/filter/Filter"
+import Slider from "./pages/adminpanel/Slider"
 
 import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 
 import axios from "axios"
 
-import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError } from "./redux/actions"
+import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError, sliderFetching, sliderFetched, sliderFetchingError } from "./redux/actions"
 import { useDispatch } from "react-redux"
 
 import Adminpanel from "./pages/adminpanel/Adminpanel"
@@ -26,18 +27,22 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {   
+
     dispatch(categoryFetching())
     axios.get(`${API_BASE}/api/category/`).then(res => {
       dispatch(categoryFetched(res.data.data))
     }).catch(() => dispatch(categoryFetchingError()))
-    .then(() => {
-      
-      dispatch(moviesFetching())
 
-      axios.get(`${API_BASE}/api/films/`).then(res => {
-        dispatch(moviesFetched(res.data.data))
-      }).catch(() => dispatch(moviesFetchingError()))
-    })
+    dispatch(sliderFetching())
+    axios.get(`${API_BASE}/api/slider/getSliders`).then(res => {
+      dispatch(sliderFetched(res.data.data))
+    }).catch(() => dispatch(sliderFetchingError()))
+
+    dispatch(moviesFetching())
+    axios.get(`${API_BASE}/api/films?page=1`).then(res => {
+      dispatch(moviesFetched(res.data.data))
+    }).catch(() => dispatch(moviesFetchingError()))
+
   }, [])  
 
     return (
@@ -53,6 +58,7 @@ function App() {
           <Route path="/admin/adminpanelmovigo/" element={<Adminpanel/>} />
           <Route path="/watch/:name" element={<Watch/>} />
           <Route path="/donate" element={<Donate/>} />
+          <Route path="/admin/adminpanelmovigo/slider" element={<Slider/>} />
           <Route path="/filter/:type" element={<Filter/>} />
           <Route path="*" element={<Error/>} />
         </Routes>

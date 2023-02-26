@@ -108,7 +108,7 @@ const MovieSwiper = ({name, movies}) => {
                             <div>
                                 {moviesLoadingStatus !== "loading" && <div className="flex flex-col items-center gap-3 py-8">
                                     <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>      
-                                    <h1 className="text-2xl text-gray-200 font-semibold">{name} mavjud emas :(</h1>
+                                    <h1 className="text-xl md:text-2xl text-gray-200 font-semibold text-center">{name} mavjud emas :(</h1>
                                 </div>}
                             </div>    
                             }
