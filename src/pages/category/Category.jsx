@@ -63,9 +63,9 @@ const Category = () => {
     const paginator = (page) => {
         setPaginationCount(page)
         setLoader(true)
+        window.scroll(0, 0)
         axios.get(`${API_BASE}/api/films/?page=${page}`).then(res => {
             setFilteredMovies(res.data.data)
-            window.scroll(0, 0)
             setLoader(false)
         })
     }
