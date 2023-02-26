@@ -50,8 +50,18 @@ const Category = () => {
             setSelectedUI(name)
             if (params.get("page")) {
                 paginator(Number(params.get("page")))
+                if (name !== "Barchasi") {
+                    setSelectedUI(name)
+                    const filtered = movies.filter(i => i.category?.name == name)
+                    setFilteredMovies(filtered)
+                }
             } else {
                 paginator(1)
+                if (name !== "Barchasi") {
+                    setSelectedUI(name)
+                    const filtered = movies.filter(i => i.category?.name == name)
+                    setFilteredMovies(filtered)
+                }
             }
         }
     }, [name, movies, params.get("page")])
