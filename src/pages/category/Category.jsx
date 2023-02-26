@@ -69,6 +69,7 @@ const Category = () => {
             setSelectedUI("Barchasi")
             const filtered = movies.filter(i => i)
             setFilteredMovies(filtered)
+            setPaginationCount(1)
         }
     }
 
