@@ -25,6 +25,7 @@ const Category = () => {
 
     const params = new URLSearchParams(document.location.search)
 
+
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
             setDropdown(false)
@@ -46,7 +47,11 @@ const Category = () => {
         window.scroll(0, 0)
         if (name) {
 
-            setPaginationCount(params.get("page") ? Number(params.get('page')) : 1)
+            if (params.get("page")) {
+                paginator(Number(params.get("page")))
+            } else {
+                setPaginationCount(1)
+            }
 
             setSelectedUI(name)
             const filtered = movies.filter(i => i.category?.name == name)
