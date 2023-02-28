@@ -7,10 +7,9 @@ import Spinner from "../../components/Spinner"
 import {Helmet} from "react-helmet"
 import axios from "axios"
 import {API_BASE} from "../../utils/config"
-import { moviesFetched} from "../../redux/actions"
 
 const Category = () => {
-    const { movies, moviesLoadingStatus } = useSelector(store => store)
+    const { movies, moviesLoadingStatus, category } = useSelector(store => store)
 
     const [dropdown, setDropdown] = useState(false)
     const dropBlock = useRef(null)
@@ -22,10 +21,9 @@ const Category = () => {
 
     const [paginationCount, setPaginationCount] = useState(1)
 
-    const [loader, setLoader] = useState(false) 
+    const [loader, setLoader] = useState(false)
 
     const params = new URLSearchParams(document.location.search)
-
 
     window.addEventListener("click", (e) => {
         if (!e.target.classList.contains("drowdown-item")) {
@@ -46,28 +44,25 @@ const Category = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        if (name) {
-            setSelectedUI(name)
-            if (params.get("page")) {
-                paginator(Number(params.get("page")))
-                if (name !== "Barchasi") {
-                    setSelectedUI(name)
-                    const filtered = movies.filter(i => i.category?.name == name)
-                    setFilteredMovies(filtered)
-                }
-            } else {
-                paginator(1)
-                if (name !== "Barchasi") {
-                    setSelectedUI(name)
-                    const filtered = movies.filter(i => i.category?.name == name)
-                    setFilteredMovies(filtered)
-                }
+        setSelectedUI(name)
+        if (params.get("page")) {
+            paginator(Number(params.get("page")))
+            if (name !== "Barchasi") {
+                setSelectedUI(name)
+                const filtered = movies.filter(i => i.category?.name == name)
+                setFilteredMovies(filtered)
+            }
+        } else {
+            paginator(1)
+            if (name !== "Barchasi") {
+                setSelectedUI(name)
+                const filtered = movies.filter(i => i.category?.name == name)
+                setFilteredMovies(filtered)
             }
         }
     }, [name, movies, params.get("page")])
 
     const paginator = (page) => {
-        window.scroll(0, 0)
         if (page !== 1 || !page) {
             setPaginationCount(page)
             setLoader(true)

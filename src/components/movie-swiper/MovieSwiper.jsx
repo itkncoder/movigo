@@ -1,23 +1,16 @@
-import { memo, useRef, useEffect } from "react"
+import { memo, useRef, useEffect, useState } from "react"
 import CatalogCard from "../catalog-card/CatalogCard"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from "swiper";
 import {Link} from "react-router-dom"
-import { useSelector } from "react-redux"
 import Spinner from "../Spinner"
 
 const MovieSwiper = ({name, movies}) => {
 
-    useEffect(() => {
-        if (movies.length > 8) {
-            movies.length = 8
-        }
-    }, [])
-
-    const { moviesLoadingStatus} = useSelector(store => store) || dispatch()
-
     const swiperRef = useRef(null)
+
+    const { moviesLoadingStatus } = useState(true)
 
     return (
         <section className="px-2">

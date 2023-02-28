@@ -24,24 +24,31 @@ const Watch = () => {
 
     const { name } = useParams()
 
-    const { movies, moviesLoadingStatus } = useSelector(store => store)
+    const { moviesLoadingStatus } = useSelector(store => store)
     const [ watchingMovieItem, setWatching ] = useState()
+
+    const [loader, setLoader] = useState(true)
+
+    const params = new URLSearchParams(document.location.search)
 
     useEffect(() => {
         window.scroll(0, 0)
-        setWatching(movies.filter((i) => name.toString().trim() === i.title.trim())[0])
-        likesBtn.current.addEventListener("click", like)
-    }, [ movies ])
+        axios.get(`${API_BASE}/api/films/${params.get("id")}`).then(res => {
+            setWatching(res.data.data)
+            setLoader(false)
+            setTimeout(() => likesBtn.current.addEventListener("click", like), 1000)
+        })
+    }, [])
 
     const like = () => {
-        axios.post(`${API_BASE}/api/films/${movies.filter((i) => name.trim() === i.title.trim())[0]?._id}/like`, true)
+        axios.post(`${API_BASE}/api/films/${params.get('id')}/like`, true)
         likesBtn.current.removeEventListener('click', like)
         likesBtn.current.classList.add("bg-gray-500")
         likesBtn.current.classList.add("ring-gray-500")
     }
 
     const addViews = () => {
-        axios.get(`${API_BASE}/api/films/${movies.filter((i) => name.trim() === i.title.trim())[0]?._id}`)
+        axios.get(`${API_BASE}/api/films/${params.get('id')}`)
     }
 
     return (
@@ -62,7 +69,7 @@ const Watch = () => {
                 <meta property="og:image" content="../../assets/logo.png" />
             </Helmet>
 
-            {moviesLoadingStatus !== "loading" ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
+            {!loader ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
                 <div>
                     <div>
                         <div className="mb-2 md:mb-4 mt-6">
