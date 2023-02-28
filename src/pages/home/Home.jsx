@@ -4,9 +4,13 @@ import AdsHome from "../../components/AdsHome"
 
 import { Helmet } from "react-helmet"
 
+import { useEffect } from "react"
+
 const Home = () => {
     
-    window.scroll(0, 0);
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, [])
 
     return (  
         <div>

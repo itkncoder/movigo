@@ -10,10 +10,6 @@ import {useEffect, useState} from "react"
 const HomeCatalogs = () => {
     const {category, byCategory} = useSelector(store => store)
 
-    useEffect(() => {
-        console.log(byCategory);
-    })
-
     return (  
         <div className="max-w-[1170px] mx-auto mt-24">
             

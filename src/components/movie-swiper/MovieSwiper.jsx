@@ -6,12 +6,14 @@ import { Autoplay } from "swiper";
 import {Link} from "react-router-dom"
 import Spinner from "../Spinner"
 
+import { useSelector } from "react-redux"
+
 const MovieSwiper = ({name, movies}) => {
 
     const swiperRef = useRef(null)
 
-    const { moviesLoadingStatus } = useState(true)
-
+    const { byCategoryLoadingStatus } = useSelector(state => state)
+    
     return (
         <section className="px-2">
             <div>
@@ -91,23 +93,26 @@ const MovieSwiper = ({name, movies}) => {
                         >
                         <div className="flex relative items-center justify-center">
                             {
-                            movies.length ?
+                            movies?.length ?
                             movies.map((item) => 
                                 <SwiperSlide key={item._id}>
                                     <CatalogCard props={item}/>
                                 </SwiperSlide>
                             )
                             :   
-                            <div>
-                                {moviesLoadingStatus !== "loading" && <div className="flex flex-col items-center gap-3 py-8">
-                                    <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>      
-                                    <h1 className="text-xl md:text-2xl text-gray-200 font-semibold text-center">{name} mavjud emas :(</h1>
-                                </div>}
-                            </div>    
+                            <div className="w-full">
+                                {
+                                    byCategoryLoadingStatus === "loading" 
+                                ? 
+                                    <Spinner/> 
+                                :
+                                    <div className="flex flex-col items-center gap-3 py-8">
+                                        <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>      
+                                        <h1 className="text-xl md:text-2xl text-gray-200 font-semibold text-center">{name} mavjud emas :(</h1>
+                                    </div>
+                                }
+                            </div>
                             }
-                            {moviesLoadingStatus === "loading" ? <div className="w-full">
-                                <Spinner/>
-                            </div> : ''}
                         </div>
                     </Swiper>
                     <div onClick={() => swiperRef.current?.slideNext()} className="cursor-pointer hidden lg:flex absolute mb-14 w-[50px] h-[50px] rounded-full bg-[#ffc30dda] right-0 z-40 flex m-1 justify-center items-center">

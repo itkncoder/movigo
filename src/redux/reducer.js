@@ -20,7 +20,8 @@ const initialState = {
 
     byCategory: [
 
-    ]
+    ],
+    byCategoryLoadingStatus: "loading"
 }
 
 const reducer = createReducer(initialState, builder => {
@@ -48,7 +49,8 @@ const reducer = createReducer(initialState, builder => {
 
 
         .addCase(moviesByCategory, (state, action) => {
-            state.byCategory = [...state.byCategory, action.payload]
+            state.byCategory = [...state.byCategory, action.payload],
+            state.byCategoryLoadingStatus = "none"
         })
 
         .addDefaultCase(() => {})
