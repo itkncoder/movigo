@@ -37,7 +37,7 @@ const Watch = () => {
             setWatching(res.data.data)
             setLoader(false)
             setTimeout(() => likesBtn.current.addEventListener("click", like), 1000)
-        })
+        }).catch(err => setLoader("Error"))
     }, [])
 
     const like = () => {
@@ -68,8 +68,9 @@ const Watch = () => {
                 <meta property="og:description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar" />
                 <meta property="og:image" content="../../assets/logo.png" />
             </Helmet>
-
-            {!loader ? <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
+     
+            {!loader ? 
+            <div className="px-2 max-widther mx-auto mt-32 xl:px-0">
                 <div>
                     <div>
                         <div className="mb-2 md:mb-4 mt-6">
@@ -128,9 +129,12 @@ const Watch = () => {
                 <div className="mt-10">
                     <AdsHome/>
                 </div>
-            </div> : <div className="px-2 h-96 flex justify-center items-center max-widther mx-auto mt-32 xl:px-0">
+            </div>
+            :            
+            <div className="px-2 h-96 flex justify-center items-center max-widther mx-auto mt-32 xl:px-0">
                 <Spinner/>
-            </div>}
+            </div>
+            }
         </>
     )
 }
