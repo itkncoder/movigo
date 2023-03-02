@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      zIndex: {
+        '100': '100',
+      },
       spacing: {
         120: "505px",
         62: "252px",

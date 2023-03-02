@@ -22,11 +22,13 @@ import Adminpanel from "./pages/adminpanel/Adminpanel"
 
 import {API_BASE} from "./utils/config"
 
+import Spinner from "./components/Spinner"
+
 function App() {
 
     const dispatch = useDispatch()
 
-    const { category } = useSelector(state => state)
+    const { category, moviesLoadingStatus } = useSelector(state => state)
 
     useEffect(() => {   
 
@@ -68,6 +70,9 @@ function App() {
 
     return (
       <div className="App">
+            {moviesLoadingStatus === "loading" ? <div className="fixed w-full h-screen top-0 left-0 flex justify-center items-center z-100 bg-[#151a20]">
+                <Spinner/>
+            </div> : ""}
             <div className="wrapper-carousel mx-auto">
                 <Header/>
             </div>
