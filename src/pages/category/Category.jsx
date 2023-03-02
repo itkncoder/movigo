@@ -51,11 +51,8 @@ const Category = () => {
             paginator(Number(params.get("page")))
             if (name !== "Barchasi") {
                 setSelectedUI(name)
-                setLoader(true)
                 axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}`).then(res => {
                     setPaginationCount(res.data.pages)
-                    setFilteredMovies(res.data.data)
-                    setLoader(false)
                 })
             }
         } else {
@@ -172,10 +169,8 @@ const Category = () => {
                         </Link>
                         })}
                     </div>
-                    <Link                             
-                        onClick={() => paginator(paginationCount + 1)}
-                        to={`/category/${selectedUI}?page=${paginationCount + 1}`}
-                    className="ml-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</Link >
+                    {paginationCountNow <= paginationCount && <Link onClick={() => paginator(paginationCount + 1)} to={`/category/${selectedUI}?page=${paginationCount + 1}`} 
+                        className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</Link>}
                 </div>
                 <div className="mt-20 block">
                     <AdsHome/>
