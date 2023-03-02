@@ -52,6 +52,8 @@ function App() {
     }, [])
 
     async function name() {
+
+        
         await axios.get(`${API_BASE}/api/films/category/${category[0]?._id}`).then(res => {
             dispatch(moviesByCategory(res.data.data))
         })

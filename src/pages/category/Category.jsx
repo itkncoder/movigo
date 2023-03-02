@@ -47,6 +47,14 @@ const Category = () => {
         if (params.get("page")) {
             setSelectedUI(name)
             paginator(Number(params.get("page")))
+            if (name !== "Barchasi") {
+                setSelectedUI(name)
+                setLoader(true)
+                axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}`).then(res => {
+                    setFilteredMovies(res.data.data)
+                    setLoader(false)
+                })
+            }
         } else {
             paginator(1)
             if (name !== "Barchasi") {
