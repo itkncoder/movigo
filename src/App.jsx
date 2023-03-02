@@ -30,13 +30,6 @@ function App() {
 
     useEffect(() => {   
 
-        dispatch(categoryFetching())
-        axios.get(`${API_BASE}/api/category/`).then(res => {
-            dispatch(categoryFetched(res.data.data))
-        })
-        .catch(() => dispatch(categoryFetchingError()))
-        .then(() => name())
-
         dispatch(sliderFetching())
         axios.get(`${API_BASE}/api/slider/getSliders`).then(res => {
         dispatch(sliderFetched(res.data.data))
@@ -45,24 +38,30 @@ function App() {
 
         dispatch(moviesFetching())
         axios.get(`${API_BASE}/api/films`).then(res => {
-        dispatch(moviesFetched(res.data.data))
+        dispatch(moviesFetched(res.data))
         })
         .catch(() => dispatch(moviesFetchingError()))
 
+        categoryAndSwiper()
+
     }, [])
 
-    async function name() {
+    async function categoryAndSwiper() {
 
-        
-        await axios.get(`${API_BASE}/api/films/category/${category[0]?._id}`).then(res => {
+        await dispatch(categoryFetching())
+        await axios.get(`${API_BASE}/api/category/`).then(res => {
+            dispatch(categoryFetched(res.data.data))
+        }).catch(() => dispatch(categoryFetchingError()))
+
+        await axios.get(`${API_BASE}/api/films/category/63e4c43afbc11b6b68eb49bb`).then(res => {
             dispatch(moviesByCategory(res.data.data))
-        })
-        await axios.get(`${API_BASE}/api/films/category/${category[1]?._id}`).then(res => {
+        }).catch(() => dispatch(moviesByCategory([])))
+        await axios.get(`${API_BASE}/api/films/category/63e4c448fbc11b6b68eb49bd`).then(res => {
             dispatch(moviesByCategory(res.data.data))
-        })
-        await axios.get(`${API_BASE}/api/films/category/${category[2]?._id}`).then(res => {
+        }).catch(() => dispatch(moviesByCategory([])))
+        await axios.get(`${API_BASE}/api/films/category/63e4c452fbc11b6b68eb49bf`).then(res => {
             dispatch(moviesByCategory(res.data.data))
-        })
+        }).catch(() => dispatch(moviesByCategory([])))
     }
 
     return (

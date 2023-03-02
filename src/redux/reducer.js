@@ -5,6 +5,7 @@ const initialState = {
     movies: [
         
     ],
+    moviesPages: "",
     moviesLoadingStatus: "none",
 
     category: [
@@ -28,7 +29,8 @@ const reducer = createReducer(initialState, builder => {
     builder
         .addCase(moviesFetching, (state, action) => {state.moviesLoadingStatus = "loading"})
         .addCase(moviesFetched, (state, action) => {
-            state.movies = action.payload,
+            state.movies = action.payload.data,
+            state.moviesPages = action.payload.pages
             state.moviesLoadingStatus = "none"
         })
         .addCase(moviesFetchingError, (state, action) => {state.moviesLoadingStatus = "error"})
@@ -46,7 +48,6 @@ const reducer = createReducer(initialState, builder => {
             state.slidersFetchingStatus = "none"
         })
         .addCase(sliderFetchingError, (state, action) => {state.slidersFetchingStatus = "error"})
-
 
         .addCase(moviesByCategory, (state, action) => {
             state.byCategory = [...state.byCategory, action.payload],

@@ -9,7 +9,7 @@ import axios from "axios"
 import {API_BASE} from "../../utils/config"
 
 const Category = () => {
-    const { movies, moviesLoadingStatus, category } = useSelector(store => store)
+    const { movies, moviesLoadingStatus, category, moviesPages } = useSelector(store => store)
 
     const [dropdown, setDropdown] = useState(false)
     const dropBlock = useRef(null)
@@ -19,7 +19,7 @@ const Category = () => {
     const [selectedUIFilter, setSelectedUIFilter] = useState('Yangilari')
     const [filteredMovies, setFilteredMovies] = useState([])
 
-    const [paginationCount, setPaginationCount] = useState(1)
+    const [paginationCount, setPaginationCount] = useState()
 
     const [loader, setLoader] = useState(false)
 
@@ -44,6 +44,7 @@ const Category = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
+        setPaginationCount(moviesPages)
         if (params.get("page")) {
             setSelectedUI(name)
             paginator(Number(params.get("page")))
@@ -51,6 +52,7 @@ const Category = () => {
                 setSelectedUI(name)
                 setLoader(true)
                 axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}`).then(res => {
+                    setPaginationCount(res.data.pages)
                     setFilteredMovies(res.data.data)
                     setLoader(false)
                 })
@@ -61,6 +63,7 @@ const Category = () => {
                 setSelectedUI(name)
                 setLoader(true)
                 axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}`).then(res => {
+                    setPaginationCount(res.data.pages)
                     setFilteredMovies(res.data.data)
                     setLoader(false)
                 })
@@ -70,7 +73,6 @@ const Category = () => {
 
     const paginator = (page) => {
         if (page !== 1 || !page) {
-            setPaginationCount(page)
             setLoader(true)
             if (name !== "Barchasi") {
                 axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}?page=${page}`).then(res => {
@@ -87,7 +89,6 @@ const Category = () => {
             setSelectedUI("Barchasi")
             const filtered = movies.filter(i => i)
             setFilteredMovies(filtered)
-            setPaginationCount(1)
         }
     }
 
@@ -154,33 +155,20 @@ const Category = () => {
                             </div>
                         }
                     </div> : <div className="px-2 h-96 flex justify-center items-center max-widther mx-auto mt-32 xl:px-0">
-                                <Spinner/>
-                            </div>}
+                        <Spinner/>
+                    </div>}
                 </div>
                 <div className="flex justify-center items-center gap-2.5">
                     {paginationCount >= 2 && <Link onClick={() => paginator(paginationCount - 1)} to={`/category/${selectedUI}?page=${paginationCount - 1}`} 
                         className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</Link>}
                     <div className="flex justify-center items-center gap-1.5">
-                        <Link 
-                            onClick={() => paginator(paginationCount)} 
-                            to={`/category/${selectedUI}?page=${paginationCount}`}    
-                            className={"hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200"}>{paginationCount}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 1)}
-                            to={`/category/${selectedUI}?page=${paginationCount + 1}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 1}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 2)}
-                            to={`/category/${selectedUI}?page=${paginationCount + 2}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 2}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 3)}
-                            to={`/category/${selectedUI}?page=${paginationCount + 3}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 3}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 4)}
-                            to={`/category/${selectedUI}?page=${paginationCount + 4}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 4}</Link>
+                        {
+                            <Link 
+                                onClick={() => paginator(paginationCount)} 
+                                to={`/category/${selectedUI}?page=${paginationCount}`}    
+                                className={"hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200"}>{paginationCount}
+                            </Link>
+                        }
                     </div>
                     <Link                             
                         onClick={() => paginator(paginationCount + 1)}
