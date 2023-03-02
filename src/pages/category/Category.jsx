@@ -49,12 +49,6 @@ const Category = () => {
         if (params.get("page")) {
             setSelectedUI(name)
             paginator(Number(params.get("page")))
-            if (name !== "Barchasi") {
-                setSelectedUI(name)
-                axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}`).then(res => {
-                    setPaginationCount(res.data.pages)
-                })
-            }
         } else {
             paginator(1)
             if (name !== "Barchasi") {
@@ -70,12 +64,14 @@ const Category = () => {
     }, [name, movies, params.get("page")])
 
     const paginator = (page) => {
+        setSelectedUI(name)
         setPaginationCountNow(page)
         if (page !== 1 || !page) {
             setLoader(true)
             if (name !== "Barchasi") {
                 axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}?page=${page}`).then(res => {
                     setFilteredMovies(res.data.data)
+                    setPaginationCount(res.data.pages)
                     setLoader(false)
                 })
             } else {
@@ -85,9 +81,19 @@ const Category = () => {
                 })
             }
         } else {
-            setSelectedUI("Barchasi")
-            const filtered = movies.filter(i => i)
-            setFilteredMovies(filtered)
+            setLoader(true)
+            if (name !== "Barchasi") {
+                axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}?page=${page}`).then(res => {
+                    setFilteredMovies(res.data.data)
+                    setPaginationCount(res.data.pages)
+                    setLoader(false)
+                })
+            } else {
+                setSelectedUI("Barchasi")
+                const filtered = movies.filter(i => i)
+                setFilteredMovies(filtered)
+                setLoader(false)
+            }
         }
     }
 
@@ -158,18 +164,30 @@ const Category = () => {
                     </div>}
                 </div>
                 <div className="flex justify-center items-center gap-2.5">
-                    {paginationCount >= 2 && <Link onClick={() => paginator(paginationCount - 1)} to={`/category/${selectedUI}?page=${paginationCount - 1}`} 
+                    {paginationCount >= 5 && <Link onClick={() => paginator(paginationCountNow - 1)} to={`/category/${selectedUI}?page=${paginationCountNow - 1}`} 
                         className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</Link>}
                     <div className="flex justify-center items-center gap-1.5">
-                        {Array.from(Array(paginationCount), (e, i) => {
+                        {
+                        paginationCount ?
+
+                        Array.from(Array(paginationCount), (e, i) => {
                             return <Link 
                                 onClick={() => paginator(i + 1)} 
                                 to={`/category/${selectedUI}?page=${i + 1}`}    
                                 className={`${paginationCountNow === i + 1 && "bg-yellow-700 "} hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200`}>{i + 1}
                         </Link>
-                        })}
+                        })
+                        
+                        :
+
+                        <Link 
+                            onClick={() => paginator(1)} 
+                            to={`/category/${selectedUI}`}
+                            className={`${paginationCountNow === 1 && "bg-yellow-700 "} hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200`}>{1}
+                        </Link>
+                    }
                     </div>
-                    {paginationCountNow <= paginationCount && <Link onClick={() => paginator(paginationCount + 1)} to={`/category/${selectedUI}?page=${paginationCount + 1}`} 
+                    {paginationCountNow <= paginationCount && <Link onClick={() => paginator(paginationCountNow + 1)} to={`/category/${selectedUI}?page=${paginationCountNow + 1}`} 
                         className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</Link>}
                 </div>
                 <div className="mt-20 block">
