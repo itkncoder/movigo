@@ -11,17 +11,23 @@ import {API_BASE} from "../../utils/config"
 const Adminpanel = () => {
     const navigate = useNavigate();
 
-    const { movies, category } = useSelector( state => state )
+    const { category } = useSelector( state => state )
     
     const [ tab, setTabs ] = useState(true)
 
     const dispatch = useDispatch()
+
+    const [movies, setMovies] = useState([])
 
     window.onclick = (e) => {
         if (e.target.classList.contains("modal")) {
             setIsOpen(false)
         }
     }
+
+    useEffect(() => {
+        axios.get(`${API_BASE}/api/films/all`).then(res => setMovies(res.data.data))
+    })
 
     const deleteing = (what, id) => {
         axios.delete(`${API_BASE}/api/${what}/${id}`).then(() => {

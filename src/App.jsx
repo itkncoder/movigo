@@ -33,9 +33,9 @@ function App() {
         dispatch(categoryFetching())
         axios.get(`${API_BASE}/api/category/`).then(res => {
             dispatch(categoryFetched(res.data.data))
-            name()
         })
         .catch(() => dispatch(categoryFetchingError()))
+        .then(() => name())
 
         dispatch(sliderFetching())
         axios.get(`${API_BASE}/api/slider/getSliders`).then(res => {
@@ -52,11 +52,13 @@ function App() {
     }, [])
 
     async function name() {
-        await axios.get(`${API_BASE}/api/films?page=2`).then(res => {
+        await axios.get(`${API_BASE}/api/films/category/${category[0]?._id}`).then(res => {
             dispatch(moviesByCategory(res.data.data))
         })
-
-        await axios.get(`${API_BASE}/api/films`).then(res => {
+        await axios.get(`${API_BASE}/api/films/category/${category[1]?._id}`).then(res => {
+            dispatch(moviesByCategory(res.data.data))
+        })
+        await axios.get(`${API_BASE}/api/films/category/${category[2]?._id}`).then(res => {
             dispatch(moviesByCategory(res.data.data))
         })
     }

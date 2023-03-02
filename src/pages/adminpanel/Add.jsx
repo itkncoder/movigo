@@ -119,7 +119,7 @@ const Add = () => {
 
                             <div className="w-full">
                                 <h1 className="text-xl">Genres</h1>
-                                <input onInput={e => setInputs({...inputs, genres: e.target.value})} value={inputs.genres} {...register("genres")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="genres" id="" />
+                                <input onInput={e => setInputs({...inputs, genres: e.target.value})} value={inputs.genres} {...register("genres")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Genre..." name="genres" id="" />
                             </div>
 
                         </div>
@@ -144,7 +144,7 @@ const Add = () => {
 
                             <div className="w-full">
                                 <h1 className="text-xl">Country</h1>
-                                <input onInput={e => setInputs({...inputs, country: e.target.value})} value={inputs.country} {...register("country")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="country" id="" />
+                                <input onInput={e => setInputs({...inputs, country: e.target.value})} value={inputs.country} {...register("country")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Country..." name="country" id="" />
                             </div>
 
                         </div>
@@ -164,12 +164,12 @@ const Add = () => {
 
                             <div className="w-full">
                                 <h1 className="text-xl">Language</h1>
-                                <input onInput={e => setInputs({...inputs, language: e.target.value})} value={inputs.language} {...register("language")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="language" id="" />
+                                <input onInput={e => setInputs({...inputs, language: e.target.value})} value={inputs.language} {...register("language")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Language..." name="language" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Age</h1>
-                                <input onInput={e => setInputs({...inputs, age: e.target.value})} value={inputs.age} {...register("age")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="age" id="" />
+                                <input onInput={e => setInputs({...inputs, age: e.target.value})} value={inputs.age} {...register("age")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Age..." name="age" id="" />
                             </div>
 
                             <div className="flex justify-end items-center mt-5">

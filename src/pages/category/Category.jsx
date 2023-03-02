@@ -44,20 +44,18 @@ const Category = () => {
 
     useEffect(() => {
         window.scroll(0, 0)
-        setSelectedUI(name)
         if (params.get("page")) {
+            setSelectedUI(name)
             paginator(Number(params.get("page")))
-            if (name !== "Barchasi") {
-                setSelectedUI(name)
-                const filtered = movies.filter(i => i.category?.name == name)
-                setFilteredMovies(filtered)
-            }
         } else {
             paginator(1)
             if (name !== "Barchasi") {
                 setSelectedUI(name)
-                const filtered = movies.filter(i => i.category?.name == name)
-                setFilteredMovies(filtered)
+                setLoader(true)
+                axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}`).then(res => {
+                    setFilteredMovies(res.data.data)
+                    setLoader(false)
+                })
             }
         }
     }, [name, movies, params.get("page")])
@@ -66,10 +64,17 @@ const Category = () => {
         if (page !== 1 || !page) {
             setPaginationCount(page)
             setLoader(true)
-            axios.get(`${API_BASE}/api/films/?page=${page}`).then(res => {
-                setFilteredMovies(res.data.data)
-                setLoader(false)
-            })
+            if (name !== "Barchasi") {
+                axios.get(`${API_BASE}/api/films/category/${category?.filter(i => i.name === name)[0]?._id}?page=${page}`).then(res => {
+                    setFilteredMovies(res.data.data)
+                    setLoader(false)
+                })
+            } else {
+                axios.get(`${API_BASE}/api/films/?page=${page}`).then(res => {
+                    setFilteredMovies(res.data.data)
+                    setLoader(false)
+                })
+            }
         } else {
             setSelectedUI("Barchasi")
             const filtered = movies.filter(i => i)
