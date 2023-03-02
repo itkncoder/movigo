@@ -172,6 +172,7 @@ const Category = () => {
 
                         Array.from(Array(paginationCount), (e, i) => {
                             return <Link 
+                                key={i}
                                 onClick={() => paginator(i + 1)} 
                                 to={`/category/${selectedUI}?page=${i + 1}`}    
                                 className={`${paginationCountNow === i + 1 && "bg-yellow-700 "} hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200`}>{i + 1}
