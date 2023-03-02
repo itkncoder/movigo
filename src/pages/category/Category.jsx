@@ -20,6 +20,7 @@ const Category = () => {
     const [filteredMovies, setFilteredMovies] = useState([])
 
     const [paginationCount, setPaginationCount] = useState()
+    const [paginationCountNow, setPaginationCountNow] = useState(1)
 
     const [loader, setLoader] = useState(false)
 
@@ -72,6 +73,7 @@ const Category = () => {
     }, [name, movies, params.get("page")])
 
     const paginator = (page) => {
+        setPaginationCountNow(page)
         if (page !== 1 || !page) {
             setLoader(true)
             if (name !== "Barchasi") {
@@ -162,13 +164,13 @@ const Category = () => {
                     {paginationCount >= 2 && <Link onClick={() => paginator(paginationCount - 1)} to={`/category/${selectedUI}?page=${paginationCount - 1}`} 
                         className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</Link>}
                     <div className="flex justify-center items-center gap-1.5">
-                        {
-                            <Link 
-                                onClick={() => paginator(paginationCount)} 
-                                to={`/category/${selectedUI}?page=${paginationCount}`}    
-                                className={"hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200"}>{paginationCount}
-                            </Link>
-                        }
+                        {Array.from(Array(paginationCount), (e, i) => {
+                            return <Link 
+                                onClick={() => paginator(i + 1)} 
+                                to={`/category/${selectedUI}?page=${i + 1}`}    
+                                className={`${paginationCountNow === i + 1 && "bg-yellow-700 "} hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200`}>{i + 1}
+                        </Link>
+                        })}
                     </div>
                     <Link                             
                         onClick={() => paginator(paginationCount + 1)}
