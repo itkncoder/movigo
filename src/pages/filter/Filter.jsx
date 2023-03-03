@@ -10,7 +10,8 @@ import {API_BASE} from "../../utils/config"
 
 const Filter = () => {
 
-    const { movies, moviesLoadingStatus } = useSelector(store => store)
+    const { movies, moviesLoadingStatus, category, moviesPages } = useSelector(store => store)
+
     const [filteredMovies, setFilteredMovies] = useState([])
     const params = new URLSearchParams(document.location.search)
 
@@ -25,21 +26,12 @@ const Filter = () => {
     })
 
     const [paginationCount, setPaginationCount] = useState(1)
+    const [paginationCountNow, setPaginationCountNow] = useState(1)
 
     const [dropdown, setDropdown] = useState(false)
     const dropBlock = useRef(null)
 
-    const [selectedUIFilter, setSelectedUIFilter] = useState('Yangilari')
-    
-    useEffect(() => {
-        window.scroll(0, 0)
-        if (params.get("id")) {
-            axios.get(`${API_BASE}/api/films/${type}/${params.get('id')}`).then(res => {
-                setFilteredMovies(res.data.data)
-                setLoader(false)
-            })
-        }
-    }, [])
+    const [selectedUIFilter, setselectedUIFilter] = useState('Yangilari')
 
     function filterMovies(type) {
         if (type === "likes") {
@@ -52,14 +44,39 @@ const Filter = () => {
         } 
     }
         
-    const paginator = (page) => {
-        setPaginationCount(page)
-        setLoader(true)
+    useEffect(() => {
         window.scroll(0, 0)
-        axios.get(`/filter/${type}/${params.get('id')}?page=${page}`).then(res => {
-            setFilteredMovies(res.data.data)
-            setLoader(false)
-        })
+        if (!params.get("page")) {
+            axios.get(`${API_BASE}/api/films/${type}/${params.get('id')}`).then(res => {
+                setFilteredMovies(res.data.data)
+                setPaginationCount(res.data.pages)
+                setLoader(false)
+            })
+        }
+        if (params.get("page")) {
+            paginator(Number(params.get("page")))
+        } else {
+            paginator(1)
+        }
+    }, [params.get("page")])
+
+    const paginator = (page) => {
+        setPaginationCountNow(page)
+        if (page !== 1 || !page) {
+            setLoader(true)
+            axios.get(`${API_BASE}/api/films/${type}/${params.get('id')}?page=${page}`).then(res => {
+                setFilteredMovies(res.data.data)
+                setPaginationCount(res.data.pages)
+                setLoader(false)
+            })
+        } else {
+            setLoader(true)
+            axios.get(`${API_BASE}/api/films/${type}/${params.get('id')}?page=${page}`).then(res => {
+                setFilteredMovies(res.data.data)
+                setPaginationCount(res.data.pages)
+                setLoader(false)
+            })
+        }
     }
 
     return (
@@ -75,11 +92,11 @@ const Filter = () => {
                             {dropdown && <div ref={dropBlock} className="absolute z-20 top-12 flex flex-col gap-1 right-0 bg-gray-700 px-2 py-3 rounded-lg">
                                 <p onClick={() => {
                                     filterMovies("viewCount")
-                                    setSelectedUIFilter("Ko'rishlar")
+                                    setselectedUIFilterFilter("Ko'rishlar")
                                 }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i className="fa-solid fa-eye"></i> Ko'rishlar</p>
                                 <p onClick={() => {
                                     filterMovies("likes")
-                                    setSelectedUIFilter("Reyting")
+                                    setselectedUIFilterFilter("Reyting")
                                 }} className="drowdown-item min-w-20 py-1.5 px-5 bg-gray-800 rounded-md hover:ring-2 ring-gray-600 active:ring-4 flex items-center justify-start gap-2"><i className="fa-solid fa-thumbs-up"></i> Reyting</p>
                             </div>}
                         </div>
@@ -93,36 +110,43 @@ const Filter = () => {
                             </div>
                         )}
                     </div>
+                    {
+                        !filteredMovies.length
+                        &&
+                        <div className="flex flex-col items-center gap-3 py-8">
+                            <i className="text-5xl text-yellow-500 fa-solid fa-film"></i>
+                            <h1 className="text-xl m:text-2xl text-gray-200 font-semibold text-center">Filmlar mavjud emas :(</h1>
+                        </div>
+                        }
                 </div>
                 <div className="flex justify-center items-center gap-2.5">
-                    {paginationCount >= 2 && <Link onClick={() => paginator(paginationCount - 1)} to={`/filter/${type}/${params.get('id')}?page=${paginationCount - 1}`} 
+                    {paginationCount >= 5 && <Link onClick={() => paginator(paginationCountNow - 1)} to={`/category/${selectedUIFilter}?page=${paginationCountNow - 1}`} 
                         className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#60;</Link>}
                     <div className="flex justify-center items-center gap-1.5">
+                        {
+                        paginationCount ?
+
+                        Array.from(Array(paginationCount), (e, i) => {
+                            return <Link 
+                                key={i}
+                                onClick={() => paginator(i + 1)} 
+                                to={`/filter/${type}?id=${params.get('id')}&page=${i + 1}`}    
+                                className={`${paginationCountNow === i + 1 && "bg-yellow-700 "} hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200`}>{i + 1}
+                        </Link>
+                        })
+                        
+                        :
+
                         <Link 
-                            onClick={() => paginator(paginationCount)}
-                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount}`}    
-                            className={"hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200"}>{paginationCount}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 1)}
-                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 1}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 1}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 2)}
-                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 2}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 2}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 3)}
-                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 3}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 3}</Link>
-                        <Link 
-                            onClick={() => paginator(paginationCount + 4)}
-                            to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 4}`} 
-                            className="hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200">{paginationCount + 4}</Link>
+                            onClick={() => paginator(1)} 
+                            to={`/filter/${type}?id=${params.get('id')}&page=${1}`}
+                            className={`${paginationCountNow === 1 && "bg-yellow-700 "} hover:bg-yellow-700 cursor-pointer bg-yellow-600 w-6 h-6 flex justify-center items-center rounded-full text-xs text-gray-200`}>{1}
+                        </Link>
+                    }
                     </div>
-                    <Link                             
-                        onClick={() => paginator(paginationCount + 1)}
-                        to={`/filter/${type}/${params.get('id')}?page=${paginationCount + 1}`}
-                    className="ml-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</Link >
+                    {paginationCountNow <= paginationCount && <Link onClick={() => paginator(paginationCountNow + 1)} 
+                        to={`/filter/${type}?id=${params.get('id')}&page=${paginationCountNow + 1}`} 
+                        className="mr-1 hover:bg-yellow-600 cursor-pointer bg-yellow-500 w-6 h-6 flex justify-center items-center rounded-full font-semibold text-sm text-gray-200">&#62;</Link>}
                 </div>
                 <div className="mt-20 block">
                     <AdsHome/>

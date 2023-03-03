@@ -22,7 +22,7 @@ const Category = () => {
     const [paginationCount, setPaginationCount] = useState()
     const [paginationCountNow, setPaginationCountNow] = useState(1)
 
-    const [loader, setLoader] = useState(false)
+    const [loader, setLoader] = useState(false) 
 
     const params = new URLSearchParams(document.location.search)
 
