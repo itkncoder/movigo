@@ -13,7 +13,7 @@ const MovieSwiper = ({name, movies}) => {
     const swiperRef = useRef(null)
 
     const { byCategoryLoadingStatus } = useSelector(state => state)
-    
+
     return (
         <section className="px-2">
             <div>
