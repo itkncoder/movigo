@@ -14,7 +14,7 @@ const HomeCatalogs = () => {
         <div className="max-w-[1170px] mx-auto mt-24">
             
             {category.map((item, index) => 
-                <MovieSwiper key={index} name={item.name} movies={byCategory[index + 1]} />
+                <MovieSwiper key={index} name={item.name} movies={byCategory.filter(i => i[0]?.category.name === item.name)[0]} />
             )}
 
             <div className="my-8">

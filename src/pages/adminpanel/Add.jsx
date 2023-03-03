@@ -8,6 +8,8 @@ import {API_BASE} from "../../utils/config"
 const Add = () => {
     const { register, handleSubmit } = useForm();
 
+    const { category, movies } = useSelector(state => state)
+
     const [inputs, setInputs] = useState({
         poster: "",
         title: "",
@@ -17,7 +19,7 @@ const Add = () => {
         trailer: "",
         year: "",
         video: "",
-        category: "",
+        category: category[0]?._id,
         country: "",
         language: "",
         age: ""
@@ -30,8 +32,6 @@ const Add = () => {
     const navigate = useNavigate();
 
     const [ movieOrCategory, setMovieOrCategory ] = useState(name === "films" ? false : true)
-
-    const { category, movies } = useSelector(state => state)
 
     const [postOrPut, setPostOrPut] = useState(true)
 
@@ -110,7 +110,7 @@ const Add = () => {
 
                             <div className="w-full">
                                 <h1 className="text-xl">Category</h1>
-                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs.category?._id} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="category">
+                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs.category} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="category">
                                     {category.map((i) => 
                                         <option key={i._id} value={i._id}>{i.name}</option>
                                     )}
