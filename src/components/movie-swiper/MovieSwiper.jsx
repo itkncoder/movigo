@@ -5,14 +5,27 @@ import 'swiper/css';
 import { Autoplay } from "swiper";
 import {Link} from "react-router-dom"
 import Spinner from "../Spinner"
+import {API_BASE} from "../../utils/config"
 
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+
+import axios from "axios"
+
+import { moviesByCategory } from "../../redux/actions"
 
 const MovieSwiper = ({name, movies}) => {
 
     const swiperRef = useRef(null)
 
-    const { byCategoryLoadingStatus } = useSelector(state => state)
+    const { category, byCategoryLoadingStatus } = useSelector(state => state)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        axios.get(`${API_BASE}/api/films/category/${category.filter(i => i.name === name)[0]._id}`).then(res => {
+            dispatch(moviesByCategory(res.data.data))
+        }).catch(() => dispatch(moviesByCategory([])))
+    }, [])
 
     return (
         <section className="px-2">

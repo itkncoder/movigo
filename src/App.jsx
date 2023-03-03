@@ -54,18 +54,6 @@ function App() {
         await axios.get(`${API_BASE}/api/category/`).then(res => {
             dispatch(categoryFetched(res.data.data))
         }).catch(() => dispatch(categoryFetchingError()))
-
-        await axios.get(`${API_BASE}/api/films/category/63e4c43afbc11b6b68eb49bb`).then(res => {
-            dispatch(moviesByCategory(res.data.data))
-        }).catch(() => dispatch(moviesByCategory([])))
-
-        await axios.get(`${API_BASE}/api/films/category/63e4c448fbc11b6b68eb49bd`).then(res => {
-            dispatch(moviesByCategory(res.data.data))
-        }).catch(() => dispatch(moviesByCategory([])))
-        
-        await axios.get(`${API_BASE}/api/films/category/63e4c452fbc11b6b68eb49bf`).then(res => {
-            dispatch(moviesByCategory(res.data.data))
-        }).catch(() => dispatch(moviesByCategory([])))
     }
 
     return (
