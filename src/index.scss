@@ -10,6 +10,9 @@
   font-family: "Poppins", "Bebas Neue", Calibri;
   outline: none;
 }
+html {
+  overflow-x: hidden;
+}
 *::-webkit-scrollbar {
   width: 5px;
 }
