@@ -47,8 +47,8 @@ const Watch = () => {
         setLikes(prev => prev + 1)
         axios.post(`${API_BASE}/api/films/${params.get('id')}/like`, true)
         likesBtn.current.removeEventListener('click', like)
-        likesBtn.current.classList.add("bg-gray-600")
-        likesBtn.current.classList.add("ring-gray-600")
+        likesBtn.current.classList.add("bg-gray-700")
+        likesBtn.current.classList.add("ring-gray-700")
     }
 
     const addViews = () => {
