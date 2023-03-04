@@ -34,13 +34,13 @@ function App() {
 
         dispatch(sliderFetching())
         axios.get(`${API_BASE}/api/slider/getSliders`).then(res => {
-        dispatch(sliderFetched(res.data.data))
+            dispatch(sliderFetched(res.data.data))
         })
         .catch(() => dispatch(sliderFetchingError()))
 
         dispatch(moviesFetching())
         axios.get(`${API_BASE}/api/films`).then(res => {
-        dispatch(moviesFetched(res.data))
+            dispatch(moviesFetched(res.data))
         })
         .catch(() => dispatch(moviesFetchingError()))
 
