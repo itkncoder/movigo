@@ -31,9 +31,12 @@ const Watch = () => {
 
     const params = new URLSearchParams(document.location.search)
 
+    const [likes, setLikes] = useState("")
+
     useEffect(() => {
         window.scroll(0, 0)
         axios.get(`${API_BASE}/api/films/${params.get("id")}`).then(res => {
+            setLikes(res.data.data.likes)
             setWatching(res.data.data)
             setLoader(false)
             setTimeout(() => likesBtn.current.addEventListener("click", like), 1000)
@@ -41,6 +44,7 @@ const Watch = () => {
     }, [])
 
     const like = () => {
+        setLikes(prev => prev + 1)
         axios.post(`${API_BASE}/api/films/${params.get('id')}/like`, true)
         likesBtn.current.removeEventListener('click', like)
         likesBtn.current.classList.add("bg-gray-600")
@@ -121,7 +125,7 @@ const Watch = () => {
                         </div>
                         <div className="flex items-center justify-start gap-2">
                             <i ref={likesBtn} className="bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl fa-solid fa-thumbs-up cursor-pointer hover:text-gray-200 text-gray-100 active:text-yellow-500 tooltip relative hover:ring-2 ring-gray-700">
-                                <p className="text-gray-200 absolute text-sm opacity-0 transition-all duration-300 mb-0 border-gray-700 border">{watchingMovieItem?.likes}</p>
+                                <p className="text-gray-200 absolute text-sm opacity-0 transition-all duration-300 mb-0 border-gray-700 border">{likes}</p>
                             </i>
                         </div>
                     </div>
