@@ -51,10 +51,6 @@ const Watch = () => {
         likesBtn.current.classList.add("ring-gray-700")
     }
 
-    const addViews = () => {
-        axios.get(`${API_BASE}/api/films/${params.get('id')}`)
-    }
-
     return (
         <>
             <Helmet>
@@ -101,7 +97,6 @@ const Watch = () => {
                     {tab ? 
                     <ReactPlayer
                         ref={video}
-                        onStart={addViews}
                         className="video"
                         url={watchingMovieItem?.video}
                         width="100%"
