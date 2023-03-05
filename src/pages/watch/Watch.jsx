@@ -54,17 +54,17 @@ const Watch = () => {
     return (
         <>
             <Helmet>
-                <title>Movigo - Watch</title>
-                <meta name="title" content="Movigo - Watch"/>
-                <meta name="description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar"/>
-                <meta name="keywords" content="movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar"/>
+                <title>{`Movigo - ${watchingMovieItem?.title || ""}`}</title>
+                <meta name="title" content={`Movigo - ${watchingMovieItem?.title}`}/>
+                <meta name="description" content={`Movigo - ${watchingMovieItem?.description}`}/>
+                <meta name="keywords" content={`movigo, online, kino, movi go, muvigo, muvi, kinoteatr, online kino, filmlar, multfilmlar, anime, yangi kinolar, yangi seriallar, seriallar, ${watchingMovieItem?.title}`}/>
                 <meta name="robots" content="index, follow"/>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
                 <meta name="language" content="Uzbek"/>
                 <meta name="author" content="Movigo"/>
 
-                <meta property="og:title" content="Movigo" />
-                <meta property="og:site_name" content="Movigo"/>
+                <meta property="og:title" content={`Movigo - ${watchingMovieItem?.title || ""}`} />
+                <meta property="og:site_name" content={`Movigo - ${watchingMovieItem?.title || ""}`}/>
                 <meta property="og:description" content="Movigo - online kinolar, tarjima qilingan holda va HD sifatda, yuklab olish imkoniyati va ko'plab kinolar" />
                 <meta property="og:image" content="../../assets/logo.png" />
             </Helmet>
