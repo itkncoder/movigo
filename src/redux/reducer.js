@@ -45,6 +45,7 @@ const reducer = createReducer(initialState, builder => {
         .addCase(sliderFetching, (state, action) => {state.slidersFetchingStatus = "loading"})
         .addCase(sliderFetched, (state, action) => {
             state.sliders = action.payload,
+            state.sliders = state.sliders.reverse(),
             state.slidersFetchingStatus = "none"
         })
         .addCase(sliderFetchingError, (state, action) => {state.slidersFetchingStatus = "error"})
