@@ -51,7 +51,7 @@ const reducer = createReducer(initialState, builder => {
 
         .addCase(moviesByCategory, (state, action) => {
             state.byCategory = [...state.byCategory, action.payload],
-            state.byCategoryLoadingStatus = state.byCategory.length >= 3 ? "none" : "loading"
+            state.byCategoryLoadingStatus = state.byCategory.length >= state.category.lengthc ? "none" : "loading"
         })
 
         .addDefaultCase(() => {})
