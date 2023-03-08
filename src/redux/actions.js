@@ -13,3 +13,5 @@ export const sliderFetched = createAction("SLIDER_FETCHED")
 export const sliderFetchingError = createAction("SLIDER_FETCHING_ERROR")
 
 export const moviesByCategory = createAction("HOME_SWIPER")
+
+export const fetchAll = createAction("FETCH_ALL")

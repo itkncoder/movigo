@@ -8,7 +8,7 @@ import {API_BASE} from "../../utils/config"
 const Add = () => {
     const { register, handleSubmit } = useForm();
 
-    const { category, movies } = useSelector(state => state)
+    const { category, all } = useSelector(state => state)
 
     const [inputs, setInputs] = useState({
         poster: "",
@@ -70,7 +70,7 @@ const Add = () => {
     useEffect(() => {
         if (params.get("id")) {
             setPostOrPut(false)
-            const item = movies.filter(i => i._id === params.get('id'))
+            const item = all.filter(i => i._id === params.get('id'))
             setInputs(...item)
         }
     }, [name])
@@ -100,17 +100,17 @@ const Add = () => {
                         <div className="grid grid-row-4 w-full gap-6 py-5 rounded-2xl px-5">
                             <div className="w-full">
                                 <h1 className="text-xl">Image</h1>
-                                <input onInput={e => setInputs({...inputs, poster: e.target.value})} value={inputs.poster} {...register("poster")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Image URL..." name="poster" id="" />
+                                <input onInput={e => setInputs({...inputs, poster: e.target.value})} value={inputs?.poster} {...register("poster")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Image URL..." name="poster" id="" />
                             </div>
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Title</h1>
-                                <input onInput={e => setInputs({...inputs, title: e.target.value})} value={inputs.title}  {...register("title")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="title" id="" />
+                                <input onInput={e => setInputs({...inputs, title: e.target.value})} value={inputs?.title}  {...register("title")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Name..." name="title" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Category</h1>
-                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs.category} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="category">
+                                <select onInput={e => setInputs({...inputs, category: e.target.value})} value={inputs?.category} {...register("category")} required className="w-full bg-gray-700 px-3 py-1.5 rounded-lg" name="category" id="category">
                                     {category.map((i) => 
                                         <option key={i._id} value={i._id}>{i.name}</option>
                                     )}
@@ -119,7 +119,7 @@ const Add = () => {
 
                             <div className="w-full">
                                 <h1 className="text-xl">Genres</h1>
-                                <input onInput={e => setInputs({...inputs, genres: e.target.value})} value={inputs.genres} {...register("genres")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Genre..." name="genres" id="" />
+                                <input onInput={e => setInputs({...inputs, genres: e.target.value})} value={inputs?.genres} {...register("genres")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Genre..." name="genres" id="" />
                             </div>
 
                         </div>
@@ -129,22 +129,22 @@ const Add = () => {
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Description</h1>
-                                <input onInput={e => setInputs({...inputs, description: e.target.value})} value={inputs.description} {...register("description")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Description..." name="description" id="" />
+                                <input onInput={e => setInputs({...inputs, description: e.target.value})} value={inputs?.description} {...register("description")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Description..." name="description" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Duration</h1>
-                                <input onInput={e => setInputs({...inputs, duration: e.target.value})} value={inputs.duration} {...register("duration")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Duration..." name="duration" id="" />
+                                <input onInput={e => setInputs({...inputs, duration: e.target.value})} value={inputs?.duration} {...register("duration")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Duration..." name="duration" id="" />
                             </div>
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Trailer</h1>
-                                <input onInput={e => setInputs({...inputs, trailer: e.target.value})} value={inputs.trailer} {...register("trailer")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Trailer URL..." name="trailer" id="" />
+                                <input onInput={e => setInputs({...inputs, trailer: e.target.value})} value={inputs?.trailer} {...register("trailer")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Trailer URL..." name="trailer" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Country</h1>
-                                <input onInput={e => setInputs({...inputs, country: e.target.value})} value={inputs.country} {...register("country")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Country..." name="country" id="" />
+                                <input onInput={e => setInputs({...inputs, country: e.target.value})} value={inputs?.country} {...register("country")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Country..." name="country" id="" />
                             </div>
 
                         </div>
@@ -154,22 +154,22 @@ const Add = () => {
                             
                             <div className="w-full">
                                 <h1 className="text-xl">Year</h1>
-                                <input onInput={e => setInputs({...inputs, year: e.target.value})} value={inputs.year} {...register("year")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Year..." name="year" id="" />
+                                <input onInput={e => setInputs({...inputs, year: e.target.value})} value={inputs?.year} {...register("year")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Year..." name="year" id="" />
                             </div>
                             
                             <div>
                                 <h1 className="text-xl">Video</h1>
-                                <input onInput={e => setInputs({...inputs, video: e.target.value})} value={inputs.video} {...register("video")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" placeholder="Video URL" type="text" name="video" id="" />
+                                <input onInput={e => setInputs({...inputs, video: e.target.value})} value={inputs?.video} {...register("video")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" placeholder="Video URL" type="text" name="video" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Language</h1>
-                                <input onInput={e => setInputs({...inputs, language: e.target.value})} value={inputs.language} {...register("language")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Language..." name="language" id="" />
+                                <input onInput={e => setInputs({...inputs, language: e.target.value})} value={inputs?.language} {...register("language")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Language..." name="language" id="" />
                             </div>
 
                             <div className="w-full">
                                 <h1 className="text-xl">Age</h1>
-                                <input onInput={e => setInputs({...inputs, age: e.target.value})} value={inputs.age} {...register("age")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Age..." name="age" id="" />
+                                <input onInput={e => setInputs({...inputs, age: e.target.value})} value={inputs?.age} {...register("age")} required className="outline-0 border-0 bg-gray-700 rounded-md px-5 py-2 w-full focus:ring-2 ring-gray-600" type="text" placeholder="Age..." name="age" id="" />
                             </div>
 
                             <div className="flex justify-end items-center mt-5">

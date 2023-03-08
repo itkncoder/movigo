@@ -4,20 +4,20 @@ import { Link, useNavigate  } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import axios from "axios"
 
-import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError} from "../../redux/actions"
+import { moviesFetching, moviesFetched, moviesFetchingError, categoryFetching, categoryFetched, categoryFetchingError, fetchAll} from "../../redux/actions"
 
 import {API_BASE} from "../../utils/config"
 
 const Adminpanel = () => {
     const navigate = useNavigate();
 
+    const {all} = useSelector(state => state)
+
     const { category } = useSelector( state => state )
     
     const [ tab, setTabs ] = useState(true)
 
     const dispatch = useDispatch()
-
-    const [movies, setMovies] = useState([])
 
     window.onclick = (e) => {
         if (e.target.classList.contains("modal")) {
@@ -26,8 +26,8 @@ const Adminpanel = () => {
     }
 
     useEffect(() => {
-        axios.get(`${API_BASE}/api/films/all`).then(res => setMovies(res.data.data))
-    })
+        axios.get(`${API_BASE}/api/films/all`).then(res => dispatch(fetchAll(res.data.data)))
+    }, [])
 
     const deleteing = (what, id) => {
         axios.delete(`${API_BASE}/api/${what}/${id}`).then(() => {
@@ -83,7 +83,7 @@ const Adminpanel = () => {
                     </thead>
                     <tbody className="w-full flex flex-col max-h-full overflow-y-auto">
                         {   !tab ?
-                            movies.map((i) => 
+                            all.map((i) => 
                                 <tr key={i._id} className="flex justify-between items-center border border-gray-600 w-full gap-3 bg-gray-800 px-6 py-2 hover:bg-gray-700">
                                     <td className="text-sm w-3/12 truncate">{i.title}</td>
                                     <td className="text-sm w-2/12 truncate">{i.genres}</td>
