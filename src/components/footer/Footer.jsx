@@ -14,7 +14,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <a className="mb-4" href="https://webmaster.yandex.ru/siteinfo/?site=https://movigo.netlify.app"><img className="rounded-md" width="88" height="31" alt="" border="0" src="https://yandex.ru/cycounter?https://movigo.netlify.app&theme=light&lang=en"/></a>
         </footer>
     );
 }
