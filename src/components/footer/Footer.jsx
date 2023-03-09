@@ -10,8 +10,8 @@ const Footer = () => {
                     <Logo/>
                     <p className="text-gray-400 text-sm hidden lg:block">©️ 2023, <a href="./">movigo.uz</a>, Barcha huquqlar himoyalangan</p>
                     <div className="flex jusitify-center items-center gap-4">
-                        <a className="text-xs text-center sm:text-sm hover:text-gray-300" target="_blank" href="https://t.me/nodejs5">Texnik xizmatlar</a>
-                        <a className="text-xs text-center sm:text-sm hover:text-gray-300" target="_blank" href="https://t.me/nodejs5">Reklama</a>
+                        <a className="text-xs text-center sm:text-base hover:text-gray-300" target="_blank" href="https://t.me/nodejs5">Texnik xizmatlar</a>
+                        <a className="text-xs text-center sm:text-base hover:text-gray-300" target="_blank" href="https://t.me/nodejs5">Reklama</a>
                     </div>
                 </div>
             </div>
