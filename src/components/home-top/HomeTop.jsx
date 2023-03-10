@@ -5,11 +5,6 @@ import { Autoplay } from "swiper";
 import 'swiper/css';
 import {useMemo, memo} from "react"
 
-import first from "../../assets/images/home-top.jpg"
-import second from "../../assets/images/home-top2.jpg"
-import third from "../../assets/images/home-top3.png"
-import four from "../../assets/images/home-top4.jpg"
-
 import {useSelector} from "react-redux"
 
 const HomeTop = () => {
