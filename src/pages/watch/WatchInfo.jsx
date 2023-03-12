@@ -32,7 +32,7 @@ const WatchInfo = ({watchingMovieItem}) => {
                         </tr>
                         <tr>
                             <td className="w-28 text-gray-400 font-semibold text-lg">Yosh:</td>
-                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><p>{watchingMovieItem?.age}</p></td>
+                            <td className="bg-gray-800 rounded-md py-1 px-3 font-semibold hover:text-gray-300"><p>{watchingMovieItem?.age}+</p></td>
                         </tr>
                     </tbody>
                 </table>
