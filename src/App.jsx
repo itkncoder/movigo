@@ -71,7 +71,6 @@ function App() {
                 <Route path="/admin/adminpanelmovigo/add/:name" element={<Add/>} />
                 <Route path="/admin/adminpanelmovigo/" element={<Adminpanel/>} />
                 <Route path="/watch/:name" element={<Watch/>} />
-                <Route path="/donate" element={<Donate/>} />
                 <Route path="/admin/adminpanelmovigo/slider" element={<Slider/>} />
                 <Route path="/filter/:type" element={<Filter/>} />
                 <Route path="*" element={<Error/>} />
