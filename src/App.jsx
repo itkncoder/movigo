@@ -74,6 +74,7 @@ function App() {
                 <Route path="/admin/adminpanelmovigo/slider" element={<Slider/>} />
                 <Route path="/filter/:type" element={<Filter/>} />
                 <Route path="*" element={<Error/>} />
+                <Route path="/donate" element={<Donate/>} />
             </Routes>
     
             <div>
