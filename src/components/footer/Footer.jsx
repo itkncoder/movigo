@@ -1,8 +1,8 @@
 import Logo from "../logo/Logo"
 import {memo} from "react"
-import {Link} from "react-router-dom"
 
 const Footer = () => {
+
     return (  
         <footer className="flex flex-col items-end mt-10 p-1 bg-[#1E242C]">
             <div className="w-full flex items-center justify-between px-4">
@@ -16,7 +16,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-    );
+    )
 }
  
-export default memo(Footer);
+export default memo(Footer)
