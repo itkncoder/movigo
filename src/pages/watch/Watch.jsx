@@ -94,28 +94,39 @@ const Watch = () => {
                             <p className="sm:text-lg font-semibold">Treylerni ko'rish</p>
                         </div>
                     </div>
-                    {tab ? 
-                    <ReactPlayer
-                        ref={video}
-                        className="video"
-                        url={watchingMovieItem?.video}
-                        width="100%"
-                        height="90vh"
-                        controls
-                        light="https://res.cloudinary.com/file-upload/image/upload/v1676240802/Group_1_loswzg.png"
-                    /> 
-                    : 
-                    <ReactPlayer
-                        className="video"
-                        url={watchingMovieItem?.trailer}
-                        width="100%"
-                        height="90vh"
-                        controls
-                    /> 
+                    {
+                        watchingMovieItem?.video.toString().includes("embed")
+                        ?
+                        <>
+                            <iframe className="video" style={{width: "100%", height: "660px"}} src={watchingMovieItem?.video} frameborder="0" allowfullscreen></iframe>
+                        </>
+                        :
+                        <>
+                            {
+                                tab ? 
+                                <ReactPlayer
+                                    ref={video}
+                                    className="video"
+                                    url={watchingMovieItem?.video}
+                                    width="100%"
+                                    height="90vh"
+                                    controls
+                                    light="https://res.cloudinary.com/file-upload/image/upload/v1676240802/Group_1_loswzg.png"
+                                /> 
+                                : 
+                                <ReactPlayer
+                                    className="video"
+                                    url={watchingMovieItem?.trailer}
+                                    width="100%"
+                                    height="90vh"
+                                    controls
+                                /> 
+                            }
+                        </>
                     }
                     <div className="py-3 flex items-center justify-start gap-6 my-2 bg-gray-800 rounded-lg px-5">
                         <div className="flex items-center justify-start gap-2">
-                            <i className="fa-solid fa-eye cursor-pointer bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl cursor-pointer transition-all hover:text-gray-200 text-gray-100"></i>
+                            <i className="fa-solid fa-eye cursor-pointer bg-[#151A20] w-10 h-10 flex justify-center items-center rounded-md text-xl transition-all hover:text-gray-200 text-gray-100"></i>
                             <p className="text-gray-200">{watchingMovieItem?.viewCount}</p>
                         </div>
                         <div className="flex items-center justify-start gap-2">
