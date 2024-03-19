@@ -95,24 +95,26 @@ const Watch = () => {
                         </div>
                     </div>
                     {
-                        watchingMovieItem?.video.toString().includes("embed")
-                        ?
-                        <>
-                            <iframe className="video" style={{width: "100%", height: "660px"}} src={watchingMovieItem?.video} frameborder="0" allowfullscreen></iframe>
-                        </>
-                        :
                         <>
                             {
                                 tab ? 
-                                <ReactPlayer
-                                    ref={video}
-                                    className="video"
-                                    url={watchingMovieItem?.video}
-                                    width="100%"
-                                    height="90vh"
-                                    controls
-                                    light="https://res.cloudinary.com/file-upload/image/upload/v1676240802/Group_1_loswzg.png"
-                                /> 
+                                <>
+                                    {watchingMovieItem?.video.toString().includes("embed")
+                                    ?
+                                    <>
+                                        <iframe className="video" style={{width: "100%", height: "660px"}} src={watchingMovieItem?.video} frameborder="0" allowfullscreen></iframe>
+                                    </>
+                                    :
+                                    <ReactPlayer
+                                        ref={video}
+                                        className="video"
+                                        url={watchingMovieItem?.video}
+                                        width="100%"
+                                        height="90vh"
+                                        controls
+                                        light="https://res.cloudinary.com/file-upload/image/upload/v1676240802/Group_1_loswzg.png"
+                                    /> }
+                                </>
                                 : 
                                 <ReactPlayer
                                     className="video"

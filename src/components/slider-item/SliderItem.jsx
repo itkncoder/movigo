@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 const SliderTitle = ({props}) => {
     return (  
-        <section className="wrapper-carousel cursor-grab slider-img-div relative flex justify-between items-start max-h-200">
+        <section className="cursor-grab slider-img-div relative flex justify-between items-start max-h-200">
             <img className="slider-img border border-[#151A20] max-h-200" src={props.img} alt="movie" height="780" />
             <div className="mt-20 sm:ml-5 ml-2 flex w-full justify-between items-end">
                 <div className="mt-24 flex flex-col items-start gap-2">
